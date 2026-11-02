@@ -103,7 +103,10 @@ export function evaluatePolicy(
   }
 
   if (policy.newMerchantRequiresApproval) {
-    const known = history.some((h) => h.completed && h.merchantId === request.merchantId);
+    // a store on your approved list is trusted from day one; otherwise it must
+    // have at least one completed purchase before it stops needing your OK
+    const trusted = policy.allowedMerchantIds.includes(request.merchantId);
+    const known = trusted || history.some((h) => h.completed && h.merchantId === request.merchantId);
     if (!known) {
       escalate("REVIEW", "newMerchantRequiresApproval", `This is the first time Scout is buying from ${request.merchantName}.`);
     }

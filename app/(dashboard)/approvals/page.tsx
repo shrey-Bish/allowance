@@ -1,5 +1,7 @@
-import { Placeholder } from "@/components/placeholder";
+import { ApprovalsScreen } from "@/components/approvals/approvals-screen";
 
-export default function Page() {
-  return <Placeholder title="Needs your OK" />;
+export const metadata = { title: "Needs your OK · Allowance" };
+
+export default function ApprovalsPage() {
+  return <ApprovalsScreen />;
 }

@@ -119,6 +119,10 @@ describe("evaluatePolicy", () => {
 
     const onlyBlockedBefore = evaluatePolicy(req(), policy, [hist({ completed: false, spent: false })], NOW);
     expect(onlyBlockedBefore.outcome).toBe("REVIEW");
+
+    // allowlisted stores are trusted from the first purchase
+    const trusted = evaluatePolicy(req(), { ...policy, allowedMerchantIds: ["m-volthub"] }, [], NOW);
+    expect(trusted.outcome).toBe("ALLOW");
   });
 
   it("applies category rules: gift cards BLOCK, electronics REVIEW", () => {

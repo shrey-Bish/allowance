@@ -7,6 +7,7 @@ import { formatUsd } from "@/lib/money";
 import { verdictToOutcome } from "@/lib/risk";
 import { OUTCOME_LABEL, PurchaseItemSchema, STATUS_LABEL, StringArraySchema, type Outcome, type RequestStatus } from "@/lib/types";
 import { z } from "zod";
+import { itemsLabel } from "@/lib/catalog/labels";
 
 export const dynamic = "force-dynamic";
 
@@ -35,6 +36,8 @@ export async function GET() {
         storeSlug: r.merchant.slug,
         items: items.map((i) => `${i.quantity > 1 ? `${i.quantity}× ` : ""}${i.name}`).join(", "),
         itemCount: items.reduce((s, i) => s + i.quantity, 0),
+        itemsLabel: itemsLabel(items),
+        category: items[0]?.category ?? "",
         amountCents: r.amountCents,
         amount: formatUsd(r.amountCents),
         status: r.status,

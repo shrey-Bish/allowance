@@ -1,5 +1,7 @@
-import { Placeholder } from "@/components/placeholder";
+import { ShopScreen } from "@/components/chat/shop-screen";
 
-export default function Page() {
-  return <Placeholder title="Shop with Scout" />;
+export const metadata = { title: "Shop with Scout · Allowance" };
+
+export default function ChatPage() {
+  return <ShopScreen />;
 }

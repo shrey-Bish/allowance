@@ -54,7 +54,7 @@ export function policySummary(p: {
   const parts: string[] = [];
   parts.push(`Scout can spend up to ${formatUsd(p.weeklyBudgetCents)} a week.`);
   const asks: string[] = [`anything over ${formatUsd(p.approvalThresholdCents)}`];
-  if (p.newMerchantRequiresApproval) asks.push("anything at a new store");
+  if (p.newMerchantRequiresApproval) asks.push("anything at a store you haven't approved");
   const reviewCats = Object.entries(p.categoryRules).filter(([, v]) => v === "REVIEW").map(([k]) => k.replace(/_/g, " "));
   if (reviewCats.length) asks.push(reviewCats.join(" and "));
   parts.push(`${asks.join(", or ").replace(/^./, (c) => c.toUpperCase())} needs your OK.`);

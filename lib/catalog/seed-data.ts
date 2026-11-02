@@ -112,7 +112,8 @@ export const SEED_POLICY = {
   maxPerPurchaseCents: 30000,
   approvalThresholdCents: 5000,
   weeklyBudgetCents: 15000,
-  allowedMerchantIds: [] as string[],
+  // FreshCart + VoltHub are the user's approved stores (spec §13); MegaDealz247 is not
+  allowedMerchantIds: ["m_freshcart", "m_volthub"] as string[],
   blockedMerchantIds: [] as string[],
   newMerchantRequiresApproval: true,
   categoryRules: { gift_cards: "BLOCK" } as Record<string, "REVIEW" | "BLOCK">,
