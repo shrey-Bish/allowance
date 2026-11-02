@@ -11,6 +11,7 @@ import { assertTransition, HELD_STATUSES, SPENT_STATUSES } from "@/lib/guard/sta
 import {
   CategoryRulesSchema,
   mostSevere,
+  OUTCOME_SEVERITY,
   PurchaseItemSchema,
   StringArraySchema,
   type AgentPurchaseResult,
@@ -220,9 +221,14 @@ export async function createPurchaseRequest(input: PurchaseRequestInput): Promis
     },
   });
   const aiOutcome = aiVerdict ? verdictToOutcome(aiVerdict as "ok" | "review" | "block") : null;
+  // the safety check's reasons are shown only when it found something itself
+  // (any signal raised, or it tightened the rules' decision) — not when it is
+  // merely agreeing with a rule
+  const aiFlagged = Object.values((aiSignals ?? {}) as Record<string, boolean>).some(Boolean);
+  const aiTightened = aiOutcome != null && OUTCOME_SEVERITY[aiOutcome] > OUTCOME_SEVERITY[policyEval.outcome];
   const reasons = dedupe([
     ...(policyEval.outcome === finalOutcome ? policyEval.reasons : []),
-    ...(aiOutcome === finalOutcome && finalOutcome !== "ALLOW" ? aiReasons : []),
+    ...(aiOutcome === finalOutcome && finalOutcome !== "ALLOW" && (aiFlagged || aiTightened || aiUnavailable) ? aiReasons : []),
   ]);
   if (reasons.length === 0) reasons.push(finalOutcome === "ALLOW" ? "Within your rules." : "Flagged for a closer look.");
   await audit("decision_made", `Decision: ${finalOutcome.toLowerCase()}.`, { requestId: request.id, sessionId: session.id, data: { finalOutcome, reasons } });

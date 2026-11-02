@@ -61,10 +61,10 @@ describe("enforceInvariants", () => {
     expect(v.verdict).toBe("block");
     expect(v.risk_score).toBeGreaterThanOrEqual(90);
   });
-  it("caps reasons at 4 and fills an empty list", () => {
+  it("caps reasons at 4 and drops blank ones", () => {
     const v = enforceInvariants({ verdict: "ok", risk_score: 5, reasons: ["a", "b", "c", "d", "e"], signals: EMPTY_SIGNALS });
     expect(v.reasons).toHaveLength(4);
-    expect(enforceInvariants({ verdict: "ok", risk_score: 5, reasons: [" "], signals: EMPTY_SIGNALS }).reasons[0]).toBe("Nothing unusual found.");
+    expect(enforceInvariants({ verdict: "ok", risk_score: 5, reasons: [" "], signals: EMPTY_SIGNALS }).reasons).toEqual([]);
   });
   it("maps verdicts to outcomes", () => {
     expect(verdictToOutcome("ok")).toBe("ALLOW");

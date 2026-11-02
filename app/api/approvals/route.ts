@@ -24,7 +24,10 @@ export async function GET(req: Request) {
         const r = a.purchaseRequest;
         const items = parseJson(r.items, z.array(PurchaseItemSchema), []);
         const policyReasons = r.decision?.policyOutcome === "REVIEW" ? parseJson(r.decision.policyReasons, StringArraySchema, []) : [];
-        const aiReasons = r.decision?.aiVerdict === "review" ? parseJson(r.decision.aiReasons, StringArraySchema, []) : [];
+        const aiSignals = parseJson(r.decision?.aiSignals, z.record(z.string(), z.boolean()), {});
+        const aiFlagged = Object.values(aiSignals).some(Boolean) || Boolean(r.decision?.aiUnavailable);
+        const aiTightened = r.decision?.aiVerdict === "review" && r.decision.policyOutcome === "ALLOW";
+        const aiReasons = r.decision?.aiVerdict === "review" && (aiFlagged || aiTightened) ? parseJson(r.decision.aiReasons, StringArraySchema, []) : [];
         const reasons = [...policyReasons, ...aiReasons];
         const usual = await usualPrice(items);
         return {

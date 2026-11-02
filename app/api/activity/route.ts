@@ -5,7 +5,7 @@ import { getDemoUser } from "@/lib/user";
 import { handle, ok } from "@/lib/api/http";
 import { formatUsd } from "@/lib/money";
 import { verdictToOutcome } from "@/lib/risk";
-import { OUTCOME_LABEL, PurchaseItemSchema, STATUS_LABEL, StringArraySchema, type Outcome, type RequestStatus } from "@/lib/types";
+import { OUTCOME_SEVERITY, OUTCOME_LABEL, PurchaseItemSchema, STATUS_LABEL, StringArraySchema, type Outcome, type RequestStatus } from "@/lib/types";
 import { z } from "zod";
 import { itemsLabel } from "@/lib/catalog/labels";
 
@@ -28,7 +28,10 @@ export async function GET() {
       const policyOutcome = (r.decision?.policyOutcome ?? "ALLOW") as Outcome;
       const aiOutcome = r.decision?.aiVerdict ? verdictToOutcome(r.decision.aiVerdict as "ok" | "review" | "block") : null;
       const policyReasons = policyOutcome === final ? parseJson(r.decision?.policyReasons, StringArraySchema, []) : [];
-      const aiReasons = aiOutcome === final && final !== "ALLOW" ? parseJson(r.decision?.aiReasons, StringArraySchema, []) : [];
+      const aiSignals = parseJson(r.decision?.aiSignals, z.record(z.string(), z.boolean()), {});
+      const aiFlagged = Object.values(aiSignals).some(Boolean) || Boolean(r.decision?.aiUnavailable);
+      const aiTightened = aiOutcome != null && OUTCOME_SEVERITY[aiOutcome] > OUTCOME_SEVERITY[policyOutcome];
+      const aiReasons = aiOutcome === final && final !== "ALLOW" && (aiFlagged || aiTightened) ? parseJson(r.decision?.aiReasons, StringArraySchema, []) : [];
       return {
         id: r.id,
         time: r.createdAt,

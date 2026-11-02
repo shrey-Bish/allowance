@@ -56,9 +56,6 @@ export function enforceInvariants(v: RiskVerdict): RiskVerdict {
     out.verdict = "block";
     out.risk_score = Math.max(out.risk_score, 90);
   }
-  if (out.reasons.length === 0) {
-    out.reasons = [out.verdict === "ok" ? "Nothing unusual found." : "Flagged for a closer look."];
-  }
   return out;
 }
 
