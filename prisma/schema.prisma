@@ -1,0 +1,195 @@
+// Allowance — data model (spec §10).
+// Money is stored as integer cents (USD). JSON-ish columns are stored as
+// String and parsed/validated with zod in lib/db/json.ts so the schema stays
+// portable between SQLite (local) and Postgres (hosted demo).
+
+generator client {
+  provider = "prisma-client"
+  output   = "../lib/db/generated"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model User {
+  id               String   @id @default(cuid())
+  name             String
+  email            String   @unique
+  paypalVaultId    String?
+  paypalPayerEmail String?
+  createdAt        DateTime @default(now())
+
+  policy   Policy?
+  sessions AgentSession[]
+}
+
+model Policy {
+  id                          String   @id @default(cuid())
+  userId                      String   @unique
+  maxPerPurchaseCents         Int
+  approvalThresholdCents      Int
+  weeklyBudgetCents           Int
+  allowedMerchantIds          String   @default("[]") // JSON string[]  (empty = no allowlist)
+  blockedMerchantIds          String   @default("[]") // JSON string[]
+  newMerchantRequiresApproval Boolean  @default(true)
+  categoryRules               String   @default("{}") // JSON Record<category, "REVIEW"|"BLOCK">
+  maxQuantityPerItem          Int      @default(5)
+  duplicateWindowHours        Int      @default(24)
+  approvalExpiryMinutes       Int      @default(10)
+  updatedAt                   DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Merchant {
+  id             String   @id @default(cuid())
+  slug           String   @unique
+  name           String
+  category       String
+  tagline        String   @default("")
+  accountAgeDays Int      @default(0)
+  payoutEmail    String?
+  createdAt      DateTime @default(now())
+
+  products Product[]
+  requests PurchaseRequest[]
+}
+
+model Product {
+  id           String  @id @default(cuid())
+  merchantId   String
+  name         String
+  category     String
+  priceCents   Int
+  currency     String  @default("USD")
+  description  String  @default("") // merchant-provided, treated as UNTRUSTED
+  referenceKey String? // groups equivalent items across stores for price comparison
+  imageUrl     String?
+
+  merchant Merchant @relation(fields: [merchantId], references: [id], onDelete: Cascade)
+
+  @@index([referenceKey])
+  @@index([merchantId])
+}
+
+model AgentSession {
+  id           String   @id @default(cuid())
+  userId       String
+  originalTask String   // recorded from the chat session, never from the agent
+  status       String   @default("running") // running | done | failed
+  isReplay     Boolean  @default(false)
+  createdAt    DateTime @default(now())
+
+  user     User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  requests PurchaseRequest[]
+  messages AgentMessage[]
+  events   AuditEvent[]
+}
+
+model AgentMessage {
+  id         String   @id @default(cuid())
+  sessionId  String
+  role       String   // user | assistant | tool
+  content    String   @default("")
+  toolName   String?
+  toolInput  String?  // JSON
+  toolOutput String?  // JSON
+  createdAt  DateTime @default(now())
+
+  session AgentSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+
+  @@index([sessionId, createdAt])
+}
+
+model PurchaseRequest {
+  id          String   @id @default(cuid())
+  sessionId   String
+  merchantId  String
+  items       String   // JSON PurchaseItem[]
+  amountCents Int
+  currency    String   @default("USD")
+  agentReason String   @default("")
+  status      String   @default("RECEIVED") // see lib/guard/status.ts
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  session  AgentSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  merchant Merchant     @relation(fields: [merchantId], references: [id])
+  decision Decision?
+  approval Approval?
+  payment  Payment?
+  events   AuditEvent[]
+
+  @@index([status])
+  @@index([createdAt])
+}
+
+model Decision {
+  id                String   @id @default(cuid())
+  purchaseRequestId String   @unique
+  policyOutcome     String   // ALLOW | REVIEW | BLOCK
+  policyReasons     String   @default("[]") // JSON string[]
+  aiVerdict         String?  // ok | review | block
+  aiRiskScore       Int?
+  aiReasons         String   @default("[]") // JSON string[]
+  aiSignals         String   @default("{}") // JSON RiskSignals
+  aiUnavailable     Boolean  @default(false)
+  finalOutcome      String   // ALLOW | REVIEW | BLOCK
+  createdAt         DateTime @default(now())
+
+  purchaseRequest PurchaseRequest @relation(fields: [purchaseRequestId], references: [id], onDelete: Cascade)
+}
+
+model Approval {
+  id                String    @id @default(cuid())
+  purchaseRequestId String    @unique
+  status            String    @default("PENDING") // PENDING | APPROVED | DENIED | EXPIRED
+  expiresAt         DateTime
+  respondedAt       DateTime?
+  respondedVia      String?   // dashboard | voice | api
+  createdAt         DateTime  @default(now())
+
+  purchaseRequest PurchaseRequest @relation(fields: [purchaseRequestId], references: [id], onDelete: Cascade)
+
+  @@index([status, expiresAt])
+}
+
+model Payment {
+  id                    String   @id @default(cuid())
+  purchaseRequestId     String   @unique
+  paypalOrderId         String?
+  paypalAuthorizationId String?
+  paypalCaptureId       String?
+  paypalPayoutBatchId   String?
+  paypalDebugId         String?
+  status                String   @default("NONE") // NONE | AUTHORIZED | CAPTURED | VOIDED | FAILED
+  amountCents           Int
+  rawResponse           String   @default("{}") // JSON (secrets stripped)
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+
+  purchaseRequest PurchaseRequest @relation(fields: [purchaseRequestId], references: [id], onDelete: Cascade)
+}
+
+model AuditEvent {
+  id                String   @id @default(cuid())
+  purchaseRequestId String?
+  sessionId         String?
+  type              String
+  message           String
+  data              String   @default("{}") // JSON
+  createdAt         DateTime @default(now())
+
+  purchaseRequest PurchaseRequest? @relation(fields: [purchaseRequestId], references: [id], onDelete: Cascade)
+  session         AgentSession?    @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+
+  @@index([purchaseRequestId])
+  @@index([createdAt])
+}
+
+model KeyValue {
+  key       String   @id
+  value     String
+  updatedAt DateTime @updatedAt
+}

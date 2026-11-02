@@ -1,0 +1,37 @@
+@import "tailwindcss";
+
+/* Allowance shell tokens (DESIGN_BRIEF.md §3). Locked after the Claude Design pass. */
+:root {
+  --paper: #f6f1e7;
+  --card: #fffdf8;
+  --ink: #1c1b19;
+  --muted: #6b665c;
+  --line: #e6dfd1;
+  --gold: #d9a21b;
+  --paid: #2f8f5b;
+  --hold: #e5771e;
+  --blocked: #d2483c;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-card: var(--card);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-gold: var(--gold);
+  --color-paid: var(--paid);
+  --color-hold: var(--hold);
+  --color-blocked: var(--blocked);
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-jetbrains);
+  --font-display: var(--font-instrument);
+  --font-pixel: var(--font-pixel);
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: 16px;
+}
