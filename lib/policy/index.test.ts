@@ -45,6 +45,7 @@ function hist(over: Partial<HistoryEntry> = {}): HistoryEntry {
     productIds: ["p-other"],
     amountCents: 1000,
     spent: true,
+    held: false,
     completed: true,
     createdAt: new Date(NOW.getTime() - 60 * 60 * 1000),
     ...over,
@@ -154,6 +155,9 @@ describe("evaluatePolicy", () => {
 
     const blockedAttempt = hist({ productIds: ["p-charger"], spent: false, completed: false });
     expect(evaluatePolicy(req(), basePolicy, [blockedAttempt], NOW).outcome).toBe("ALLOW");
+
+    const heldAttempt = hist({ productIds: ["p-charger"], spent: false, held: true, completed: false });
+    expect(evaluatePolicy(req(), basePolicy, [heldAttempt], NOW).outcome).toBe("REVIEW");
 
     expect(evaluatePolicy(req(), { ...basePolicy, duplicateWindowHours: 0 }, [inWindow], NOW).outcome).toBe("ALLOW");
   });

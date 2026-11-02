@@ -4,6 +4,7 @@ import { budgetSnapshot, expireOverdueApprovals } from "@/lib/guard/service";
 import { getDemoUser } from "@/lib/user";
 import { handle, ok } from "@/lib/api/http";
 import { formatUsd } from "@/lib/money";
+import { verdictToOutcome } from "@/lib/risk";
 import { OUTCOME_LABEL, PurchaseItemSchema, STATUS_LABEL, StringArraySchema, type Outcome, type RequestStatus } from "@/lib/types";
 import { z } from "zod";
 
@@ -22,9 +23,11 @@ export async function GET() {
     });
     const activity = rows.map((r) => {
       const items = parseJson(r.items, z.array(PurchaseItemSchema), []);
-      const policyReasons = parseJson(r.decision?.policyReasons, StringArraySchema, []);
-      const aiReasons = parseJson(r.decision?.aiReasons, StringArraySchema, []);
       const final = (r.decision?.finalOutcome ?? "REVIEW") as Outcome;
+      const policyOutcome = (r.decision?.policyOutcome ?? "ALLOW") as Outcome;
+      const aiOutcome = r.decision?.aiVerdict ? verdictToOutcome(r.decision.aiVerdict as "ok" | "review" | "block") : null;
+      const policyReasons = policyOutcome === final ? parseJson(r.decision?.policyReasons, StringArraySchema, []) : [];
+      const aiReasons = aiOutcome === final && final !== "ALLOW" ? parseJson(r.decision?.aiReasons, StringArraySchema, []) : [];
       return {
         id: r.id,
         time: r.createdAt,
@@ -36,10 +39,18 @@ export async function GET() {
         amount: formatUsd(r.amountCents),
         status: r.status,
         result: STATUS_LABEL[r.status as RequestStatus] ?? r.status,
-        safetyCheck: r.decision?.aiVerdict ? OUTCOME_LABEL[final] : r.decision ? "skipped (rules already blocked it)" : "—",
+        safetyCheck: r.decision?.aiUnavailable
+          ? "unavailable"
+          : r.decision?.aiVerdict
+            ? OUTCOME_LABEL[verdictToOutcome(r.decision.aiVerdict as "ok" | "review" | "block")]
+            : r.decision
+              ? "skipped (rules already blocked it)"
+              : "—",
+        rulesSay: r.decision ? OUTCOME_LABEL[r.decision.policyOutcome as Outcome] : "—",
         riskScore: r.decision?.aiRiskScore ?? null,
-        reason: Array.from(new Set([...policyReasons, ...aiReasons])).filter((x) => !(final !== "ALLOW" && x === "Within your rules."))[0] ?? "",
+        reason: Array.from(new Set([...policyReasons, ...aiReasons]))[0] ?? (final === "ALLOW" ? "Within your rules." : ""),
         reasons: Array.from(new Set([...policyReasons, ...aiReasons])),
+        aiReasons: parseJson(r.decision?.aiReasons, StringArraySchema, []),
         task: r.session.originalTask,
         paypalStatus: r.payment?.status ?? "NONE",
         paypalOrderId: r.payment?.paypalOrderId ?? null,

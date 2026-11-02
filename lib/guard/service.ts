@@ -7,7 +7,7 @@ import { audit } from "@/lib/audit";
 import { evaluatePolicy, type HistoryEntry } from "@/lib/policy";
 import { checkRisk, verdictToOutcome } from "@/lib/risk";
 import { getPayPal, PayPalError } from "@/lib/paypal";
-import { assertTransition, SPENT_STATUSES } from "@/lib/guard/status";
+import { assertTransition, HELD_STATUSES, SPENT_STATUSES } from "@/lib/guard/status";
 import {
   CategoryRulesSchema,
   mostSevere,
@@ -77,6 +77,7 @@ export async function loadHistory(userId: string, days = 7, excludeRequestId?: s
       itemNames: items.map((i) => i.name),
       amountCents: r.amountCents,
       spent: SPENT_STATUSES.includes(status),
+      held: HELD_STATUSES.includes(status),
       completed: status === "COMPLETED",
       createdAt: r.createdAt,
     };
@@ -155,7 +156,7 @@ export async function createPurchaseRequest(input: PurchaseRequestInput): Promis
   let finalOutcome: Outcome = policyEval.outcome;
 
   if (policyEval.outcome !== "BLOCK") {
-    const refPrices = await referencePrices(items, merchant.id);
+    const refPrices = await referencePrices(items);
     const risk = await checkRisk({
       originalTask: session.originalTask,
       merchant: {
@@ -177,12 +178,16 @@ export async function createPurchaseRequest(input: PurchaseRequestInput): Promis
       }),
       totalCents: amountCents,
       agentReason: input.reason,
-      recentPurchases: history.slice(0, 10).map((h) => ({
-        merchantName: h.merchantName,
-        itemNames: h.itemNames,
-        amountCents: h.amountCents,
-        daysAgo: Math.floor((Date.now() - h.createdAt.getTime()) / 864e5),
-      })),
+      recentPurchases: history
+        .filter((h) => h.spent || h.held)
+        .slice(0, 10)
+        .map((h) => ({
+          merchantName: h.merchantName,
+          itemNames: h.itemNames,
+          amountCents: h.amountCents,
+          daysAgo: Math.floor((Date.now() - h.createdAt.getTime()) / 864e5),
+          status: h.spent ? ("paid" as const) : ("on hold" as const),
+        })),
       policyOutcome: policyEval.outcome,
       policyReasons: policyEval.reasons,
     });
@@ -214,9 +219,12 @@ export async function createPurchaseRequest(input: PurchaseRequestInput): Promis
       finalOutcome,
     },
   });
-  const reasons = dedupe([...(policyEval.outcome === "ALLOW" && finalOutcome !== "ALLOW" ? [] : policyEval.reasons), ...aiReasons]).filter(
-    (r) => !(finalOutcome !== "ALLOW" && r === "Within your rules."),
-  );
+  const aiOutcome = aiVerdict ? verdictToOutcome(aiVerdict as "ok" | "review" | "block") : null;
+  const reasons = dedupe([
+    ...(policyEval.outcome === finalOutcome ? policyEval.reasons : []),
+    ...(aiOutcome === finalOutcome && finalOutcome !== "ALLOW" ? aiReasons : []),
+  ]);
+  if (reasons.length === 0) reasons.push(finalOutcome === "ALLOW" ? "Within your rules." : "Flagged for a closer look.");
   await audit("decision_made", `Decision: ${finalOutcome.toLowerCase()}.`, { requestId: request.id, sessionId: session.id, data: { finalOutcome, reasons } });
 
   // 3) act
@@ -368,16 +376,14 @@ async function loadForApproval(requestId: string) {
   return req;
 }
 
-/** Median price per referenceKey across OTHER stores (falls back to all stores). */
-async function referencePrices(items: PurchaseItem[], requestingMerchantId: string): Promise<Map<string, number>> {
+/** Median price per referenceKey across every listing in the catalog (spec §7). */
+async function referencePrices(items: PurchaseItem[]): Promise<Map<string, number>> {
   const keys = items.map((i) => i.referenceKey).filter((k): k is string => Boolean(k));
   if (!keys.length) return new Map();
-  const rows = await prisma.product.findMany({ where: { referenceKey: { in: keys } }, select: { referenceKey: true, priceCents: true, merchantId: true } });
+  const rows = await prisma.product.findMany({ where: { referenceKey: { in: keys } }, select: { referenceKey: true, priceCents: true } });
   const out = new Map<string, number>();
   for (const key of new Set(keys)) {
-    const all = rows.filter((r) => r.referenceKey === key);
-    const others = all.filter((r) => r.merchantId !== requestingMerchantId);
-    const pool = (others.length ? others : all).map((r) => r.priceCents).sort((a, b) => a - b);
+    const pool = rows.filter((r) => r.referenceKey === key).map((r) => r.priceCents).sort((a, b) => a - b);
     if (pool.length) out.set(key, pool[Math.floor((pool.length - 1) / 2)]);
   }
   return out;

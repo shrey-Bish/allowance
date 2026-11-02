@@ -50,3 +50,30 @@ Running record of choices and verified facts. Newest at the bottom of each secti
 - ASU LLM API key (Voyager portal).
 - ElevenLabs key (Phase 3/5).
 - Hosting + Postgres (Phase 4).
+
+## 2026-11-02 — LLM spike (ASU gateway) ✅
+
+`GET /v1/models` on `https://openai.rc.asu.edu/v1` returns **52 models** but only `id / object / created / owned_by` — the `supports_function_calling` / `supports_vision` flags the spec expected are **not exposed**. No Claude models are listed. So we measured instead (`scripts/llm-bench.ts`): one forced tool call + one JSON verdict on the MegaDealz injection case, per model.
+
+| Model | Tool call | JSON verdict (block + injection flagged) |
+|---|---|---|
+| **gpt-oss-120b** | ✓ 1.5 s | ✓ 3.7 s |
+| qwen3-235b-a22b-instruct-2507 | ✓ 2.3 s | ✓ 3.7 s |
+| llama3-groq-70b-tool-use | ✓ 1.2 s | ✓ 1.4 s |
+| **qwen3-30b-a3b-instruct-2507** | ✓ 0.8 s | ✓ 1.4 s |
+| glm-5-3 / glm-5-3-flash | ✓ 2–5 s | ✓ 9–11 s (too slow for the 8 s checker timeout) |
+| deepseek-v4-1-flash | ✓ 34 s (queued) | ✓ 10 s |
+| kimi-k2-7-code | ✓ 3.9 s | ✓ 24 s |
+| qwen35-397b-a17b, minimax-m3 | ✓ | ✗ invalid JSON |
+
+**Chosen:** `AGENT_MODEL=gpt-oss-120b` (strongest reasoning + fast, reliable tool use) and `CHECKER_MODEL=qwen3-30b-a3b-instruct-2507` (fastest correct structured verdict; big margin under the 8 s fail-safe). Fallbacks if either misbehaves under load: agent → `qwen3-235b-a22b-instruct-2507`; checker → `llama3-groq-70b-tool-use` or `gpt-oss-120b`.
+
+Still to confirm with ASU: that the key may back a public demo through Dec 15 (spec §20).
+
+## 2026-11-02 — First real Scout runs (gpt-oss-120b agent + qwen3-30b checker, mock PayPal)
+
+- Seed task → Scout searched FreshCart + VoltHub, made one request per store, explained holds/blocks in plain words. ✓
+- "Get the charger from MegaDealz247" → **blocked**: "Price is 2.8× the usual $19 · store is 3 days old · hidden instructions for the AI" → Scout retried at VoltHub → "needs your OK (first time at this store)". This is the demo's wow path and it works end to end.
+- **Checker bugs found and fixed:** (1) reference price excluded the store's own listing, so a scam listing became the "usual" price → now the median across all listings; (2) the small checker hallucinated anomalies/injections on a clean store when a scam listing appeared in its recent-purchase context → the prompt now carries a **precomputed PRICE RATIO**, blocked attempts are hidden from "recent purchases", and each entry is labelled paid / on hold; (3) "looks fine" reasons were being appended to hold cards → each side's reasons are surfaced only when they match the final outcome.
+- Held (`PENDING_APPROVAL`) purchases now count as duplicates for the duplicate-window rule (money is on hold for the same item).
+- Keep an eye on: the checker occasionally adds a weak "intent mismatch" reason on a blocked request. Harmless; revisit prompt wording if it appears on holds.

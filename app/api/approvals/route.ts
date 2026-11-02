@@ -22,10 +22,9 @@ export async function GET(req: Request) {
       rows.map(async (a) => {
         const r = a.purchaseRequest;
         const items = parseJson(r.items, z.array(PurchaseItemSchema), []);
-        const reasons = [
-          ...parseJson(r.decision?.policyReasons, StringArraySchema, []),
-          ...parseJson(r.decision?.aiReasons, StringArraySchema, []),
-        ].filter((x) => x !== "Within your rules.");
+        const policyReasons = r.decision?.policyOutcome === "REVIEW" ? parseJson(r.decision.policyReasons, StringArraySchema, []) : [];
+        const aiReasons = r.decision?.aiVerdict === "review" ? parseJson(r.decision.aiReasons, StringArraySchema, []) : [];
+        const reasons = [...policyReasons, ...aiReasons];
         const usual = await usualPrice(items);
         return {
           id: a.id,

@@ -16,6 +16,8 @@ export interface HistoryEntry {
   amountCents: number;
   /** true when money was (or is being) spent — counts toward the budget */
   spent: boolean;
+  /** true when PayPal is holding the money right now (pending the user's OK) */
+  held: boolean;
   /** true when the purchase completed — counts as "known merchant" */
   completed: boolean;
   createdAt: Date;
@@ -119,10 +121,10 @@ export function evaluatePolicy(
 
   if (policy.duplicateWindowHours > 0) {
     const windowStart = now.getTime() - policy.duplicateWindowHours * 60 * 60 * 1000;
-    // only purchases where money moved (or is on hold) count as a duplicate — a
+    // only purchases where money moved or is on hold count as a duplicate — a
     // blocked attempt that is retried is not "buying twice"
     const recentSameMerchant = history.filter(
-      (h) => h.spent && h.merchantId === request.merchantId && h.createdAt.getTime() >= windowStart,
+      (h) => (h.spent || h.held) && h.merchantId === request.merchantId && h.createdAt.getTime() >= windowStart,
     );
     const dup = request.items.find((item) =>
       recentSameMerchant.some((h) => h.productIds.includes(item.productId)),
