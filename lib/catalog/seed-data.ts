@@ -111,7 +111,8 @@ export const SEED_USER = { name: "Demo user", email: "demo@allowance.local" };
 export const SEED_POLICY = {
   maxPerPurchaseCents: 30000,
   approvalThresholdCents: 5000,
-  weeklyBudgetCents: 15000,
+  // $250: the spec's demo story (groceries ~$48 + charger $19 + headphones $129) must fit in one week
+  weeklyBudgetCents: 25000,
   // FreshCart + VoltHub are the user's approved stores (spec §13); MegaDealz247 is not
   allowedMerchantIds: ["m_freshcart", "m_volthub"] as string[],
   blockedMerchantIds: [] as string[],
