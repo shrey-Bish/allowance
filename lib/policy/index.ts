@@ -39,13 +39,13 @@ export function evaluatePolicy(
   now: Date = new Date(),
 ): PolicyEvaluation {
   let outcome: Outcome = "ALLOW";
-  const reasons: string[] = [];
+  const fired: Array<{ to: Outcome; reason: string }> = [];
   const rulesApplied: string[] = [];
 
   const escalate = (to: Outcome, ruleId: string, reason: string) => {
     outcome = mostSevere(outcome, to);
     rulesApplied.push(ruleId);
-    reasons.push(reason);
+    fired.push({ to, reason });
   };
 
   const weekAgo = now.getTime() - WEEK_MS;
@@ -119,8 +119,10 @@ export function evaluatePolicy(
 
   if (policy.duplicateWindowHours > 0) {
     const windowStart = now.getTime() - policy.duplicateWindowHours * 60 * 60 * 1000;
+    // only purchases where money moved (or is on hold) count as a duplicate — a
+    // blocked attempt that is retried is not "buying twice"
     const recentSameMerchant = history.filter(
-      (h) => h.merchantId === request.merchantId && h.createdAt.getTime() >= windowStart,
+      (h) => h.spent && h.merchantId === request.merchantId && h.createdAt.getTime() >= windowStart,
     );
     const dup = request.items.find((item) =>
       recentSameMerchant.some((h) => h.productIds.includes(item.productId)),
@@ -134,6 +136,9 @@ export function evaluatePolicy(
     }
   }
 
+  // Only report the reasons at the final severity: a BLOCK doesn't also say
+  // "needs your OK", and an ALLOW just says it's within the rules.
+  const reasons = fired.filter((f) => f.to === outcome).map((f) => f.reason);
   if (reasons.length === 0) reasons.push("Within your rules.");
 
   return { outcome, reasons, rulesApplied, spentThisWeekCents, remainingBudgetCents };

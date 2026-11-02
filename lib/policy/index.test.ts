@@ -152,6 +152,9 @@ describe("evaluatePolicy", () => {
     const otherMerchant = hist({ merchantId: "m-freshcart", productIds: ["p-charger"] });
     expect(evaluatePolicy(req(), basePolicy, [otherMerchant], NOW).outcome).toBe("ALLOW");
 
+    const blockedAttempt = hist({ productIds: ["p-charger"], spent: false, completed: false });
+    expect(evaluatePolicy(req(), basePolicy, [blockedAttempt], NOW).outcome).toBe("ALLOW");
+
     expect(evaluatePolicy(req(), { ...basePolicy, duplicateWindowHours: 0 }, [inWindow], NOW).outcome).toBe("ALLOW");
   });
 
@@ -166,6 +169,7 @@ describe("evaluatePolicy", () => {
     expect(r.rulesApplied).toEqual(
       expect.arrayContaining(["blockedMerchants", "approvalThreshold", "newMerchantRequiresApproval"]),
     );
-    expect(r.reasons.length).toBe(3);
+    // only the BLOCK-level reason is shown; the review-level ones are noise once blocked
+    expect(r.reasons).toEqual(["VoltHub is on your blocked list."]);
   });
 });

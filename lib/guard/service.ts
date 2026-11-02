@@ -60,10 +60,10 @@ const ItemsSchema = z.array(PurchaseItemSchema);
 
 export type RichHistoryEntry = HistoryEntry & { merchantName: string; itemNames: string[] };
 
-export async function loadHistory(userId: string, days = 7): Promise<RichHistoryEntry[]> {
+export async function loadHistory(userId: string, days = 7, excludeRequestId?: string): Promise<RichHistoryEntry[]> {
   const since = new Date(Date.now() - days * 864e5);
   const rows = await prisma.purchaseRequest.findMany({
-    where: { session: { userId }, createdAt: { gte: since } },
+    where: { session: { userId }, createdAt: { gte: since }, ...(excludeRequestId ? { NOT: { id: excludeRequestId } } : {}) },
     orderBy: { createdAt: "desc" },
     include: { merchant: { select: { name: true } } },
   });
@@ -138,7 +138,7 @@ export async function createPurchaseRequest(input: PurchaseRequestInput): Promis
 
   // 1) deterministic rules
   const policy = await loadPolicy(session.userId);
-  const history = await loadHistory(session.userId);
+  const history = await loadHistory(session.userId, 7, request.id);
   const policyEval = evaluatePolicy({ merchantId: merchant.id, merchantName: merchant.name, items, amountCents }, policy, history);
   await audit("policy_evaluated", `Your rules say: ${policyEval.outcome.toLowerCase()}.`, {
     requestId: request.id,
