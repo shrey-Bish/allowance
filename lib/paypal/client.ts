@@ -51,6 +51,29 @@ export async function getAccessToken(): Promise<string> {
   return body.access_token;
 }
 
+/**
+ * Short-lived id_token the PayPal JS SDK needs (data-user-id-token) to save a
+ * wallet without a purchase. Expires in minutes — fetch one per Connect page load.
+ */
+export async function getUserIdToken(customerId?: string): Promise<string> {
+  const id = process.env.PAYPAL_CLIENT_ID?.trim();
+  const secret = process.env.PAYPAL_CLIENT_SECRET?.trim();
+  if (!id || !secret) throw new PayPalError("PayPal credentials are not set", 0);
+  const params = new URLSearchParams({ grant_type: "client_credentials", response_type: "id_token" });
+  if (customerId) params.set("target_customer_id", customerId);
+  const res = await fetch(`${apiBase()}/v1/oauth2/token`, {
+    method: "POST",
+    headers: {
+      Authorization: `Basic ${Buffer.from(`${id}:${secret}`).toString("base64")}`,
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+    body: params.toString(),
+  });
+  const body = (await res.json().catch(() => ({}))) as { id_token?: string; error_description?: string };
+  if (!res.ok || !body.id_token) throw new PayPalError(`PayPal id_token failed: ${body.error_description ?? res.status}`, res.status, undefined, body);
+  return body.id_token;
+}
+
 async function request<T>(
   method: "GET" | "POST",
   path: string,
@@ -172,14 +195,12 @@ export const sandboxGateway: PayPalGateway = {
   // ---- Vault --------------------------------------------------------------
 
   async createSetupToken(returnUrl, cancelUrl): Promise<SetupTokenResult> {
-    // VERIFY: exact payment_source.paypal shape for "save without purchase"
+    // Verified against developer.paypal.com "save PayPal wallet without a purchase" (2026-11-02):
+    // usage_type MERCHANT + experience_context.return_url/cancel_url are the documented fields.
     const body = {
       payment_source: {
         paypal: {
           usage_type: "MERCHANT",
-          customer_type: "CONSUMER",
-          permit_multiple_payment_tokens: false,
-          usage_pattern: "IMMEDIATE",
           experience_context: {
             return_url: returnUrl,
             cancel_url: cancelUrl,
@@ -189,7 +210,7 @@ export const sandboxGateway: PayPalGateway = {
         },
       },
     };
-    const { data } = await request<{ id: string; links?: Array<{ rel: string; href: string }> }>(
+    const { data } = await request<{ id: string; status?: string; links?: Array<{ rel: string; href: string }> }>(
       "POST",
       "/v3/vault/setup-tokens",
       body,
@@ -199,13 +220,13 @@ export const sandboxGateway: PayPalGateway = {
   },
 
   async createPaymentToken(setupTokenId): Promise<PaymentTokenResult> {
-    const { data } = await request<{ id: string; payment_source?: { paypal?: { email_address?: string } } }>(
+    const { data } = await request<{ id: string; customer?: { id?: string }; payment_source?: { paypal?: { email_address?: string; payer_id?: string } } }>(
       "POST",
       "/v3/vault/payment-tokens",
       { payment_source: { token: { id: setupTokenId, type: "SETUP_TOKEN" } } },
       `ptoken-${setupTokenId}`,
     );
-    return { vaultId: data.id, payerEmail: data.payment_source?.paypal?.email_address, raw: data };
+    return { vaultId: data.id, customerId: data.customer?.id, payerEmail: data.payment_source?.paypal?.email_address, raw: data };
   },
 
   // ---- Webhooks -----------------------------------------------------------

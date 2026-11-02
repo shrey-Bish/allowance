@@ -17,6 +17,7 @@ model User {
   name             String
   email            String   @unique
   paypalVaultId    String?
+  paypalCustomerId String?
   paypalPayerEmail String?
   createdAt        DateTime @default(now())
 

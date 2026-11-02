@@ -48,6 +48,8 @@ export interface SetupTokenResult {
 
 export interface PaymentTokenResult {
   vaultId: string;
+  /** PayPal customer id — reuse for later setup-token swaps for the same payer */
+  customerId?: string;
   payerEmail?: string;
   raw: unknown;
 }

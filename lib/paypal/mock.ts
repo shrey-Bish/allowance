@@ -27,7 +27,7 @@ export const mockGateway: PayPalGateway = {
     return { setupTokenId: id("SETUP"), approveUrl: undefined, raw: { mock: true } };
   },
   async createPaymentToken(setupTokenId) {
-    return { vaultId: id("VAULT"), payerEmail: "sandbox-buyer@example.com", raw: { mock: true, setupTokenId } };
+    return { vaultId: id("VAULT"), customerId: id("CUST"), payerEmail: "sandbox-buyer@example.com", raw: { mock: true, setupTokenId } };
   },
   async verifyWebhookSignature() {
     return true;

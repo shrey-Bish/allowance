@@ -14,7 +14,7 @@ export async function POST(req: Request) {
     const paypal = getPayPal();
     const token = await paypal.createPaymentToken(setup_token_id);
     const user = await getDemoUser();
-    await prisma.user.update({ where: { id: user.id }, data: { paypalVaultId: token.vaultId, paypalPayerEmail: token.payerEmail ?? null } });
+    await prisma.user.update({ where: { id: user.id }, data: { paypalVaultId: token.vaultId, paypalCustomerId: token.customerId ?? null, paypalPayerEmail: token.payerEmail ?? null } });
     await audit("paypal_linked", `PayPal linked${token.payerEmail ? ` (${token.payerEmail})` : ""}.`, { data: { mode: paypal.mode } });
     return ok({ linked: true, payer_email: token.payerEmail ?? null, mode: paypal.mode });
   });
@@ -24,7 +24,7 @@ export async function POST(req: Request) {
 export async function DELETE() {
   return handle(async () => {
     const user = await getDemoUser();
-    await prisma.user.update({ where: { id: user.id }, data: { paypalVaultId: null, paypalPayerEmail: null } });
+    await prisma.user.update({ where: { id: user.id }, data: { paypalVaultId: null, paypalCustomerId: null, paypalPayerEmail: null } });
     return ok({ linked: false });
   });
 }
