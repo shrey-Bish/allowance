@@ -104,4 +104,14 @@ Still to confirm with ASU: that the key may back a public demo through Dec 15 (s
 - **Scout must not pre-refuse.** With budget context in its prompt, gpt-oss-120b declined the $129 headphones itself ("more than you have left"), so the Guard never got to decide and nothing appeared on the cam/feed. Prompt now says Allowance is the judge: request what the person asked for, let the Guard pay / ask / block, and only then look for alternatives.
 - **Reasons shown on cards:** the safety check's reasons appear only when it found something itself (a signal raised, it tightened the rules' outcome, or it was unavailable). The checker prompt now says "list only problems; if nothing is wrong, reasons is empty".
 - Agent prompt also nudges Scout to stay at or under the ask-me limit when the request allows (the $55.79 basket became $43.31 → auto-paid, as in the spec's story).
-- **Checker model switched to `gpt-oss-120b`** (2026-11-02 evening). In real runs `qwen3-30b-a3b-instruct-2507` hallucinated findings on multi-item baskets ("includes a phone charger" on a grocery-only basket; "hidden instructions" on VoltHub, which has none). gpt-oss-120b was correct on every run and measured 3.7 s, inside the 8 s fail-safe. Fallback if it queues under load: `llama3-groq-70b-tool-use`.
+- **Checker model: `llama3-groq-70b-tool-use`** (settled 2026-11-02 evening, after two false starts). `qwen3-30b` hallucinated findings on multi-item baskets ("includes a phone charger" on a grocery-only basket; "hidden instructions" on VoltHub). `gpt-oss-120b` is a reasoning model: 3.7 s on a toy prompt but **11–14 s on the real prompt**, so every call hit the fail-safe. `scripts/risk-bench.ts` runs the real `lib/risk` prompt on a grocery basket + the scam charger:
+
+  | model | basket | scam |
+  |---|---|---|
+  | llama3-groq-70b-tool-use | ok, 3.0 s | block 85, 4.0 s, "Price is 2.8× the usual $19…" ✓ |
+  | qwen3-235b-a22b-instruct | ok, 4.9 s | block 95, 8.1 s |
+  | qwen3-30b-a3b-instruct | ok, 1.6 s | block 95, 2.6 s (but hallucinates in live runs) |
+  | gpt-oss-120b | ok, 11.7 s | block 90, 14.3 s |
+  | glm-5-3-flash | ok, 15.6 s | block 95, 21.7 s |
+
+  Checker timeout raised 8 s → 12 s for headroom under queueing; the fail-safe ("needs your OK") still applies. Fallback: `qwen3-235b-a22b-instruct-2507`.

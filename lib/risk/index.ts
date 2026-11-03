@@ -15,7 +15,7 @@ export interface RiskCheckResult {
   rawError?: string;
 }
 
-export const RISK_TIMEOUT_MS = 8_000;
+export const RISK_TIMEOUT_MS = 12_000; // spec said ~8 s; the gateway queues, so a little headroom — fail-safe still applies
 
 export const FAILSAFE_VERDICT: RiskVerdict = {
   verdict: "review",
