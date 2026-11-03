@@ -175,3 +175,11 @@ Activity log shows every row with the right PayPal status and ids. Budget: $172.
 - Webhook: creating the PayPal subscription from here was refused by the safety layer (account change) — add it in the Developer Dashboard (app → Webhooks → `https://allowance-kdvo.onrender.com/api/paypal/webhooks`, events PAYMENT.AUTHORIZATION.CREATED/VOIDED, PAYMENT.CAPTURE.COMPLETED/DENIED) and set `PAYPAL_WEBHOOK_ID` on Render.
 - Judge login: README carries the buyer email only; the password goes in Devpost's private testing-instructions field.
 - Audio: `lib/audio/manifest.ts` + `scripts/audio-generate.ts` (ElevenLabs TTS + sound-generation) + `useSound()`; clips not generated yet (needs `ELEVENLABS_API_KEY`).
+
+## 2026-11-02 — Hosted demo verified on `main` + webhooks live
+
+- Render now uses the Neon `main` branch (schema pushed + seeded in the build), Node 22.20 (pnpm 11 needs ≥ 22.13), explicit `prisma generate` in the build because Render's cache makes `pnpm install` a no-op (postinstall never runs).
+- PayPal webhook `3NX284367J844241F` → `https://allowance-kdvo.onrender.com/api/paypal/webhooks`. Verified live: a hold created through the hosted agent produced `PAYMENT.AUTHORIZATION.CREATED` with `verified=true` on the purchase's audit trail; the approve captured (`77D59530UP598964L`). The dashboard subscription carries many extra event types; the receiver audits them and only acts on auth-voided / capture-completed.
+- Audio clips are served from the hosted site (`/audio/*.mp3`, 19 files, 572 KB).
+- Phone layout shipped: bottom tab bar + stacked Shop with Scout.
+- **Remaining for submission:** Devpost text + "AI tools" section, architecture diagram, README polish (setup from scratch, how PayPal/AI are used), E2E checklist on the hosted URL (budget-exhaustion block still unexercised), recording mode check, demo video (ElevenLabs narration + HyperFrames), optional MCP server (S1), AG Studio insights page (sponsor prize) if time allows.
