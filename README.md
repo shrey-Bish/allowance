@@ -6,7 +6,7 @@ Allowance is a safety layer between any AI shopping agent and your PayPal. You l
 
 Built for the [PayPal AI Hackathon](https://paypalaihackathon.devpost.com) (Nov 2026). Sandbox only, test money only.
 
-> **Status (2026-11-02):** backend + Guard API + demo agent + store catalog are in place and tested in mock-payment mode. PayPal sandbox spike, UI screens, pixel stage, hosting and video are in progress. See `docs/DECISIONS.md`.
+> **Status (2026-11-02):** working end to end on the PayPal sandbox — wallet vaulted once, then auto-pay / hold-then-capture / hold-then-void / block all exercised with real PayPal ids. Core screens (Shop with Scout, Needs your OK, Link PayPal) and the pixel Agent Cam are built. Rules, Activity (AG Grid), Settings, storefront pages, hosting and the video are in progress. See `docs/DECISIONS.md`.
 
 ## How it works
 

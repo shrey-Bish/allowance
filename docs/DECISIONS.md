@@ -115,3 +115,40 @@ Still to confirm with ASU: that the key may back a public demo through Dec 15 (s
   | glm-5-3-flash | ok, 15.6 s | block 95, 21.7 s |
 
   Checker timeout raised 8 s → 12 s for headroom under queueing; the fail-safe ("needs your OK") still applies. Fallback: `qwen3-235b-a22b-instruct-2507`.
+
+## 2026-11-02 — PayPal sandbox: wallet linked ✅
+
+- REST app credentials work (token in ~0.6 s); `POST /v3/vault/setup-tokens` with `usage_type: MERCHANT` + `experience_context` returns an approve link, so **Vault is enabled** on the app.
+- **The sandbox buyer must have a funding source.** The default Personal account (balance only) failed with PayPal's generic "Something went wrong" page right after login, in headless and in a real browser. A **Create Custom Account → Personal → with a credit card** account went straight through: PayPal shows "One-time setup, faster checkouts. For future payments to Allowance (demo)" with the funding source and a **Save and Continue** button. Judges' README login must be that kind of account.
+- The Connect page's return-URL path works: PayPal redirects to `/connect?paypal=return&approval_token_id=…` and the page exchanges it for a vault id (`POST /v3/vault/payment-tokens`), storing vault id + `customer.id` on the user.
+- The official JS SDK button renders in sandbox with `vault=true` + `data-user-id-token` (verified by screenshot). Its popup path could not be completed by an automated browser (PayPal errors after login in Playwright) — link manually or via the approval URL.
+
+## 2026-11-02 — PayPal spike results → **Option A chosen** (vaulted wallet, no popup per purchase)
+
+`pnpm paypal:smoke --vault <id>` against the sandbox, all green:
+
+| Step | Call | Observed |
+|---|---|---|
+| Order (AUTHORIZE) with `payment_source.paypal.vault_id` + `stored_credential` | `POST /v2/checkout/orders` | **Completes synchronously**: status `COMPLETED`, the authorization id is already in `purchase_units[0].payments.authorizations[0]` — no separate `/authorize` call needed (the client handles both). |
+| Capture the hold | `POST /v2/payments/authorizations/{id}/capture` (`final_capture: true`) | `COMPLETED`, capture id returned |
+| Release a hold | `POST /v2/payments/authorizations/{id}/void` | `VOIDED` |
+| Pay now | order with intent `CAPTURE` + vault id | `COMPLETED` with the capture inline |
+
+So the Guard's three paths map 1:1 onto PayPal: ALLOW → CAPTURE order; REVIEW → AUTHORIZE order (money held) then capture or void; BLOCK → no PayPal call. Options B (direct-to-merchant payee) and C (session hold) are not needed. `stored_credential` (`MERCHANT` / `UNSCHEDULED` / `SUBSEQUENT`) was accepted — keep it, it is what makes merchant-initiated vaulted charges legitimate.
+
+Still to verify later: the authorization honor period in sandbox (we void on our own 10-minute timer anyway) and webhook delivery once the app has a public URL.
+
+## 2026-11-02 — First full Scout run on the real sandbox ✅ (E2E checklist, spec §16)
+
+With `PAYPAL_MODE=sandbox` and the linked buyer, through the chat endpoint:
+
+| Step | Result | PayPal |
+|---|---|---|
+| Groceries at FreshCart ($24.36) | paid automatically | capture `24G599393P797645V` COMPLETED |
+| Charger at VoltHub ($19) | paid automatically | capture `63B52516H71170109` |
+| Headphones at VoltHub ($129) | held → **approved** in app | auth `2L895342N00928313` → capture `2T832038GX315252V` COMPLETED |
+| Earbuds at VoltHub ($59) | held → **declined** | auth `0US17594UR2544127` → VOIDED |
+| Charger at MegaDealz247 ($54) | **blocked** (2.8× price, 3-day-old store, hidden AI instructions) | no PayPal call |
+| Charger again at VoltHub | blocked as a duplicate of today's purchase | no PayPal call |
+
+Activity log shows every row with the right PayPal status and ids. Budget: $172.36 of $250 spent. Remaining checklist items: budget-exhaustion block (needs a bigger ask), transactions visible in the sandbox business account (log in as the business account to eyeball), webhooks (needs a public URL).
