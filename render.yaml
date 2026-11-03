@@ -6,7 +6,7 @@ services:
     runtime: node
     plan: starter            # always-on (no cold starts for judges); covered by the hackathon credit
     region: oregon
-    buildCommand: pnpm install --frozen-lockfile && pnpm exec prisma db push && pnpm exec prisma db seed && pnpm exec next build
+    buildCommand: pnpm install --frozen-lockfile && pnpm exec prisma generate && pnpm exec prisma db push && pnpm exec prisma db seed && pnpm exec next build
     startCommand: pnpm exec next start -p $PORT
     healthCheckPath: /api/budget
     envVars:
