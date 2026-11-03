@@ -8,6 +8,7 @@ import { Halftone } from "@/components/stage/halftone";
 import { Sprite } from "@/components/stage/sprite";
 import { Button, LinkButton } from "@/components/ui";
 import { notifyRefresh, useBudget } from "@/components/shell/use-budget";
+import { useSound } from "@/components/shell/use-sound";
 
 type Phase = "loading" | "ready" | "paypal-open" | "linking" | "linked" | "error";
 
@@ -21,6 +22,7 @@ declare global {
 
 export function ConnectScreen() {
   const { budget, reload } = useBudget();
+  const { play } = useSound();
   const [phase, setPhase] = useState<Phase>("loading");
   const [mode, setMode] = useState<"sandbox" | "mock">("sandbox");
   const [error, setError] = useState<string | null>(null);
@@ -87,6 +89,7 @@ export function ConnectScreen() {
           createVaultSetupToken: async () => {
             setError(null);
             setPhase("paypal-open");
+            play("scout-not-looking", 0.7);
             const res = await fetch("/api/paypal/vault/setup-token", { method: "POST" });
             const j = await res.json();
             if (!res.ok) throw new Error(j.error ?? "Couldn't start linking.");

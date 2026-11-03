@@ -6,6 +6,7 @@ import { Halftone } from "@/components/stage/halftone";
 import { Sprite } from "@/components/stage/sprite";
 import { Button, Card, LinkButton, Pill, mmss } from "@/components/ui";
 import { notifyRefresh, useBudget } from "@/components/shell/use-budget";
+import { useSound } from "@/components/shell/use-sound";
 
 interface Approval {
   id: string;
@@ -28,6 +29,7 @@ type Outcome = { kind: "paid"; captureId?: string } | { kind: "released" } | { k
 
 export function ApprovalsScreen() {
   const { budget } = useBudget();
+  const { sequence } = useSound();
   const [list, setList] = useState<Approval[] | null>(null);
   const [outcomes, setOutcomes] = useState<Record<string, Outcome>>({});
   const [busy, setBusy] = useState<Record<string, boolean>>({});
@@ -58,6 +60,7 @@ export function ApprovalsScreen() {
         return;
       }
       setOutcomes((o) => ({ ...o, [a.requestId]: action === "approve" ? { kind: "paid", captureId: d.captureId } : { kind: "released" } }));
+      if (action === "approve") sequence(["sfx-coin-rain", "penny-paying"], 600); else sequence(["scout-oh-well", "penny-released"], 500);
       notifyRefresh();
     } finally {
       setBusy((b) => ({ ...b, [a.requestId]: false }));

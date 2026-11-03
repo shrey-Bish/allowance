@@ -7,6 +7,7 @@ import { Halftone } from "@/components/stage/halftone";
 import { Button, Card, Pill, clockTime, mmss } from "@/components/ui";
 import { usePrefs } from "@/components/shell/prefs";
 import { notifyRefresh, useBudget } from "@/components/shell/use-budget";
+import { useSound } from "@/components/shell/use-sound";
 import { detailsOf, fetchActivity, pillOf, safetyLine, sceneOf, sentenceOf, type ActivityRow } from "@/lib/client/activity";
 
 type Msg =
@@ -21,6 +22,7 @@ const uid = () => Math.random().toString(36).slice(2, 9);
 export function ShopScreen() {
   const { plain, record } = usePrefs();
   const { budget } = useBudget();
+  const { play, sequence } = useSound();
   const [msgs, setMsgs] = useState<Msg[]>([]);
   const [draft, setDraft] = useState("");
   const [running, setRunning] = useState(false);
@@ -81,6 +83,7 @@ export function ShopScreen() {
     setRunning(true);
     setFailBanner(false);
     push({ id: uid(), kind: "you", text: task, time: clockTime(new Date(now)) });
+    play("scout-on-it", 0.7);
     try {
       const res = await fetch("/api/agent/chat", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ task }) });
       if (!res.ok || !res.body) {
@@ -121,7 +124,7 @@ export function ShopScreen() {
       case "tool_call": {
         const input = (e.input ?? {}) as Record<string, unknown>;
         const slug = typeof input.store === "string" ? input.store : typeof input.merchant_id === "string" ? String(input.merchant_id).replace(/^m_/, "") : null;
-        if (slug && SHOP_INDEX[slug] != null) playScene({ kind: "walk", shop: SHOP_INDEX[slug] });
+        if (slug && SHOP_INDEX[slug] != null) { playScene({ kind: "walk", shop: SHOP_INDEX[slug] }); play("sfx-footsteps", 0.5); }
         push({ id: String(e.id), kind: "step", text: String(e.summary), pending: true });
         break;
       }
@@ -135,6 +138,9 @@ export function ShopScreen() {
           setLiveIds((ids) => [...ids, row.id]);
           const scene = sceneOf(row);
           if (scene) playScene(scene);
+          if (scene?.kind === "paid") sequence(["sfx-coin", "penny-paying", "sfx-receipt"], 500);
+          else if (scene?.kind === "hold") sequence(["sfx-jar", "penny-hold"], 400);
+          else if (scene?.kind === "blocked") sequence(row.reasons.some((r) => /hidden instructions/i.test(r)) ? ["sfx-glitch", "penny-xray", "sfx-door-slam", "sfx-stamp"] : ["sfx-door-slam", "sfx-stamp", "penny-block"], 700);
           if (row.status === "FAILED") setFailBanner(true);
         }
         notifyRefresh();
@@ -162,6 +168,7 @@ export function ShopScreen() {
         return;
       }
       setUserAction((u) => ({ ...u, [row.id]: action === "approve" ? "approved" : "denied" }));
+      if (action === "approve") sequence(["sfx-coin-rain", "penny-paying"], 600); else sequence(["scout-oh-well", "penny-released"], 500);
       const fresh = await reloadRows();
       const updated = fresh.find((x) => x.id === row.id);
       if (action === "approve" && updated) playScene({ kind: "paid", shop: sceneOf(updated)?.kind === "paid" ? (sceneOf(updated) as { shop: 0 | 1 | 2 }).shop : 1, receipt: { store: updated.store, items: updated.itemCount, total: updated.amount, ref: updated.paypalCaptureId } });

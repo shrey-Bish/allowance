@@ -68,6 +68,7 @@ The hosted demo uses ASU Research Computing's OpenAI-compatible LLM API. Self-ho
 | `pnpm llm:smoke` | lists gateway models, proves one tool call + one JSON verdict |
 | `pnpm paypal:smoke` | token → vault → authorize → capture / void against the sandbox |
 | `pnpm db:reset` | wipe + reseed the current Neon branch (local = `dev`) |
+| `pnpm audio:generate` | generate Scout/Penny voice lines + sound effects with ElevenLabs into `public/audio` (needs `ELEVENLABS_API_KEY`; the mp3s are committed so judges don't) |
 
 ## Deploying the hosted demo (Render + Postgres)
 
