@@ -159,3 +159,10 @@ Activity log shows every row with the right PayPal status and ids. Budget: $172.
 - **Database: Neon free tier** (no expiry) is the default recommendation; Render's free Postgres is deleted after 30 days, which would kill the demo before Dec 15. A paid Render Postgres is fine too.
 - **Provider swap at build time:** `scripts/set-db-provider.sh postgresql` edits `prisma/schema.prisma` in the build container only; the repo stays on SQLite for local dev. `db push` + `db seed` run in the build so the schema and the stores exist before the first request.
 - The hosted demo keeps **one** linked buyer (the Connect page); "Reset the demo" never unlinks it.
+
+## 2026-11-02 — Database moved to Neon Postgres (SQLite removed)
+
+- `neon init` created project **allowance** (`lucky-hall-85287701`) in org `org-lively-recipe-08237597`, region `aws-us-west-2` (same as the Render service). Branch **`main`** = hosted demo (never expires); branch **`dev`** = local work (`neon checkout dev`), TTL set to 45 days in `neon.ts` so it outlives judging.
+- The repo is now **Postgres-only**: `provider = "postgresql"`, `lib/db` uses `@prisma/adapter-pg` with the **pooled** `DATABASE_URL`; `prisma.config.ts` uses the **direct** `DATABASE_URL_UNPOOLED` for `db push` (per the neon-postgres skill: migrations on direct connections). better-sqlite3 and the build-time provider swap are gone.
+- The init added `@neon/config` + `@neon/env`, `neon.ts`, `.neon` (ignored), the project-level `neon-postgres` agent skill (`.claude/skills/`, `skills-lock.json`) and registered the Neon Claude Code plugin + MCP server (`https://mcp.neon.tech/mcp`, needs a one-time sign-in via `/mcp`; the CLI is preferred anyway).
+- Connection strings for `main` are in `~/.allowance-neon-main-{direct,pooled}` (not in the repo); they go into Render as `DATABASE_URL_UNPOOLED` / `DATABASE_URL`.

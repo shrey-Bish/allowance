@@ -51,5 +51,4 @@ next-env.d.ts
 
 # prisma generated client
 /lib/db/generated
-/dev.db
-/dev.db-journal
+.neon

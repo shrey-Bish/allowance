@@ -17,16 +17,15 @@
     "db:studio": "prisma studio",
     "llm:smoke": "tsx scripts/llm-smoke.ts",
     "paypal:smoke": "tsx scripts/paypal-smoke.ts",
-    "db:provider": "sh scripts/set-db-provider.sh",
-    "build:hosted": "sh scripts/set-db-provider.sh postgresql && prisma generate && prisma db push --skip-generate && prisma db seed && next build"
+    "build:hosted": "prisma generate && prisma db push --skip-generate && prisma db seed && next build"
   },
   "dependencies": {
-    "@prisma/adapter-better-sqlite3": "^7.10.1",
+    "@neon/config": "^1.10.0",
+    "@neon/env": "^1.6.8",
     "@prisma/adapter-pg": "^7.10.1",
     "@prisma/client": "^7.10.1",
     "ag-grid-community": "^36.2.0",
     "ag-grid-react": "^36.2.0",
-    "better-sqlite3": "^13.0.3",
     "dotenv": "^18.0.9",
     "next": "16.4.3",
     "openai": "^7.47.0",
@@ -38,7 +37,6 @@
   "devDependencies": {
     "@playwright/test": "^1.64.1",
     "@tailwindcss/turbopack": "^4",
-    "@types/better-sqlite3": "^9.6.0",
     "@types/node": "^20",
     "@types/pg": "^8.23.1",
     "@types/react": "^19",

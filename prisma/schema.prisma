@@ -1,7 +1,6 @@
-// Allowance — data model (spec §10).
-// Money is stored as integer cents (USD). JSON-ish columns are stored as
-// String and parsed/validated with zod in lib/db/json.ts so the schema stays
-// portable between SQLite (local) and Postgres (hosted demo).
+// Allowance — data model (spec §10). Postgres on Neon: a `dev` branch for local
+// work, `main` for the hosted demo. Money is integer cents (USD); JSON-ish
+// columns are String + zod (lib/db/json.ts) so no provider-specific types.
 
 generator client {
   provider = "prisma-client"
@@ -9,7 +8,7 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
 }
 
 model User {

@@ -6,14 +6,16 @@ services:
     runtime: node
     plan: starter            # always-on (no cold starts for judges); covered by the hackathon credit
     region: oregon
-    buildCommand: corepack enable && pnpm install --frozen-lockfile && sh scripts/set-db-provider.sh postgresql && pnpm exec prisma generate && pnpm exec prisma db push --skip-generate && pnpm exec prisma db seed && pnpm exec next build
+    buildCommand: corepack enable && pnpm install --frozen-lockfile && pnpm exec prisma db push --skip-generate && pnpm exec prisma db seed && pnpm exec next build
     startCommand: pnpm exec next start -p $PORT
     healthCheckPath: /api/budget
     envVars:
       - key: NODE_VERSION
         value: "22"
       - key: DATABASE_URL
-        sync: false          # Postgres connection string (Neon or Render Postgres)
+        sync: false          # Neon `main` branch, POOLED connection string (neon connection-string main --pooled)
+      - key: DATABASE_URL_UNPOOLED
+        sync: false          # Neon `main` branch, DIRECT connection string — used by `prisma db push` in the build
       - key: PAYPAL_CLIENT_ID
         sync: false
       - key: PAYPAL_CLIENT_SECRET
