@@ -152,3 +152,10 @@ With `PAYPAL_MODE=sandbox` and the linked buyer, through the chat endpoint:
 | Charger again at VoltHub | blocked as a duplicate of today's purchase | no PayPal call |
 
 Activity log shows every row with the right PayPal status and ids. Budget: $172.36 of $250 spent. Remaining checklist items: budget-exhaustion block (needs a bigger ask), transactions visible in the sandbox business account (log in as the business account to eyeball), webhooks (needs a public URL).
+
+## 2026-11-02 — Hosting plan
+
+- **Render web service (starter plan, always on)** from `render.yaml`; the $50 hackathon credit covers it through judging. Free web services cold-start, which looks broken to a judge.
+- **Database: Neon free tier** (no expiry) is the default recommendation; Render's free Postgres is deleted after 30 days, which would kill the demo before Dec 15. A paid Render Postgres is fine too.
+- **Provider swap at build time:** `scripts/set-db-provider.sh postgresql` edits `prisma/schema.prisma` in the build container only; the repo stays on SQLite for local dev. `db push` + `db seed` run in the build so the schema and the stores exist before the first request.
+- The hosted demo keeps **one** linked buyer (the Connect page); "Reset the demo" never unlinks it.

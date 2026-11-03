@@ -1,0 +1,42 @@
+# Render Blueprint for the hosted demo (https://render.com/docs/blueprint-spec).
+# Create the service from this file; then fill the secret env vars in the dashboard.
+services:
+  - type: web
+    name: allowance
+    runtime: node
+    plan: starter            # always-on (no cold starts for judges); covered by the hackathon credit
+    region: oregon
+    buildCommand: corepack enable && pnpm install --frozen-lockfile && sh scripts/set-db-provider.sh postgresql && pnpm exec prisma generate && pnpm exec prisma db push --skip-generate && pnpm exec prisma db seed && pnpm exec next build
+    startCommand: pnpm exec next start -p $PORT
+    healthCheckPath: /api/budget
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: DATABASE_URL
+        sync: false          # Postgres connection string (Neon or Render Postgres)
+      - key: PAYPAL_CLIENT_ID
+        sync: false
+      - key: PAYPAL_CLIENT_SECRET
+        sync: false
+      - key: NEXT_PUBLIC_PAYPAL_CLIENT_ID
+        sync: false
+      - key: PAYPAL_API_BASE
+        value: https://api-m.sandbox.paypal.com
+      - key: PAYPAL_MODE
+        value: sandbox
+      - key: PAYPAL_WEBHOOK_ID
+        sync: false
+      - key: LLM_BASE_URL
+        value: https://openai.rc.asu.edu/v1
+      - key: LLM_API_KEY
+        sync: false
+      - key: AGENT_MODEL
+        value: gpt-oss-120b
+      - key: CHECKER_MODEL
+        value: llama3-groq-70b-tool-use
+      - key: AGENT_API_KEY
+        generateValue: true
+      - key: APP_BASE_URL
+        sync: false          # https://<service>.onrender.com — set after the first deploy
+      - key: DEMO_MODE
+        value: "true"

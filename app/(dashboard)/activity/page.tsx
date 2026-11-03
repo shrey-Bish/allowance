@@ -1,5 +1,7 @@
-import { Placeholder } from "@/components/placeholder";
+import { ActivityScreen } from "@/components/activity/activity-screen";
 
-export default function Page() {
-  return <Placeholder title="Activity" />;
+export const metadata = { title: "Activity · Allowance" };
+
+export default function ActivityPage() {
+  return <ActivityScreen />;
 }

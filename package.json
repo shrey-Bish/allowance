@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "prisma generate && next build",
+    "build": "next build",
     "start": "next start",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
@@ -16,7 +16,9 @@
     "db:reset": "prisma db push --force-reset && prisma db seed",
     "db:studio": "prisma studio",
     "llm:smoke": "tsx scripts/llm-smoke.ts",
-    "paypal:smoke": "tsx scripts/paypal-smoke.ts"
+    "paypal:smoke": "tsx scripts/paypal-smoke.ts",
+    "db:provider": "sh scripts/set-db-provider.sh",
+    "build:hosted": "sh scripts/set-db-provider.sh postgresql && prisma generate && prisma db push --skip-generate && prisma db seed && next build"
   },
   "dependencies": {
     "@prisma/adapter-better-sqlite3": "^7.10.1",

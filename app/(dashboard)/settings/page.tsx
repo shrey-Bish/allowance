@@ -1,5 +1,7 @@
-import { Placeholder } from "@/components/placeholder";
+import { SettingsScreen } from "@/components/settings/settings-screen";
 
-export default function Page() {
-  return <Placeholder title="Settings" />;
+export const metadata = { title: "Settings · Allowance" };
+
+export default function SettingsPage() {
+  return <SettingsScreen />;
 }

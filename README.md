@@ -54,6 +54,15 @@ The hosted demo uses ASU Research Computing's OpenAI-compatible LLM API. Self-ho
 | `pnpm paypal:smoke` | token → vault → authorize → capture / void against the sandbox |
 | `pnpm db:reset` | wipe + reseed the local database |
 
+## Deploying the hosted demo (Render + Postgres)
+
+`render.yaml` describes the web service. Steps:
+
+1. Create a Postgres database that stays alive through judging (Neon free tier, or a Render Postgres on a paid plan — Render's free Postgres is deleted after 30 days). Copy its connection string.
+2. On Render: **New → Blueprint**, pick this repo. Fill the `sync: false` env vars: `DATABASE_URL`, `PAYPAL_CLIENT_ID`, `PAYPAL_CLIENT_SECRET`, `NEXT_PUBLIC_PAYPAL_CLIENT_ID`, `LLM_API_KEY`. After the first deploy set `APP_BASE_URL` to the service URL and redeploy.
+3. The build switches Prisma to the `postgresql` provider (`scripts/set-db-provider.sh`), pushes the schema and seeds the demo stores. Local development keeps SQLite; don't commit a schema with the provider switched.
+4. Open `/connect` on the hosted URL and link the sandbox buyer once. That vault id is what judges' sessions use.
+
 ## Guard API (for any agent)
 
 All agent-facing calls take `Authorization: Bearer <AGENT_API_KEY>`.

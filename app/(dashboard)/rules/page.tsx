@@ -1,5 +1,7 @@
-import { Placeholder } from "@/components/placeholder";
+import { RulesScreen } from "@/components/rules/rules-screen";
 
-export default function Page() {
-  return <Placeholder title="Your rules" />;
+export const metadata = { title: "Your rules · Allowance" };
+
+export default function RulesPage() {
+  return <RulesScreen />;
 }
