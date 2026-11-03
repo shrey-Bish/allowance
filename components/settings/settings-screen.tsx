@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { Button, Card } from "@/components/ui";
+import { SoundToggle } from "@/components/shell/app-header";
 import { usePrefs } from "@/components/shell/prefs";
 import { notifyRefresh, useBudget } from "@/components/shell/use-budget";
 
@@ -52,7 +53,7 @@ export function SettingsScreen() {
         <Card className="flex flex-col gap-3 p-6">
           <div className="text-[18px] font-semibold">Sound</div>
           <div className="text-[14px] text-muted">Coins, the door, the stamp, and Scout and Penny&apos;s voices. Off by default.</div>
-          <div><Button variant="outline" aria-pressed={sound} onClick={() => setSound(!sound)}>{sound ? "Sound on" : "Sound off"}</Button></div>
+          <div><SoundToggle sound={sound} onToggle={() => setSound(!sound)} className="inline-flex" /></div>
         </Card>
 
         <Card className="flex flex-col gap-3 p-6">

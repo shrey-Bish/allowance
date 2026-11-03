@@ -53,14 +53,23 @@ export function AppHeader() {
             Plain view
           </button>
         ) : null}
-        {!record ? (
-          <button type="button" aria-pressed={sound} onClick={() => setSound(!sound)}
-            className="hidden h-10 cursor-pointer whitespace-nowrap rounded-full border border-line bg-card px-4 text-[15px] font-medium hover:border-[#B8AE9C] focus-visible:outline-3 focus-visible:outline-ink focus-visible:outline-offset-2 md:block">
-            {sound ? "Sound on" : "Sound off"}
-          </button>
-        ) : null}
+        {!record ? <SoundToggle sound={sound} onToggle={() => setSound(!sound)} className="hidden md:inline-flex" /> : null}
         {budget && budget.paypalMode === "mock" ? <span className="hidden whitespace-nowrap rounded-full border border-line px-3 py-1 font-mono text-[12px] text-muted min-[1600px]:inline" title="PAYPAL_MODE=mock — labelled fake payment ids, no PayPal calls">mock payments</span> : null}
       </div>
     </header>
+  );
+}
+
+/** Sound on = filled dark pill with a speaker; off = outline pill with a crossed speaker. */
+export function SoundToggle({ sound, onToggle, className = "" }: { sound: boolean; onToggle: () => void; className?: string }) {
+  return (
+    <button type="button" aria-pressed={sound} onClick={onToggle} title={sound ? "Sound is on — click to mute" : "Sound is off — click to turn on"}
+      className={`h-10 cursor-pointer items-center gap-2 whitespace-nowrap rounded-full border px-4 text-[15px] font-medium transition-colors focus-visible:outline-3 focus-visible:outline-offset-2 ${sound ? "border-ink bg-ink text-card focus-visible:outline-gold" : "border-line bg-card text-muted hover:border-[#B8AE9C] focus-visible:outline-ink"} ${className}`}>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+        <path d="M11 5L6 9H3v6h3l5 4V5z" />
+        {sound ? <><path d="M15.5 8.5a5 5 0 0 1 0 7" /><path d="M18.5 5.5a9 9 0 0 1 0 13" /></> : <path d="M16 9l5 6M21 9l-5 6" />}
+      </svg>
+      {sound ? "Sound on" : "Sound off"}
+    </button>
   );
 }
