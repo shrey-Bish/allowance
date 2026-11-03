@@ -34,7 +34,7 @@ export function ShopScreen() {
   const [cam, setCam] = useState<{ scene: CamScene; key: number }>({ scene: { kind: "idle" }, key: 0 });
   const [now, setNow] = useState(0);
   const [liveIds, setLiveIds] = useState<string[]>([]);
-  const chatEnd = useRef<HTMLDivElement>(null);
+  const chatList = useRef<HTMLDivElement>(null);
 
   const playScene = useCallback((scene: CamScene) => setCam((c) => ({ scene, key: c.key + 1 })), []);
 
@@ -72,7 +72,7 @@ export function ShopScreen() {
     const iv = setInterval(tick, 1000);
     return () => { clearTimeout(t0); clearInterval(iv); };
   }, []);
-  useEffect(() => { chatEnd.current?.scrollIntoView({ behavior: "smooth", block: "end" }); }, [msgs.length]);
+  useEffect(() => { const el = chatList.current; if (el) el.scrollTo({ top: el.scrollHeight, behavior: "smooth" }); }, [msgs.length]);
 
   const push = (m: Msg) => setMsgs((prev) => [...prev, m]);
 
@@ -195,14 +195,14 @@ export function ShopScreen() {
         <Banner title="We can't reach PayPal right now." text="Scout has paused, and nothing new was charged. Reconnect PayPal to keep going." cta={<Link href="/connect" className="inline-flex h-11 items-center rounded-full bg-gold px-[22px] text-[16px] font-semibold text-ink hover:bg-[#C8930F]">Reconnect PayPal</Link>} />
       ) : null}
 
-      <main className="grid min-h-0 flex-1 gap-5 overflow-auto p-5 lg:overflow-hidden lg:px-6 lg:pb-6" style={{ gridTemplateColumns: cols }}>
+      <main className="flex min-h-0 flex-1 flex-col gap-4 overflow-auto p-4 lg:grid lg:[grid-template-columns:var(--cols)] lg:gap-5 lg:overflow-hidden lg:px-6 lg:pb-6 lg:pt-5" style={{ "--cols": cols } as React.CSSProperties}>
         {/* ---- chat ---- */}
-        <section className="flex min-h-0 min-w-0 flex-col rounded-2xl border border-line bg-card shadow-[0_1px_2px_rgba(28,27,25,.04)]">
+        <section className="order-2 flex shrink-0 min-w-0 flex-col rounded-2xl border border-line bg-card shadow-[0_1px_2px_rgba(28,27,25,.04)] lg:order-none lg:min-h-0 lg:shrink">
           <div className="border-b border-line px-[22px] pb-4 pt-5">
             <div className="text-[18px] font-semibold">Chat with Scout</div>
             <div className="mt-1 text-[15px] text-muted">Tell Scout what to buy. It follows your rules.</div>
           </div>
-          <div className="flex min-h-0 flex-1 flex-col gap-[10px] overflow-auto p-[18px]">
+          <div ref={chatList} className="flex max-h-[48dvh] min-h-0 flex-1 flex-col gap-[10px] overflow-auto p-[18px] lg:max-h-none">
             {isEmpty ? (
               <>
                 <ScoutBubble text="hi! tell me what to buy, and I'll stick to your rules." />
@@ -233,7 +233,6 @@ export function ShopScreen() {
               ),
             )}
             {running ? <div className="font-mono text-[12px] text-muted">Scout is working…</div> : null}
-            <div ref={chatEnd} />
           </div>
           <form className="flex items-end gap-[10px] border-t border-line p-[14px]" onSubmit={(e) => { e.preventDefault(); send(draft); }}>
             <textarea value={draft} onChange={(e) => setDraft(e.target.value)} onKeyDown={(e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); send(draft); } }} placeholder="Tell Scout what to buy" rows={2} aria-label="Tell Scout what to buy" disabled={running}
@@ -244,7 +243,7 @@ export function ShopScreen() {
 
         {/* ---- agent cam ---- */}
         {showCam ? (
-          <section className="flex min-h-0 min-w-0 flex-col justify-center gap-4">
+          <section className="order-1 flex shrink-0 min-w-0 flex-col justify-center gap-3 lg:order-none lg:min-h-0 lg:shrink lg:gap-4">
             <div>
               <div className="text-[18px] font-semibold">Agent Cam</div>
               <div className="mt-1 text-[15px] text-muted">Watch Scout shop. Penny pays only when your rules say yes.</div>
@@ -255,12 +254,12 @@ export function ShopScreen() {
         ) : null}
 
         {/* ---- feed ---- */}
-        <section className="flex min-h-0 min-w-0 flex-col gap-[14px]">
+        <section className="order-3 flex shrink-0 min-w-0 flex-col gap-[14px] lg:order-none lg:min-h-0 lg:shrink">
           <div>
             <div className="text-[18px] font-semibold">What happened</div>
             <div className="mt-1 text-[15px] text-muted">Every purchase, with the reason.</div>
           </div>
-          <div className="flex min-h-0 flex-1 flex-col gap-3 overflow-auto pb-1">
+          <div className="flex min-h-0 flex-1 flex-col gap-3 pb-1 lg:overflow-auto">
             {rows.length === 0 ? (
               <div className="flex flex-1 flex-col items-center justify-center gap-[14px] rounded-2xl border border-line bg-card px-7 py-8 text-center">
                 <Halftone motif="dome" size={200} />
@@ -321,7 +320,7 @@ function ScoutBubble({ text }: { text: string }) {
 
 function Banner({ title, text, cta }: { title: string; text: string; cta: React.ReactNode }) {
   return (
-    <div className="mx-6 mt-4 flex flex-none items-center gap-4 rounded-[14px] border border-line bg-card py-[14px] pl-5 pr-4 shadow-[0_1px_2px_rgba(28,27,25,.04)]">
+    <div className="mx-4 mt-4 flex flex-none flex-wrap items-center gap-3 rounded-[14px] border border-line bg-card py-[14px] pl-5 pr-4 shadow-[0_1px_2px_rgba(28,27,25,.04)] lg:mx-6 lg:gap-4">
       <span className="h-[10px] w-[10px] flex-none rounded-full bg-blocked" />
       <div className="flex flex-1 flex-col gap-[2px]">
         <div className="text-[16px] font-semibold">{title}</div>

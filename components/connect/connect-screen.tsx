@@ -129,13 +129,14 @@ export function ConnectScreen() {
   }
 
   return (
-    <main className="flex min-h-0 flex-1 items-center justify-center overflow-auto px-6 py-10">
-      <div className="grid w-full max-w-[1040px] items-center gap-12 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+    <main className="flex min-h-0 flex-1 items-start justify-center overflow-auto px-5 py-8 md:items-center md:px-6 md:py-10">
+      <div className="grid w-full max-w-[1040px] items-center gap-8 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:gap-12">
         <div className="order-2 flex justify-center md:order-1">
-          <Halftone motif="dome" size={320} />
+          <div className="md:hidden"><Halftone motif="dome" size={220} /></div>
+          <div className="hidden md:block"><Halftone motif="dome" size={320} /></div>
         </div>
-        <div className="order-1 flex flex-col gap-6 md:order-2">
-          <h1 className="font-display text-[48px] italic leading-[1.02] tracking-[-.01em] md:text-[60px] text-pretty">give your AI an allowance, not your wallet</h1>
+        <div className="order-1 flex min-w-0 flex-col gap-6 md:order-2">
+          <h1 className="font-display text-[42px] italic leading-[1.02] tracking-[-.01em] md:text-[60px] text-pretty">give your AI an allowance, not your wallet</h1>
           <p className="max-w-[460px] text-[18px] leading-[1.5] text-muted text-pretty">Link PayPal once and set simple rules. Scout buys the small stuff, waits for your OK on bigger things while PayPal holds the money, and gets blocked on anything sketchy.</p>
 
           {phase === "linked" ? (

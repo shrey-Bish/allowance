@@ -72,14 +72,14 @@ export function ActivityScreen() {
   const summary = budget ? `${formatUsd(budget.spentThisWeekCents)} of ${formatUsd(budget.weeklyBudgetCents).replace(/\.00$/, "")} spent this week · ${counts.paid} paid · ${counts.waiting} waiting · ${counts.blocked} blocked` : "";
 
   return (
-    <main className="flex min-h-0 flex-1 flex-col gap-5 overflow-hidden px-6 py-8 md:px-8">
+    <main className="flex min-h-0 flex-1 flex-col gap-4 overflow-auto px-4 py-6 lg:gap-5 lg:overflow-hidden lg:px-8 lg:py-8">
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <h1 className="font-display text-[44px] italic leading-none tracking-[-.01em] md:text-[52px]">Activity</h1>
+          <h1 className="font-display text-[40px] italic leading-none tracking-[-.01em] md:text-[52px]">Activity</h1>
           <p className="mt-2 text-[16px] text-muted">{summary}</p>
         </div>
         <div className="flex flex-wrap items-center gap-2">
-          <input value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search" aria-label="Search activity" className="h-10 w-[200px] rounded-full border border-line bg-card px-4 text-[15px] outline-none focus:border-ink focus:shadow-[0_0_0_3px_rgba(217,162,27,.35)]" />
+          <input value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search" aria-label="Search activity" className="h-10 w-full sm:w-[200px] rounded-full border border-line bg-card px-4 text-[15px] outline-none focus:border-ink focus:shadow-[0_0_0_3px_rgba(217,162,27,.35)]" />
           <select value={result} onChange={(e) => setResult(e.target.value)} aria-label="Filter by result" className="h-10 rounded-full border border-line bg-card px-4 text-[15px]">
             <option value="all">All results</option><option value="paid">Paid</option><option value="hold">Needs your OK</option><option value="blocked">Blocked</option><option value="released">Not bought</option>
           </select>
@@ -97,7 +97,7 @@ export function ActivityScreen() {
           <div className="max-w-[320px] text-[17px] leading-[1.5] text-pretty">nothing yet. ask Scout to buy something and it&apos;ll show up here.</div>
         </div>
       ) : (
-        <div className="min-h-0 flex-1">
+        <div className="min-h-[60dvh] flex-1 lg:min-h-0">
           <AgGridReact<ActivityRow>
             theme={theme}
             rowData={filtered}

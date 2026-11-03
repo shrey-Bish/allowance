@@ -29,9 +29,9 @@ export function SettingsScreen() {
   }
 
   return (
-    <main className="min-h-0 flex-1 overflow-auto px-6 py-10 md:px-8">
+    <main className="min-h-0 flex-1 overflow-auto px-4 py-8 md:px-8 md:py-10">
       <div className="mx-auto flex w-full max-w-[720px] flex-col gap-6">
-        <h1 className="font-display text-[48px] italic leading-none tracking-[-.01em] md:text-[56px]">Settings</h1>
+        <h1 className="font-display text-[44px] italic leading-none tracking-[-.01em] md:text-[56px]">Settings</h1>
 
         <Card className="flex flex-col gap-3 p-6">
           <div className="text-[18px] font-semibold">Linked PayPal</div>

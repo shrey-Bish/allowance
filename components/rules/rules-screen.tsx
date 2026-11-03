@@ -53,15 +53,15 @@ export function RulesScreen() {
   const giftBlocked = policy.categoryRules.gift_cards === "BLOCK";
 
   return (
-    <main className="min-h-0 flex-1 overflow-auto px-6 py-10 md:px-8">
+    <main className="min-h-0 flex-1 overflow-auto px-4 py-8 md:px-8 md:py-10">
       <div className="mx-auto grid w-full max-w-[1040px] gap-10 md:grid-cols-[minmax(0,1fr)_360px]">
         <div className="flex flex-col gap-6">
           <div>
-            <h1 className="font-display text-[48px] italic leading-none tracking-[-.01em] md:text-[56px]">Your rules</h1>
+            <h1 className="font-display text-[44px] italic leading-none tracking-[-.01em] md:text-[56px]">Your rules</h1>
             <p className="mt-3 max-w-[560px] text-[17px] leading-[1.5] text-muted">Scout follows these every time. Change anything and the summary on the right updates.</p>
           </div>
 
-          <Card className="flex flex-col gap-7 p-6">
+          <Card className="flex flex-col gap-7 p-5 md:p-6">
             <Field label="Weekly budget" help="Scout can spend up to this much each week. Penny's belly shows what's left." value={formatUsd(policy.weeklyBudgetCents).replace(/\.00$/, "")}>
               <input type="range" min={2000} max={100000} step={500} value={policy.weeklyBudgetCents} aria-label="Weekly budget" className="w-full accent-gold"
                 onChange={(e) => update({ weeklyBudgetCents: +e.target.value }, +e.target.value > policy.weeklyBudgetCents ? "up" : "down")} />
@@ -80,7 +80,7 @@ export function RulesScreen() {
             </Field>
           </Card>
 
-          <Card className="flex flex-col gap-5 p-6">
+          <Card className="flex flex-col gap-5 p-5 md:p-6">
             <Toggle label="Ask me the first time Scout uses a new store" help="Stores you've approved below never need this. Any other store needs your OK until it has one paid purchase." checked={policy.newMerchantRequiresApproval} onChange={(v) => update({ newMerchantRequiresApproval: v })} />
             <Toggle label="Never buy gift cards" help="Gift cards are blocked outright. They're the most common thing scammers push an AI to buy." checked={giftBlocked} onChange={(v) => update({ categoryRules: { ...policy.categoryRules, gift_cards: v ? "BLOCK" : undefined } as PolicyInput["categoryRules"] })} />
             <div className="flex flex-col gap-3">
