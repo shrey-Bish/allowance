@@ -11,7 +11,7 @@ services:
     healthCheckPath: /api/budget
     envVars:
       - key: NODE_VERSION
-        value: "22.12.0"
+        value: "22.20.0"
       - key: DATABASE_URL
         sync: false          # Neon `main` branch, POOLED connection string (neon connection-string main --pooled)
       - key: DATABASE_URL_UNPOOLED
