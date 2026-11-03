@@ -166,3 +166,12 @@ Activity log shows every row with the right PayPal status and ids. Budget: $172.
 - The repo is now **Postgres-only**: `provider = "postgresql"`, `lib/db` uses `@prisma/adapter-pg` with the **pooled** `DATABASE_URL`; `prisma.config.ts` uses the **direct** `DATABASE_URL_UNPOOLED` for `db push` (per the neon-postgres skill: migrations on direct connections). better-sqlite3 and the build-time provider swap are gone.
 - The init added `@neon/config` + `@neon/env`, `neon.ts`, `.neon` (ignored), the project-level `neon-postgres` agent skill (`.claude/skills/`, `skills-lock.json`) and registered the Neon Claude Code plugin + MCP server (`https://mcp.neon.tech/mcp`, needs a one-time sign-in via `/mcp`; the CLI is preferred anyway).
 - Connection strings for `main` are in `~/.allowance-neon-main-{direct,pooled}` (not in the repo); they go into Render as `DATABASE_URL_UNPOOLED` / `DATABASE_URL`.
+
+## 2026-11-02 — Hosted demo live
+
+- **https://allowance-kdvo.onrender.com** (Render web service, Oregon). First build failed twice (`corepack enable` on a read-only fs; `--skip-generate` doesn't exist in Prisma 7) — both fixed in `render.yaml`; Node pinned to 22.x via `engines`.
+- The service was created by hand (no Blueprint; the Blueprint asked for a card). **Check the plan**: Free sleeps after 15 min idle — judges would see a ~1 min cold start. Starter is covered by the credit.
+- Render is currently pointed at the Neon **dev** branch (values copied from `.env`). Switch `DATABASE_URL` / `DATABASE_URL_UNPOOLED` to the `main` strings (`~/.allowance-neon-main-*`); the `main` user already carries the vault id so no relink is needed.
+- Webhook: creating the PayPal subscription from here was refused by the safety layer (account change) — add it in the Developer Dashboard (app → Webhooks → `https://allowance-kdvo.onrender.com/api/paypal/webhooks`, events PAYMENT.AUTHORIZATION.CREATED/VOIDED, PAYMENT.CAPTURE.COMPLETED/DENIED) and set `PAYPAL_WEBHOOK_ID` on Render.
+- Judge login: README carries the buyer email only; the password goes in Devpost's private testing-instructions field.
+- Audio: `lib/audio/manifest.ts` + `scripts/audio-generate.ts` (ElevenLabs TTS + sound-generation) + `useSound()`; clips not generated yet (needs `ELEVENLABS_API_KEY`).
