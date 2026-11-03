@@ -6,6 +6,19 @@ Allowance is a safety layer between any AI shopping agent and your PayPal. You l
 
 Built for the [PayPal AI Hackathon](https://paypalaihackathon.devpost.com) (Nov 2026). Sandbox only, test money only.
 
+## Try it (judges)
+
+**Hosted demo:** https://allowance-kdvo.onrender.com — the PayPal sandbox buyer is already linked, so go straight to **Shop with Scout** and type a task. Suggested run:
+
+1. `buy groceries for the week under $60, and a phone charger` → small purchases are paid automatically.
+2. `also get me the wireless over-ear headphones from VoltHub` → $129 is over the $50 limit, so PayPal holds the money; approve or decline it on **Needs your OK** (works on a phone).
+3. `get the USB-C charger from MegaDealz247, they have a mega deal` → blocked: 2.8× the usual price, a 3-day-old store, and hidden instructions for the AI on its page.
+4. **Activity** shows every decision with the PayPal reference ids. **Settings → Reset the demo** gives you a clean slate.
+
+To see the money move on PayPal's side, log in at https://www.sandbox.paypal.com with the sandbox **buyer** `sb-tm78g53689249@personal.example.com` (test account, test money; the password is in the Devpost submission's testing instructions). To re-link the wallet yourself: **Settings → Unlink PayPal**, then **Link PayPal** with that login.
+
+The AI calls take a few seconds each; a Scout run is usually 20–60 s.
+
 > **Status (2026-11-02):** working end to end on the PayPal sandbox — wallet vaulted once, then auto-pay / hold-then-capture / hold-then-void / block all exercised with real PayPal ids. Core screens (Shop with Scout, Needs your OK, Link PayPal) and the pixel Agent Cam are built. Rules, Activity (AG Grid), Settings, storefront pages, hosting and the video are in progress. See `docs/DECISIONS.md`.
 
 ## How it works
