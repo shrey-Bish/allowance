@@ -1,5 +1,7 @@
-import { Placeholder } from "@/components/placeholder";
+import { ConnectScreen } from "@/components/connect/connect-screen";
 
-export default function Page() {
-  return <Placeholder title="Link PayPal" />;
+export const metadata = { title: "Link PayPal · Allowance" };
+
+export default function ConnectPage() {
+  return <ConnectScreen />;
 }
