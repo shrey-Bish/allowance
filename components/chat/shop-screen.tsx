@@ -36,7 +36,14 @@ export function ShopScreen() {
   const [liveIds, setLiveIds] = useState<string[]>([]);
   const chatList = useRef<HTMLDivElement>(null);
 
-  const playScene = useCallback((scene: CamScene) => setCam((c) => ({ scene, key: c.key + 1 })), []);
+  const sceneLockUntil = useRef(0);
+  /** Decision scenes (paid / hold / blocked) get ~7 s to play out; a walk can't cut them short. */
+  const playScene = useCallback((scene: CamScene) => {
+    const now = Date.now();
+    if (scene.kind === "walk" && now < sceneLockUntil.current) return;
+    if (scene.kind === "paid" || scene.kind === "hold" || scene.kind === "blocked") sceneLockUntil.current = now + 7000;
+    setCam((c) => ({ scene, key: c.key + 1 }));
+  }, []);
 
   const reloadRows = useCallback((): Promise<ActivityRow[]> => {
     return fetchActivity()
