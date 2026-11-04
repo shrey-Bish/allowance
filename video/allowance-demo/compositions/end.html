@@ -1,0 +1,36 @@
+<template>
+  <style>
+    @font-face { font-family: "Instrument Serif"; src: url("assets/fonts/InstrumentSerif-400-italic.woff2") format("woff2"); font-style: italic; font-weight: 400; }
+    @font-face { font-family: "Instrument Serif"; src: url("assets/fonts/InstrumentSerif-400-normal.woff2") format("woff2"); font-style: normal; font-weight: 400; }
+    @font-face { font-family: "Pixelify Sans"; src: url("assets/fonts/PixelifySans-600-normal.woff2") format("woff2"); font-weight: 600; }
+
+    #root { position: absolute; inset: 0; background: #F6F1E7; color: #1C1B19; font-family: Inter, sans-serif; overflow: hidden; }
+    .full { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    .wrap { position: absolute; inset: 0; transform-origin: 50% 50%; }
+    video { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; object-fit: contain; }
+    .chip { position: absolute; left: 48px; top: 40px; padding: 10px 20px; border-radius: 999px; background: rgba(28,27,25,.85); color: #FFFDF8; font: 600 28px Inter, sans-serif; letter-spacing: .01em; z-index: 5; }
+    .head { position: absolute; left: 0; right: 0; top: 56px; text-align: center; font-family: "Instrument Serif", serif; font-style: italic; font-size: 64px; line-height: 1; color: #1C1B19; z-index: 5; }
+    .head b { font-style: normal; font-weight: 400; color: #A97B0F; }
+
+  </style>
+  <div id="root" data-composition-id="end" data-width="1920" data-height="1080" >
+    <div id="en-card" class="clip full" data-start="0" data-duration="12" style="background:#F6F1E7">
+      <img id="en-scout" src="assets/img/scout.svg" style="position:absolute;left:560px;top:250px;width:176px;image-rendering:pixelated">
+      <img id="en-penny" src="assets/img/penny.svg" style="position:absolute;left:1180px;top:236px;width:170px;image-rendering:pixelated">
+      <div id="en-mark" style="position:absolute;left:0;right:0;top:470px;text-align:center;font-family:'Instrument Serif',serif;font-style:italic;font-size:150px;line-height:1;color:#1C1B19">Allowance</div>
+      <div id="en-line" style="position:absolute;left:0;right:0;top:640px;text-align:center;font:400 38px/1.3 Inter,sans-serif;color:#6B665C">give your AI agent an allowance, not your wallet</div>
+      <div id="en-url" style="position:absolute;left:0;right:0;top:760px;text-align:center;font:600 40px 'JetBrains Mono',monospace;color:#1C1B19">allowance-kdvo.onrender.com</div>
+      <div id="en-repo" style="position:absolute;left:0;right:0;top:826px;text-align:center;font:400 30px 'JetBrains Mono',monospace;color:#6B665C">github.com/shrey-Bish/allowance</div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#en-scout", {x: -500, opacity: 0}, {x: 0, opacity: 1, duration: 1.2, ease: "power3.out"}, 0.1);
+    tl.fromTo("#en-penny", {opacity: 0, scale: 0.9}, {opacity: 1, scale: 1, duration: 0.6, ease: "back.out(1.4)"}, 0.5);
+    tl.fromTo("#en-mark", {opacity: 0, filter: "blur(10px)"}, {opacity: 1, filter: "blur(0px)", duration: 0.35, ease: "power4.out"}, 1.0);
+    tl.fromTo("#en-line", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.5, ease: "expo.out"}, 1.5);
+    tl.fromTo("#en-url", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.5, ease: "expo.out"}, 2.4);
+    tl.fromTo("#en-repo", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.5, ease: "expo.out"}, 2.8);
+    window.__timelines["end"] = tl;
+  </script>
+</template>

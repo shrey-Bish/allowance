@@ -1,0 +1,36 @@
+23:35:42 saved 01-connect-link
+(node:38550) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+relinked
+23:35:49 saved 02-connect-linked
+23:36:00 saved 03-rules
+23:36:46 saved 04-shop-paid
+23:37:09 saved 05-shop-hold
+23:37:22 saved 06-phone-approve
+23:40:39 saved 07-shop-blocked
+23:41:22 saved 08-shop-second-hold
+23:41:33 saved 09-phone-decline
+23:42:25 saved 10-shop-budget
+23:42:33 saved 11-plain-view
+23:42:45 saved 12-activity
+23:42:54 PAGE ERROR 13-paypal-sandbox Minified React error #418; visit https://reactjs.org/docs/error-decoder.html?invariant=418 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.
+23:42:54 PAGE ERROR 13-paypal-sandbox Minified React error #423; visit https://reactjs.org/docs/error-decoder.html?invariant=423 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.
+23:42:54 PAGE ERROR 13-paypal-sandbox Failed to fetch
+23:42:54 PAGE ERROR 13-paypal-sandbox Failed to fetch
+23:42:54 PAGE ERROR 13-paypal-sandbox Failed to fetch
+23:42:54 PAGE ERROR 13-paypal-sandbox Failed to fetch
+23:42:54 PAGE ERROR 13-paypal-sandbox Failed to fetch
+23:42:54 PAGE ERROR 13-paypal-sandbox Failed to fetch
+23:42:54 PAGE ERROR 13-paypal-sandbox Failed to fetch
+23:42:54 PAGE ERROR 13-paypal-sandbox Failed to fetch
+23:42:54 PAGE ERROR 13-paypal-sandbox Failed to fetch
+23:43:07 paypal url: https://www.sandbox.paypal.com/unifiedtransactions/?filter=0&query=
+23:43:08 saved 13-paypal-sandbox
+23:43:08 all scenes done

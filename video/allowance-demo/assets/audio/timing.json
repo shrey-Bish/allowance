@@ -1,0 +1,59 @@
+{
+  "total": 150.0,
+  "lines": [
+    {
+      "line": 1,
+      "start": 1.0,
+      "end": 4.85,
+      "text": "AI agents can shop for you now. But would you hand one your PayPal?"
+    },
+    {
+      "line": 2,
+      "start": 11.5,
+      "end": 14.98,
+      "text": "This is Allowance. Give your agent an allowance, not your wallet."
+    },
+    {
+      "line": 3,
+      "start": 18.5,
+      "end": 24.44,
+      "text": "You link PayPal once. Then you set the rules: a weekly budget, and when it has to ask you."
+    },
+    {
+      "line": 4,
+      "start": 36.5,
+      "end": 38.45,
+      "text": "Small stuff just goes through."
+    },
+    {
+      "line": 5,
+      "start": 52.5,
+      "end": 58.26,
+      "text": "Anything over your limit, PayPal holds the money until you say yes. On your phone, if you like."
+    },
+    {
+      "line": 6,
+      "start": 76.5,
+      "end": 82.82,
+      "text": "And this store hid instructions for the AI on its page. Allowance caught it, and nothing was charged."
+    },
+    {
+      "line": 7,
+      "start": 100.5,
+      "end": 104.77,
+      "text": "Say no, and the hold is released. Hit your budget, and the agent stops."
+    },
+    {
+      "line": 8,
+      "start": 118.5,
+      "end": 121.98,
+      "text": "Every decision, every PayPal payment, in one log."
+    },
+    {
+      "line": 9,
+      "start": 136.5,
+      "end": 141.33,
+      "text": "Allowance. For anyone who wants AI to buy for them, without handing over the keys."
+    }
+  ]
+}

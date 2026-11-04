@@ -183,3 +183,10 @@ Activity log shows every row with the right PayPal status and ids. Budget: $172.
 - Audio clips are served from the hosted site (`/audio/*.mp3`, 19 files, 572 KB).
 - Phone layout shipped: bottom tab bar + stacked Shop with Scout.
 - **Remaining for submission:** Devpost text + "AI tools" section, architecture diagram, README polish (setup from scratch, how PayPal/AI are used), E2E checklist on the hosted URL (budget-exhaustion block still unexercised), recording mode check, demo video (ElevenLabs narration + HyperFrames), optional MCP server (S1), AG Studio insights page (sponsor prize) if time allows.
+
+## 2026-11-04 — Demo video built
+
+- `video/allowance-demo/` is the HyperFrames project (v0.9.13): `src/build.py` writes `index.html` + `compositions/*.html` from a scene list (hook · title · setup · paid · hold · phone approve · blocked · phone decline · budget · payoff · end), `src/build_captions.py` writes the captions from `assets/audio/transcript.json` (parakeet word timings) matched by position to the real lines.
+- Recordings: `scripts/record-scenes.mjs` drives the hosted app in recording mode (`?record=1`) at 1920×1080 with Playwright, one scene per file, phone scenes on an iPhone 13 profile; the PayPal ledger scene logs into the sandbox business account (login read from `~/.allowance-paypal-sandbox`, never committed). Raw recordings + converted mp4s + renders are gitignored (hundreds of MB).
+- Narration: 9 ElevenLabs lines (George), mixed at the planned beat times into `assets/audio/vo.wav`; SFX and Scout/Penny lines from `public/audio` placed on their visible causes.
+- Output: `renders/allowance-demo-final.mp4` (also `~/Downloads/allowance-demo-final.mp4`): 2:28, 1920×1080 30 fps H.264 + AAC 192k, −15 LUFS integrated (loudnorm two-pass to −14; measured, not heard), peak −1.5 dBFS. No music under narration (spec §21). Every screen is a real recording; chips: "PayPal Sandbox · test money".
