@@ -1,0 +1,14 @@
+# Keeps the free Render service from sleeping during judging (through Dec 15, 2026).
+# GitHub schedules can lag a few minutes; that's fine — Render sleeps after 15 idle minutes.
+name: keep-warm
+on:
+  schedule:
+    - cron: "*/8 * * * *"
+  workflow_dispatch:
+jobs:
+  ping:
+    if: github.repository == 'shrey-Bish/allowance'
+    runs-on: ubuntu-latest
+    steps:
+      - name: ping the hosted demo
+        run: curl -fsS -o /dev/null -w "status %{http_code} in %{time_total}s\n" https://allowance-kdvo.onrender.com/api/budget || true
