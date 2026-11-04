@@ -27,7 +27,7 @@ const html = `<!doctype html><html><head><meta charset="utf-8">
   .ground{position:absolute;left:0;right:0;bottom:0;height:26px;background:#E6DFD1;border-top:3px solid #B8AE9C}
   .cam{position:absolute;left:14px;top:12px;font-family:'Pixelify Sans',monospace;font-weight:600;font-size:17px;color:#1C1B19;letter-spacing:.04em;display:flex;gap:8px;align-items:center}
   .cam i{display:inline-block;width:9px;height:9px;background:#E2AE2A}
-  .bubble{position:absolute;top:44px;left:50%;transform:translateX(-50%);background:#FFFDF8;border:3px solid #1C1B19;padding:4px 12px;font-family:'Pixelify Sans',monospace;font-size:19px;white-space:nowrap}
+  .bubble{position:absolute;top:50px;left:22px;background:#FFFDF8;border:3px solid #1C1B19;padding:4px 12px;font-family:'Pixelify Sans',monospace;font-size:19px;white-space:nowrap}
   .paypal{position:absolute;left:80px;bottom:72px;font-family:'JetBrains Mono',monospace;font-size:17px;color:#6B665C;letter-spacing:.02em}
 </style></head><body><div class="wrap">
   <div class="brand">Allowance</div>
