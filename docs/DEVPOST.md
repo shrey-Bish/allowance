@@ -18,22 +18,22 @@ You link PayPal once and set rules in plain words: weekly budget, ask-me-over am
 
 Everything lands in an Activity log (AG Grid) with the PayPal reference ids, and you can watch it on a pixel-art Agent Cam where Scout the fox walks between shops and Penny the piggy bank guards the door. Her belly is your remaining budget.
 
-### How we built it
+### How I built it
 - **PayPal (sandbox, REST):** Vault setup tokens and payment tokens to save the wallet without a purchase (official JS SDK button with a user id token); Orders API with `vault_id` and `stored_credential` for merchant-initiated charges; `AUTHORIZE` intent then `capture` or `void` for the hold flow; `CAPTURE` intent for instant payments; webhooks with signature verification; `PayPal-Request-Id` on every mutating call. Every PayPal id is visible in the UI.
 - **AI, two roles:** Scout is a tool-using agent (`search_products`, `get_product`, `request_purchase`, `check_purchase_status`) that can only *ask* to pay. The safety check is a second model that returns a strict JSON verdict (price anomaly, suspicious store, intent mismatch, duplicate, prompt injection) and can only make a decision stricter, never looser. Store text is wrapped as untrusted data; if the model is slow the check fails safe to "needs your OK".
 - **Deterministic rules first:** a pure, unit-tested policy engine decides before the AI runs; a status machine makes illegal transitions (like capturing a blocked request) impossible.
 - **Stack:** Next.js 16, Prisma 7 on Neon Postgres, AG Grid, a Canvas-2D pixel stage with original sprites, ElevenLabs voices and sound effects, Render hosting.
 
-### Challenges we ran into
+### Challenges I ran into
 - The sandbox buyer must have a funding source or PayPal's vault approval page fails with a generic error. A custom sandbox account with a card fixed it.
-- Picking the checker model: a small model hallucinated "hidden instructions" on an honest store; a reasoning model was right but took 11–14 s on the real prompt. We measured on the real prompt and settled on a fast tool-use Llama that answers in about 3 s.
-- The agent would pre-refuse purchases it guessed were over budget, so nothing showed up in the log. We made Allowance the only judge: Scout asks, the Guard decides.
+- Picking the checker model: a small model hallucinated "hidden instructions" on an honest store; a reasoning model was right but took 11–14 s on the real prompt. I measured on the real prompt and settled on a fast tool-use Llama that answers in about 3 s.
+- The agent would pre-refuse purchases it guessed were over budget, so nothing showed up in the log. I made Allowance the only judge: Scout asks, the Guard decides.
 - Reference prices: excluding a store's own listing made the scam store's price the "usual" price. The median across all listings fixed it.
 
-### Accomplishments that we're proud of
+### Accomplishments that I'm proud of
 Three outcomes, all real on the sandbox: auto-pay, hold-then-capture, hold-then-void, plus a block that never touches PayPal. The x-ray moment that makes prompt-injection protection visible to a non-technical judge. A product a parent could use, not a tech demo.
 
-### What we learned
+### What I learned
 Agent commerce needs a trust layer, and PayPal's authorize/capture/void primitives map almost exactly onto "pay / ask me / don't". Small-model risk checks need precomputed facts and tight context, or they invent problems.
 
 ### What's next
@@ -57,4 +57,4 @@ PayPal developer platform (sandbox): Vault API (`/v3/vault/setup-tokens`, `/v3/v
 
 **AG Grid experience:** the Community edition covered everything the activity log needed (theming API, quick filter, CSV export, pinned rows, custom cell renderers) in an afternoon.
 
-**AI tools leveraged while building:** Claude Code (Anthropic) for implementation, Claude Design for the screens, ElevenLabs for audio, the ASU LLM gateway for the in-app models.
+**AI tools leveraged while building:** Claude Code (Anthropic) for implementation, Claude Design for the screens, ElevenLabs for audio, the ASU LLM gateway for the in-app models. Solo project.
