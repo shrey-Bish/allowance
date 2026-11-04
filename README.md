@@ -37,6 +37,49 @@ Every step → activity log
 
 Scout never sees PayPal. The Guard records what *you* asked for straight from the chat, so a hijacked agent can't rewrite it.
 
+### Architecture
+
+```mermaid
+flowchart LR
+  U[You: rules + one-time PayPal link] -->|"buy groceries under $60"| C[Chat UI + Agent Cam]
+  C --> S[Scout: LLM agent with tools]
+  S -->|search / get_product| K[(Demo stores)]
+  S -->|request_purchase| G[Allowance Guard]
+  G --> P[Rules engine: deterministic, unit-tested]
+  G --> R[AI safety check: JSON verdict, can only tighten]
+  P & R --> D{Decision}
+  D -->|looks fine| PP1[PayPal order CAPTURE: paid]
+  D -->|needs your OK| PP2[PayPal order AUTHORIZE: hold]
+  PP2 -->|approve| CAP[capture: paid]
+  PP2 -->|decline / timeout| VOID[void: hold released]
+  D -->|blocked| X[No PayPal call]
+  PP1 & CAP & VOID -->|webhooks| G
+  G --> A[(Activity log: AG Grid, PayPal ids)]
+  G --> DB[(Neon Postgres)]
+```
+
+### How PayPal is used
+
+| Moment | PayPal call |
+|---|---|
+| Link once | `POST /v1/oauth2/token` (`response_type=id_token`) → JS SDK button with `data-user-id-token` → `POST /v3/vault/setup-tokens` → buyer approves → `POST /v3/vault/payment-tokens` (vault id + customer id stored) |
+| Paid | `POST /v2/checkout/orders` `intent: CAPTURE` with `payment_source.paypal.vault_id` + `stored_credential` (merchant-initiated) |
+| Needs your OK | `POST /v2/checkout/orders` `intent: AUTHORIZE` → money held; approve → `POST /v2/payments/authorizations/{id}/capture`; decline or 10-minute timeout → `.../void` |
+| Blocked | no PayPal call |
+| Confirmation | webhooks (`PAYMENT.AUTHORIZATION.*`, `PAYMENT.CAPTURE.*`) verified with `/v1/notifications/verify-webhook-signature` |
+
+Every mutating call sends `PayPal-Request-Id` for idempotency. Reset-the-demo voids any open holds.
+
+### How AI is used
+
+- **Scout** (`lib/agent`): tool-using agent (`search_products`, `get_product`, `request_purchase`, `check_purchase_status`). It can look and ask; it never holds payment credentials.
+- **Safety check** (`lib/risk`): a second model gets the person's original task, the items with precomputed price ratios, store facts and recent purchases, with store text wrapped as untrusted data. It returns a zod-validated JSON verdict and can only make the rules' decision stricter. Timeout or bad JSON fails safe to "needs your OK".
+
+### Sponsor tools
+
+- **AG Grid Community** powers the Activity log (sort, filter, quick search, pinned totals row, CSV export, custom status renderer, row-click drawer).
+- **Render** hosts the demo; **Neon** hosts Postgres.
+
 ## Run it locally
 
 Prerequisites: Node 20+, pnpm.
@@ -49,6 +92,13 @@ cp .env.example .env    # fill in what you have (see below)
 pnpm db:push && pnpm db:seed
 pnpm dev                # http://localhost:3000
 ```
+
+### Creating your own PayPal sandbox app (for self-hosting)
+
+1. Log in at https://developer.paypal.com/dashboard/ with a normal PayPal account; switch to **Sandbox**.
+2. **Apps & Credentials → Create App**. Under *App feature options* tick **Accept payments**, expand *Advanced options* and tick **Vault**. Copy the Client ID and Secret.
+3. **Testing Tools → Sandbox Accounts → Create Account → Create Custom Account**, type **Personal**, with a **credit card** ticked. This is the buyer that links the wallet (a balance-only account fails PayPal's vault approval page). Note its email and password.
+4. Optional: add a webhook for `https://<your-host>/api/paypal/webhooks` and put its id in `PAYPAL_WEBHOOK_ID`.
 
 What you need in `.env`:
 
