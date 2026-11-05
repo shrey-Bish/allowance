@@ -2,7 +2,7 @@
 import "dotenv/config";
 import { writeFileSync } from "node:fs";
 const KEY = process.env.ELEVENLABS_API_KEY!.trim();
-const VOICE = "JBFqnCBsd6RMkjVDRZzb"; // George — warm, calm narrator
+const VOICE = "EXAVITQu4vr4xnSDxMaL"; // Sarah — calm, soft narrator
 const OUT = "/Users/shrey/Downloads/paypalai/video/vo";
 const LINES = [
   "AI agents can shop for you now. But would you hand one your PayPal?",
@@ -19,7 +19,7 @@ async function main() {
   for (let i = 0; i < LINES.length; i++) {
     const r = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${VOICE}?output_format=mp3_44100_128`, {
       method: "POST", headers: { "xi-api-key": KEY, "Content-Type": "application/json" },
-      body: JSON.stringify({ text: LINES[i], model_id: "eleven_multilingual_v2", voice_settings: { stability: 0.55, similarity_boost: 0.8, style: 0.2, speed: 0.98 } }),
+      body: JSON.stringify({ text: LINES[i], model_id: "eleven_multilingual_v2", voice_settings: { stability: 0.6, similarity_boost: 0.8, style: 0.15, speed: 0.97 } }),
     });
     if (!r.ok) throw new Error(`${r.status} ${(await r.text()).slice(0, 120)}`);
     const buf = Buffer.from(await r.arrayBuffer());

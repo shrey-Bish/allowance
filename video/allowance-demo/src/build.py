@@ -100,21 +100,21 @@ js = "\n".join([
 # ---- 3. setup 18–36: link PayPal (01) then rules (03)
 S = 18
 body = "\n".join([
-    video("st-link", "01-connect-link.mp4", 0, 8.5, 0.4, 1),
-    head("st-h1", "Link PayPal <b>once</b>", 0.2, 8.3),
-    chip("st-chip", "PayPal Sandbox · test money", 0.3, 8.2),
-    video("st-rules", "03-rules.mp4", 8.5, 9.5, 1.6, 2),
-    head("st-h2", "Then set <b>your rules</b>", 8.7, 9.3),
+    video("st-link", "01-connect-link.mp4", 0, 5.8, 0.4, 1),
+    head("st-h1", "Link PayPal <b>once</b>", 0.2, 5.6),
+    chip("st-chip", "PayPal Sandbox · test money", 0.3, 5.5),
+    video("st-rules", "03-rules.mp4", 5.8, 12.2, 0.05, 2, 'data-playback-rate="0.93"'),
+    head("st-h2", "Then set <b>your rules</b>", 6.0, 12.0),
 ])
-js = "\n".join([fade_in("#st-h1", 0.2), fade_in("#st-chip", 0.3), fade_out("#st-h1", 8.2), fade_out("#st-chip", 8.2),
-                '    tl.fromTo("#st-rules", {opacity: 0}, {opacity: 1, duration: 0.25, ease: "power2.out"}, 8.5);',
-                fade_in("#st-h2", 8.7), fade_out("#st-h2", 17.6)])
+js = "\n".join([fade_in("#st-h1", 0.2), fade_in("#st-chip", 0.3), fade_out("#st-h1", 5.5), fade_out("#st-chip", 5.5),
+                '    tl.fromTo("#st-rules", {opacity: 0}, {opacity: 1, duration: 0.25, ease: "power2.out"}, 5.8);',
+                fade_in("#st-h2", 6.0), fade_out("#st-h2", 17.6)])
 (C / "setup.html").write_text(scene("setup", S, body, js=js)); scenes.append(("setup", 18, S))
 
 # ---- 4. paid 36–52: 04 from 24.5
 S = 16
 body = "\n".join([
-    f'    <div id="pd-wrap" class="wrap" style="z-index:1">{video("pd-v", "04-shop-paid.mp4", 0, S, 24.5, 1)}</div>',
+    f'    <div id="pd-wrap" class="wrap" style="z-index:1">{video("pd-v", "04-shop-paid.mp4", 0, S, 26.0, 1)}</div>',
     chip("pd-chip", "PayPal Sandbox · test money", 0.3, S - 0.3),
     head("pd-h", "Within your rules → <b>paid</b>", 3.0, 12.5),
 ])
@@ -128,7 +128,7 @@ js = "\n".join([
 # ---- 5. hold 52–63: 05 from 9.0
 S = 11
 body = "\n".join([
-    f'    <div id="hd-wrap" class="wrap" style="z-index:1">{video("hd-v", "05-shop-hold.mp4", 0, S, 9.0, 1)}</div>',
+    f'    <div id="hd-wrap" class="wrap" style="z-index:1">{video("hd-v", "05-shop-hold.mp4", 0, S, 10.5, 1)}</div>',
     chip("hd-chip", "PayPal Sandbox · test money", 0.3, S - 0.3),
     head("hd-h", "Over your limit → <b>money on hold</b>", 4.0, 6.7),
 ])
@@ -148,24 +148,24 @@ def phone_scene(id_, src, media_start, dur, headline, head_at, chip_text=None):
     js = "\n".join([f'    tl.fromTo("#{id_}-frame", {{y: 60, opacity: 0}}, {{y: 0, opacity: 1, duration: 0.55, ease: "expo.out"}}, 0.1);',
                     fade_in(f"#{id_}-h", head_at), fade_out(f"#{id_}-h", dur - 0.5)] + ([fade_in(f"#{id_}-chip", 0.3)] if chip_text else []))
     return scene(id_, dur, body, js=js, extra_root_attrs="data-layout-allow-overflow")
-(C / "phone-approve.html").write_text(phone_scene("pa", "06-phone-approve.mp4", 1.6, 13, "Approve on your phone → <b>paid</b>", 0.6, "PayPal Sandbox · test money")); scenes.append(("pa", 63, 13))
+(C / "phone-approve.html").write_text(phone_scene("pa", "06-phone-approve.mp4", 1.6, 11, "Approve on your phone → <b>paid</b>", 0.6, "PayPal Sandbox · test money")); scenes.append(("pa", 63, 11))
 
-# ---- 7. blocked 76–100: 07 from 18.5
-S = 24
+# ---- 7. blocked 74–100: 07 from 18.5
+S = 26
 body = "\n".join([
     f'    <div id="bl-wrap" class="wrap" style="z-index:1">{video("bl-v", "07-shop-blocked.mp4", 0, S, 18.5, 1)}</div>',
     chip("bl-chip", "PayPal Sandbox · test money", 0.3, S - 0.3),
-    head("bl-h", "Hidden instructions for the AI → <b>blocked</b>", 8.0, 14.0),
+    head("bl-h", "Hidden instructions for the AI → <b>blocked</b>", 10.0, 14.0),
 ])
 js = "\n".join([
     '    tl.fromTo("#bl-wrap", {scale: 1, x: 0, y: 0}, {scale: 1.5, x: 30, y: -75, duration: 1.0, ease: "power2.inOut"}, 3.5);',
-    '    tl.to("#bl-wrap", {scale: 1, x: 0, y: 0, duration: 1.2, ease: "power2.inOut"}, 13.0);',
-    fade_in("#bl-chip", 0.3), fade_in("#bl-h", 8.0), fade_out("#bl-h", 21.8),
+    '    tl.to("#bl-wrap", {scale: 1, x: 0, y: 0, duration: 1.2, ease: "power2.inOut"}, 15.0);',
+    fade_in("#bl-chip", 0.3), fade_in("#bl-h", 10.0), fade_out("#bl-h", 23.8),
 ])
-(C / "blocked.html").write_text(scene("blocked", S, body, js=js, extra_root_attrs="data-layout-allow-overflow")); scenes.append(("blocked", 76, S))
+(C / "blocked.html").write_text(scene("blocked", S, body, js=js, extra_root_attrs="data-layout-allow-overflow")); scenes.append(("blocked", 74, S))
 
 # ---- 8. edge 100–118: phone decline (10 s) then budget block (8 s)
-(C / "phone-decline.html").write_text(phone_scene("pdn", "09-phone-decline.mp4", 1.0, 10, "Say no → <b>hold released</b>", 0.6)); scenes.append(("pdn", 100, 10))
+(C / "phone-decline.html").write_text(phone_scene("pdn", "09-phone-decline.mp4", 2.0, 10, "Say no → <b>hold released</b>", 0.6)); scenes.append(("pdn", 100, 10))
 S = 8
 body = "\n".join([
     f'    <div id="bg-wrap" class="wrap" style="z-index:1">{video("bg-v", "10-shop-budget.mp4", 0, S, 16.0, 1)}</div>',
@@ -187,8 +187,8 @@ body = "\n".join([
 ])
 js = "\n".join([fade_in("#po-h1", 0.4), fade_out("#po-h1", 5.5),
                 '    tl.fromTo("#po-act", {opacity: 0}, {opacity: 1, duration: 0.25}, 6);', fade_in("#po-h2", 6.3), fade_out("#po-h2", 12.5),
-                '    tl.fromTo("#po-ppwrap", {opacity: 0, scale: 1.12, y: -80}, {opacity: 1, scale: 1.12, y: -80, duration: 0.3}, 13);',
-                '    tl.to("#po-ppwrap", {y: -140, duration: 4.5, ease: "power1.inOut"}, 13.3);',
+                '    tl.fromTo("#po-ppwrap", {opacity: 0, scale: 1.3, y: -20}, {opacity: 1, scale: 1.3, y: -20, duration: 0.3}, 13);',
+                '    tl.to("#po-ppwrap", {y: -70, duration: 4.5, ease: "power1.inOut"}, 13.3);',
                 fade_in("#po-h3", 13.3), fade_in("#po-chip", 13.2), fade_out("#po-h3", 17.5)])
 (C / "payoff.html").write_text(scene("payoff", S, body, js=js, extra_root_attrs="data-layout-allow-overflow")); scenes.append(("payoff", 118, S))
 
@@ -218,11 +218,11 @@ js = "\n".join([
 SFX = [("sfx-glitch", 5.0, 0.7), ("sfx-door-slam", 6.7, 0.7), ("sfx-stamp", 7.1, 0.8), ("penny-block", 7.9, 0.9),
        ("sfx-coin", 11.7, 0.7),
        ("scout-not-looking", 21.6, 0.8),
-       ("sfx-coin", 38.6, 0.7), ("penny-paying", 39.2, 0.9), ("sfx-receipt", 40.1, 0.5), ("sfx-coin", 44.6, 0.6), ("sfx-receipt", 47.4, 0.5),
-       ("sfx-jar", 55.6, 0.7), ("penny-hold", 58.6, 0.9),
+       ("sfx-coin", 38.6, 0.7), ("penny-paying", 39.4, 0.9), ("sfx-receipt", 40.4, 0.5), ("sfx-coin", 44.4, 0.6), ("sfx-receipt", 47.2, 0.5),
+       ("sfx-jar", 54.6, 0.7), ("penny-hold", 62.0, 0.9),
        ("sfx-coin-rain", 66.6, 0.7),
-       ("sfx-glitch", 81.5, 0.8), ("sfx-door-slam", 83.3, 0.7), ("sfx-stamp", 83.7, 0.9), ("penny-xray", 84.6, 0.9),
-       ("scout-oh-well", 104.6, 0.8), ("penny-released", 105.4, 0.9),
+       ("sfx-glitch", 79.5, 0.8), ("sfx-door-slam", 81.3, 0.7), ("sfx-stamp", 81.7, 0.9), ("penny-xray", 84.0, 0.9),
+       ("scout-oh-well", 103.4, 0.8), ("penny-released", 105.4, 0.9),
        ("sfx-stamp", 114.2, 0.8), ("penny-budget", 114.8, 0.9),
        ("sfx-coin", 137.2, 0.7)]
 

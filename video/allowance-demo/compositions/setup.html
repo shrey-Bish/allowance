@@ -14,20 +14,20 @@
 
   </style>
   <div id="root" data-composition-id="setup" data-width="1920" data-height="1080" >
-    <video id="st-link" class="clip" data-start="0" data-duration="8.5" data-media-start="0.4" muted playsinline src="assets/video/01-connect-link.mp4" style="z-index:1" ></video>
-    <div id="st-h1" class="clip head" data-start="0.2" data-duration="8.3">Link PayPal <b>once</b></div>
-    <div id="st-chip" class="clip chip" data-start="0.3" data-duration="8.2">PayPal Sandbox · test money</div>
-    <video id="st-rules" class="clip" data-start="8.5" data-duration="9.5" data-media-start="1.6" muted playsinline src="assets/video/03-rules.mp4" style="z-index:2" ></video>
-    <div id="st-h2" class="clip head" data-start="8.7" data-duration="9.3">Then set <b>your rules</b></div>
+    <video id="st-link" class="clip" data-start="0" data-duration="5.8" data-media-start="0.4" muted playsinline src="assets/video/01-connect-link.mp4" style="z-index:1" ></video>
+    <div id="st-h1" class="clip head" data-start="0.2" data-duration="5.6">Link PayPal <b>once</b></div>
+    <div id="st-chip" class="clip chip" data-start="0.3" data-duration="5.5">PayPal Sandbox · test money</div>
+    <video id="st-rules" class="clip" data-start="5.8" data-duration="12.2" data-media-start="0.05" muted playsinline src="assets/video/03-rules.mp4" style="z-index:2" data-playback-rate="0.93"></video>
+    <div id="st-h2" class="clip head" data-start="6.0" data-duration="12.0">Then set <b>your rules</b></div>
   </div>
   <script>
     const tl = gsap.timeline({ paused: true });
     tl.fromTo("#st-h1", {opacity: 0}, {opacity: 1, duration: 0.3, ease: "power2.out"}, 0.2);
     tl.fromTo("#st-chip", {opacity: 0}, {opacity: 1, duration: 0.3, ease: "power2.out"}, 0.3);
-    tl.to("#st-h1", {opacity: 0, duration: 0.25, ease: "power3.in"}, 8.2);
-    tl.to("#st-chip", {opacity: 0, duration: 0.25, ease: "power3.in"}, 8.2);
-    tl.fromTo("#st-rules", {opacity: 0}, {opacity: 1, duration: 0.25, ease: "power2.out"}, 8.5);
-    tl.fromTo("#st-h2", {opacity: 0}, {opacity: 1, duration: 0.3, ease: "power2.out"}, 8.7);
+    tl.to("#st-h1", {opacity: 0, duration: 0.25, ease: "power3.in"}, 5.5);
+    tl.to("#st-chip", {opacity: 0, duration: 0.25, ease: "power3.in"}, 5.5);
+    tl.fromTo("#st-rules", {opacity: 0}, {opacity: 1, duration: 0.25, ease: "power2.out"}, 5.8);
+    tl.fromTo("#st-h2", {opacity: 0}, {opacity: 1, duration: 0.3, ease: "power2.out"}, 6.0);
     tl.to("#st-h2", {opacity: 0, duration: 0.25, ease: "power3.in"}, 17.6);
     window.__timelines["setup"] = tl;
   </script>
