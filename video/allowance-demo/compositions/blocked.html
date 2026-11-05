@@ -14,9 +14,9 @@
 
   </style>
   <div id="root" data-composition-id="bl" data-width="1920" data-height="1080" data-layout-allow-overflow>
-    <div id="bl-wrap" class="wrap" style="z-index:1">    <video id="bl-v" class="clip" data-start="0" data-duration="7.5" data-media-start="22.0" muted playsinline src="assets/video/07-shop-blocked.mp4" style="z-index:1" ></video></div>
-    <div id="bl-chip" class="clip chip" data-start="0.3" data-duration="7.2">PayPal Sandbox · test money</div>
-    <div id="bl-h" class="clip head" data-start="4.2" data-duration="3.0">Hidden instructions for the AI → <b>blocked</b></div>
+    <div id="bl-wrap" class="wrap" style="z-index:1">    <video id="bl-v" class="clip" data-start="0" data-duration="7.4" data-media-start="22.0" muted playsinline src="assets/video/07-shop-blocked.mp4" style="z-index:1" ></video></div>
+    <div id="bl-chip" class="clip chip" data-start="0.3" data-duration="7.1000000000000005">PayPal Sandbox · test money</div>
+    <div id="bl-h" class="clip head" data-start="4.1" data-duration="3.000000000000001">Hidden instructions for the AI → <b>blocked</b></div>
   </div>
   <script>
     const tl = gsap.timeline({ paused: true });
@@ -24,8 +24,8 @@
     tl.to("#bl-wrap", {scale: 1.5, x: -70, y: -75, duration: 0.9, ease: "power2.inOut"}, 0.3);
     tl.to("#bl-wrap", {scale: 1.9, x: -1387, y: 570, duration: 0.9, ease: "power2.inOut"}, 4.9);
     tl.fromTo("#bl-chip", {opacity: 0}, {opacity: 1, duration: 0.3, ease: "power2.out"}, 0.3);
-    tl.fromTo("#bl-h", {opacity: 0}, {opacity: 1, duration: 0.3, ease: "power2.out"}, 4.2);
-    tl.to("#bl-h", {opacity: 0, duration: 0.25, ease: "power3.in"}, 6.95);
+    tl.fromTo("#bl-h", {opacity: 0}, {opacity: 1, duration: 0.3, ease: "power2.out"}, 4.1);
+    tl.to("#bl-h", {opacity: 0, duration: 0.25, ease: "power3.in"}, 6.8500000000000005);
     window.__timelines["bl"] = tl;
   </script>
 </template>

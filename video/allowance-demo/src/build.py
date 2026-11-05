@@ -9,6 +9,7 @@ def dur_of(path):
     return round(float(subprocess.check_output(["ffprobe","-v","error","-show_entries","format=duration","-of","csv=p=0",str(path)]).decode().strip()), 2)
 
 HERE = Path(__file__).resolve().parents[1]
+STORE_CLIP_REVEAL = 7.2       # clip second where the hidden note starts growing (record-store.mjs waits 5.5 s + load)
 C = HERE / "compositions"; C.mkdir(exist_ok=True)
 VO_DIR = HERE / "assets/audio/vo"
 LINES = json.loads((VO_DIR / "lines.json").read_text())
@@ -23,12 +24,13 @@ SPEC = [
     ("paid",    4, 0.3, 0.9, 6.5),
     ("hold",    5, 0.4, 1.0, 5.5),
     ("pa",      6, 0.4, 1.1, 5.0),
-    ("blocked", 7, 0.3, 1.1, 7.5),
-    ("pdn",     8, 0.3, 1.5, 4.0),
-    ("budget",  9, 0.3, 1.4, 4.0),
-    ("log",    10, 0.3, 0.7, 4.5),
-    ("paypal", 11, 0.3, 0.9, 3.5),
-    ("end",    12, 0.5, 2.3, 7.5),
+    ("store",   7, 0.3, 1.0, 7.5),
+    ("blocked", 8, 0.3, 1.1, 6.5),
+    ("pdn",     9, 0.3, 1.5, 4.0),
+    ("budget", 10, 0.3, 1.4, 4.0),
+    ("log",    11, 0.3, 0.7, 4.5),
+    ("paypal", 12, 0.3, 0.9, 3.5),
+    ("end",    13, 0.5, 2.3, 7.5),
 ]
 timeline = {}   # id → (start, dur, vo_start)
 t = 0.0
@@ -85,7 +87,7 @@ def zoom_to(sel, px, py, s, at, d=0.8, ease="power2.inOut"):
     x = round(-(px - 960) * s); y = round(-(py - 540) * s)
     return f'    tl.to("{sel}", {{scale: {s}, x: {x}, y: {y}, duration: {d}, ease: "{ease}"}}, {at});'
 
-def cam_scene(id_, src, media_start, dur, moves, headline=None, head_at=0.0, chip_text="PayPal Sandbox · test money", z=1, head_end=None):
+def cam_scene(id_, src, media_start, dur, moves, headline=None, head_at=0.0, chip_text="PayPal Sandbox · test money", z=1, head_end=None, css="", extra_body=None, extra_js=None):
     """A screen recording in a camera wrapper with a list of zoom moves + optional headline/chip."""
     body = [f'    <div id="{id_}-wrap" class="wrap" style="z-index:{z}">{video(f"{id_}-v", src, 0, dur, media_start, 1)}</div>']
     js = [f'    tl.fromTo("#{id_}-wrap", {{scale: 1, x: 0, y: 0}}, {{scale: 1, x: 0, y: 0, duration: 0.01}}, 0);'] + moves
@@ -94,7 +96,9 @@ def cam_scene(id_, src, media_start, dur, moves, headline=None, head_at=0.0, chi
     if headline:
         he = head_end if head_end is not None else dur - 0.3
         body.append(head(f"{id_}-h", headline, head_at, he - head_at)); js += [fade_in(f"#{id_}-h", head_at), fade_out(f"#{id_}-h", he - 0.25)]
-    return scene(id_, dur, "\n".join(body), js="\n".join(js), extra_root_attrs="data-layout-allow-overflow")
+    if extra_body: body += extra_body
+    if extra_js: js += extra_js
+    return scene(id_, dur, "\n".join(body), css=css, js="\n".join(js), extra_root_attrs="data-layout-allow-overflow")
 
 scenes = []  # (id, start, dur, file)
 def add(sid, fname, html):
@@ -187,12 +191,24 @@ def phone_scene(id_, src, media_start, dur, headline, head_at, chip_text=None):
 D = timeline["pa"][1]
 add("pa", "phone-approve", phone_scene("pa", "06-phone-approve.mp4", 2.0, D, "Approve on your phone → <b>paid</b>", 0.6, "PayPal Sandbox · test money"))
 
-# ---- 8. blocked: x-ray + stamp on "Allowance caught it", then zoom onto the reason card
+STORE_REVEAL = 5.2            # seconds into the scene where "is a note" is spoken
+STORE_MEDIA = round(STORE_CLIP_REVEAL - STORE_REVEAL, 2)
+# ---- 8a. store: the scam page as a person sees it, then the 1 px hidden note revealed in place
+D = timeline["store"][1]
+add("store", "store", cam_scene("sx", "14-store-xray.mp4", STORE_MEDIA, D,
+    ['    tl.to("#sx-wrap", {scale: 1.25, x: 0, y: 0, duration: 1.4, ease: "power1.inOut"}, 0.2);',
+     zoom_to("#sx-wrap", 624, 505, 2.4, 2.3, 1.0)],
+    chip_text=None,
+    css="    .tag { position: absolute; left: 48px; top: 40px; padding: 12px 24px; border-radius: 999px; background: #E2AE2A; color: #1C1B19; font: 600 30px Inter, sans-serif; z-index: 6; }",
+    extra_body=[f'    <div id="sx-tag" class="clip tag" data-start="{STORE_REVEAL + 0.4}" data-duration="{D - STORE_REVEAL - 0.7}">What the AI reads on this page</div>'],
+    extra_js=[f'    tl.fromTo("#sx-tag", {{opacity: 0, y: -10}}, {{opacity: 1, y: 0, duration: 0.3, ease: "expo.out"}}, {STORE_REVEAL + 0.4});']))
+
+# ---- 8b. blocked: x-ray + stamp on "blocked the purchase", then zoom onto the reason card
 D = timeline["blocked"][1]
 add("blocked", "blocked", cam_scene("bl", "07-shop-blocked.mp4", 22.0, D,
     ['    tl.to("#bl-wrap", {scale: 1.5, x: -70, y: -75, duration: 0.9, ease: "power2.inOut"}, 0.3);',
      zoom_to("#bl-wrap", 1690, 240, 1.9, 4.9, 0.9)],
-    headline="Hidden instructions for the AI → <b>blocked</b>", head_at=4.2))
+    headline="Hidden instructions for the AI → <b>blocked</b>", head_at=4.1))
 
 D = timeline["pdn"][1]
 add("pdn", "phone-decline", phone_scene("pdn", "09-phone-decline.mp4", 3.0, D, "Say no → <b>hold released</b>", 0.6))
@@ -241,16 +257,16 @@ add("end", "end", scene("end", D, body, js=js))
 
 # ---- sound placements: (clip, scene, offset within scene, volume) — each caused by what is on screen
 T = {sid: st for sid, st, _, _ in scenes}
-SFX = [("sfx-glitch", "hook", HOOK_STAMP - 1.9, 0.7), ("sfx-door-slam", "hook", HOOK_STAMP - 0.3, 0.7), ("sfx-stamp", "hook", HOOK_STAMP, 0.8), ("penny-block", "hook", HOOK_STAMP + 0.8, 0.9),
-       ("sfx-coin", "title", 1.7, 0.7),
-       ("sfx-coin", "link", 0.5, 0.6),
-       ("sfx-coin", "paid", 0.9, 0.7), ("sfx-receipt", "paid", 1.0, 0.5), ("penny-paying", "paid", 1.8, 0.9), ("sfx-receipt", "paid", 4.9, 0.5),
-       ("sfx-jar", "hold", 1.3, 0.7), ("penny-hold", "hold", 2.4, 0.9),
-       ("sfx-coin-rain", "pa", 4.0, 0.7),
-       ("sfx-glitch", "blocked", 2.0, 0.8), ("sfx-door-slam", "blocked", 3.7, 0.7), ("sfx-stamp", "blocked", 4.0, 0.9), ("penny-xray", "blocked", 5.0, 0.9),
-       ("scout-oh-well", "pdn", 1.6, 0.8), ("penny-released", "pdn", 2.3, 0.9),
-       ("sfx-stamp", "budget", 2.4, 0.8), ("penny-budget", "budget", 3.0, 0.9),
-       ("sfx-coin", "end", 1.1, 0.7)]
+SFX = [("sfx-glitch", "hook", HOOK_STAMP - 1.9, 0.45), ("sfx-door-slam", "hook", HOOK_STAMP - 0.3, 0.45), ("sfx-stamp", "hook", HOOK_STAMP, 0.55),
+       ("sfx-coin", "title", 1.7, 0.45),
+       ("sfx-coin", "link", 0.5, 0.4),
+       ("sfx-coin", "paid", 0.9, 0.45), ("sfx-receipt", "paid", 1.0, 0.35), ("sfx-receipt", "paid", 4.9, 0.35),
+       ("sfx-jar", "hold", 1.3, 0.45),
+       ("sfx-coin-rain", "pa", 4.0, 0.45),
+       ("sfx-glitch", "store", STORE_REVEAL, 0.5),
+       ("sfx-glitch", "blocked", 2.0, 0.5), ("sfx-door-slam", "blocked", 3.7, 0.45), ("sfx-stamp", "blocked", 4.0, 0.6),
+       ("sfx-stamp", "budget", 2.4, 0.55),
+       ("sfx-coin", "end", 1.1, 0.45)]
 
 hosts = "\n".join(
     f'      <div id="{sid}" data-composition-id="{sid}" data-composition-src="compositions/{fname}.html" data-start="{st}" data-duration="{du}" data-track-index="{i+1}" data-track-kind="graphics" data-width="1920" data-height="1080"></div>'
