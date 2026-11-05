@@ -7,12 +7,16 @@ const OUT = "/Users/shrey/Downloads/paypalai/video/vo";
 const LINES = [
   "AI agents can shop for you now. But would you hand one your PayPal?",
   "This is Allowance. Give your agent an allowance, not your wallet.",
-  "You link PayPal once. Then you set the rules: a weekly budget, and when it has to ask you.",
-  "Small stuff just goes through.",
-  "Anything over your limit, PayPal holds the money until you say yes. On your phone, if you like.",
-  "And this store hid instructions for the AI on its page. Allowance caught it, and nothing was charged.",
-  "Say no, and the hold is released. Hit your budget, and the agent stops.",
+  "You link PayPal once.",
+  "Then set the rules: a weekly budget, and the amount where it has to ask you first.",
+  "Small stuff just goes through. Groceries, a charger: within your rules, so PayPal pays.",
+  "Anything over your limit, PayPal holds the money until you say yes.",
+  "On your phone, if you like. Tap approve, and PayPal pays.",
+  "This store hid instructions for the AI on its page. Allowance caught it, and nothing was charged.",
+  "Say no, and the hold is released.",
+  "Hit your budget, and the agent stops.",
   "Every decision, every PayPal payment, in one log.",
+  "And the same payments, right there in PayPal.",
   "Allowance. For anyone who wants AI to buy for them, without handing over the keys.",
 ];
 async function main() {

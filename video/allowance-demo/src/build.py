@@ -1,4 +1,7 @@
-"""Builds index.html and compositions/*.html for the Allowance demo film (1920x1080, 148 s)."""
+"""Builds index.html, compositions/*.html, assets/audio/vo.wav and assets/audio/timing.json for the
+Allowance demo film (1920x1080). Every scene is cut to its narration line: the scene starts, the
+line begins after `lead` seconds, and the scene ends `tail` seconds after the line ends. Zoom-ins
+land on the sentence the narrator is saying."""
 from pathlib import Path
 import json, subprocess
 
@@ -7,7 +10,33 @@ def dur_of(path):
 
 HERE = Path(__file__).resolve().parents[1]
 C = HERE / "compositions"; C.mkdir(exist_ok=True)
-TOTAL = 148
+VO_DIR = HERE / "assets/audio/vo"
+LINES = json.loads((VO_DIR / "lines.json").read_text())
+VO = [dur_of(VO_DIR / f"{i+1:02d}.mp3") for i in range(len(LINES))]
+
+# scene id → (vo index, lead before the line, tail after the line, minimum scene length)
+SPEC = [
+    ("hook",    0, 0.6, 1.4, 6.0),
+    ("title",   1, 0.3, 0.6, 5.0),
+    ("link",    2, 0.3, 0.9, 2.8),
+    ("rules",   3, 0.3, 0.8, 6.0),
+    ("paid",    4, 0.3, 0.9, 6.5),
+    ("hold",    5, 0.4, 1.0, 5.5),
+    ("pa",      6, 0.4, 1.1, 5.0),
+    ("blocked", 7, 0.3, 1.1, 7.5),
+    ("pdn",     8, 0.3, 1.5, 4.0),
+    ("budget",  9, 0.3, 1.4, 4.0),
+    ("log",    10, 0.3, 0.7, 4.5),
+    ("paypal", 11, 0.3, 0.9, 3.5),
+    ("end",    12, 0.5, 2.3, 7.5),
+]
+timeline = {}   # id → (start, dur, vo_start)
+t = 0.0
+for sid, vi, lead, tail, mn in SPEC:
+    d = round(max(mn, lead + VO[vi] + tail), 1)
+    timeline[sid] = (round(t, 2), d, round(t + lead, 2))
+    t += d
+TOTAL = round(t, 1)
 
 FONTS = """
     @font-face { font-family: "Instrument Serif"; src: url("assets/fonts/InstrumentSerif-400-italic.woff2") format("woff2"); font-style: italic; font-weight: 400; }
@@ -51,26 +80,47 @@ def head(id_, html, start, dur):
 def fade_in(sel, at, d=0.3): return f'    tl.fromTo("{sel}", {{opacity: 0}}, {{opacity: 1, duration: {d}, ease: "power2.out"}}, {at});'
 def fade_out(sel, at, d=0.25): return f'    tl.to("{sel}", {{opacity: 0, duration: {d}, ease: "power3.in"}}, {at});'
 
-scenes = []  # (id, start, dur)
+def zoom_to(sel, px, py, s, at, d=0.8, ease="power2.inOut"):
+    """Camera move: scale the full-frame wrapper by s so the frame point (px, py) sits at centre."""
+    x = round(-(px - 960) * s); y = round(-(py - 540) * s)
+    return f'    tl.to("{sel}", {{scale: {s}, x: {x}, y: {y}, duration: {d}, ease: "{ease}"}}, {at});'
 
-# ---- 1. hook 0–11: punch into the Agent Cam while Scout heads for the scam store, x-ray, stamp
-S = 11
+def cam_scene(id_, src, media_start, dur, moves, headline=None, head_at=0.0, chip_text="PayPal Sandbox · test money", z=1, head_end=None):
+    """A screen recording in a camera wrapper with a list of zoom moves + optional headline/chip."""
+    body = [f'    <div id="{id_}-wrap" class="wrap" style="z-index:{z}">{video(f"{id_}-v", src, 0, dur, media_start, 1)}</div>']
+    js = [f'    tl.fromTo("#{id_}-wrap", {{scale: 1, x: 0, y: 0}}, {{scale: 1, x: 0, y: 0, duration: 0.01}}, 0);'] + moves
+    if chip_text:
+        body.append(chip(f"{id_}-chip", chip_text, 0.3, dur - 0.3)); js.append(fade_in(f"#{id_}-chip", 0.3))
+    if headline:
+        he = head_end if head_end is not None else dur - 0.3
+        body.append(head(f"{id_}-h", headline, head_at, he - head_at)); js += [fade_in(f"#{id_}-h", head_at), fade_out(f"#{id_}-h", he - 0.25)]
+    return scene(id_, dur, "\n".join(body), js="\n".join(js), extra_root_attrs="data-layout-allow-overflow")
+
+scenes = []  # (id, start, dur, file)
+def add(sid, fname, html):
+    st, du, _ = timeline[sid]
+    (C / f"{fname}.html").write_text(html); scenes.append((sid, st, du, fname))
+
+# ---- 1. hook: Scout walks to the scam store, x-ray, BLOCKED stamp lands as the question lands
+sid, D = "hook", timeline["hook"][1]
+stamp_at = timeline["hook"][2] - timeline["hook"][0] + VO[0] + 0.25     # just after "…your PayPal?"
 body = "\n".join([
-    f'    <div id="hk-wrap" class="wrap" style="z-index:1">{video("hk-v", "07-shop-blocked.mp4", 0, S, 18.6, 1)}</div>',
-    chip("hk-chip", "PayPal Sandbox · test money", 0.3, S - 0.3),
+    f'    <div id="hk-wrap" class="wrap" style="z-index:1">{video("hk-v", "07-shop-blocked.mp4", 0, D, round(26.0 - stamp_at, 2), 1)}</div>',
+    chip("hk-chip", "PayPal Sandbox · test money", 0.3, D - 0.3),
 ])
 js = "\n".join([
     '    tl.fromTo("#hk-wrap", {scale: 1.9, x: 38, y: -95}, {scale: 1.9, x: 38, y: -95, duration: 0.01}, 0);',
-    '    tl.to("#hk-wrap", {scale: 1.6, x: 32, y: -80, duration: 9.5, ease: "power1.inOut"}, 0.5);',
+    f'    tl.to("#hk-wrap", {{scale: 1.6, x: 32, y: -80, duration: {D - 0.8}, ease: "power1.inOut"}}, 0.4);',
     fade_in("#hk-chip", 0.3),
-    '    tl.to("#hk-wrap", {opacity: 0, duration: 0.3, ease: "power3.in"}, 10.7);',
+    f'    tl.to("#hk-wrap", {{opacity: 0, duration: 0.3, ease: "power3.in"}}, {D - 0.3});',
 ])
-(C / "hook.html").write_text(scene("hook", S, body, js=js, extra_root_attrs="data-layout-allow-overflow")); scenes.append(("hook", 0, S))
+add("hook", "hook", scene("hook", D, body, js=js, extra_root_attrs="data-layout-allow-overflow"))
+HOOK_STAMP = stamp_at
 
-# ---- 2. title 11–18
-S = 7
+# ---- 2. title
+D = timeline["title"][1]
 body = "\n".join([
-    '    <div id="ti-card" class="clip full" data-start="0" data-duration="7" style="background:#F6F1E7">',
+    f'    <div id="ti-card" class="clip full" data-start="0" data-duration="{D}" style="background:#F6F1E7">',
     '      <div id="ti-mark" style="position:absolute;left:160px;top:300px;font-family:\'Instrument Serif\',serif;font-style:italic;font-size:150px;line-height:1;color:#1C1B19">Allowance</div>',
     '      <div id="ti-line" style="position:absolute;left:164px;top:480px;width:1000px;font:400 44px/1.3 Inter,sans-serif;color:#6B665C">give your agent an allowance, <b style="font-weight:600;color:#1C1B19">not your wallet</b>.</div>',
     '      <div id="ti-stage" style="position:absolute;right:160px;top:280px;width:560px;height:440px;background:#1C1B19;border-radius:28px;padding:12px;box-sizing:border-box">',
@@ -93,50 +143,36 @@ js = "\n".join([
     '    tl.fromTo("#ti-coin1", {y: -40, opacity: 0}, {y: 180, opacity: 1, duration: 1.1, ease: "power2.in"}, 1.6);',
     '    tl.fromTo("#ti-coin2", {y: -40, opacity: 0}, {y: 230, opacity: 1, duration: 1.2, ease: "power2.in"}, 2.0);',
     '    tl.to("#ti-coin1", {opacity: 0, duration: 0.1}, 2.7); tl.to("#ti-coin2", {opacity: 0, duration: 0.1}, 3.2);',
-    '    tl.to("#ti-card", {opacity: 0, duration: 0.3, ease: "power3.in"}, 6.7);',
+    f'    tl.to("#ti-card", {{opacity: 0, duration: 0.3, ease: "power3.in"}}, {D - 0.3});',
 ])
-(C / "title.html").write_text(scene("title", S, body, js=js)); scenes.append(("title", 11, S))
+add("title", "title", scene("title", D, body, js=js))
 
-# ---- 3. setup 18–36: link PayPal (01) then rules (03)
-S = 18
-body = "\n".join([
-    video("st-link", "01-connect-link.mp4", 0, 5.8, 0.4, 1),
-    head("st-h1", "Link PayPal <b>once</b>", 0.2, 5.6),
-    chip("st-chip", "PayPal Sandbox · test money", 0.3, 5.5),
-    video("st-rules", "03-rules.mp4", 5.8, 12.2, 1.4, 2, 'data-playback-rate="0.82"'),
-    head("st-h2", "Then set <b>your rules</b>", 6.0, 12.0),
-])
-js = "\n".join([fade_in("#st-h1", 0.2), fade_in("#st-chip", 0.3), fade_out("#st-h1", 5.5), fade_out("#st-chip", 5.5),
-                '    tl.fromTo("#st-rules", {opacity: 0}, {opacity: 1, duration: 0.25, ease: "power2.out"}, 5.8);',
-                fade_in("#st-h2", 6.0), fade_out("#st-h2", 17.6)])
-(C / "setup.html").write_text(scene("setup", S, body, js=js)); scenes.append(("setup", 18, S))
+# ---- 3. link: the "PayPal linked ✓" card, zoomed to
+D = timeline["link"][1]
+add("link", "link", cam_scene("lk", "02-connect-linked.mp4", 0.7, D,
+    [zoom_to("#lk-wrap", 1230, 760, 2.1, 0.4, 0.9)], chip_text=None))
 
-# ---- 4. paid 36–52: 04 from 24.5
-S = 16
-body = "\n".join([
-    f'    <div id="pd-wrap" class="wrap" style="z-index:1">{video("pd-v", "04-shop-paid.mp4", 0, S, 27.0, 1)}</div>',
-    chip("pd-chip", "PayPal Sandbox · test money", 0.3, S - 0.3),
-    head("pd-h", "Within your rules → <b>paid</b>", 3.0, 12.5),
-])
-js = "\n".join([
-    '    tl.fromTo("#pd-wrap", {scale: 1, x: 0, y: 0}, {scale: 1.18, x: 24, y: -59, duration: 6, ease: "power1.inOut"}, 4.0);',
-    '    tl.to("#pd-wrap", {scale: 1, x: 0, y: 0, duration: 1.2, ease: "power2.inOut"}, 12.5);',
-    fade_in("#pd-chip", 0.3), fade_in("#pd-h", 3.0), fade_out("#pd-h", 15.2),
-])
-(C / "paid.html").write_text(scene("paid", S, body, js=js, extra_root_attrs="data-layout-allow-overflow")); scenes.append(("paid", 36, S))
+# ---- 4. rules: zoom onto the weekly-budget slider, then pan down to "ask me before anything over"
+D = timeline["rules"][1]
+add("rules", "rules", cam_scene("ru", "03-rules.mp4", 1.3, D,
+    [zoom_to("#ru-wrap", 760, 330, 1.7, 1.0, 0.9),
+     zoom_to("#ru-wrap", 760, 440, 1.7, 3.3, 0.7)], chip_text=None))
 
-# ---- 5. hold 52–63: 05 from 9.0
-S = 11
-body = "\n".join([
-    f'    <div id="hd-wrap" class="wrap" style="z-index:1">{video("hd-v", "05-shop-hold.mp4", 0, S, 10.5, 1)}</div>',
-    chip("hd-chip", "PayPal Sandbox · test money", 0.3, S - 0.3),
-    head("hd-h", "Over your limit → <b>money on hold</b>", 4.0, 6.7),
-])
-js = "\n".join(['    tl.fromTo("#hd-wrap", {scale: 1, x: 0, y: 0}, {scale: 1.22, x: 24, y: -61, duration: 5, ease: "power1.inOut"}, 4.5);',
-                fade_in("#hd-chip", 0.3), fade_in("#hd-h", 4.0), fade_out("#hd-h", 10.4)])
-(C / "hold.html").write_text(scene("hold", S, body, js=js, extra_root_attrs="data-layout-allow-overflow")); scenes.append(("hold", 52, S))
+# ---- 5. paid: receipt pops, then zoom onto the Paid card ("Within your rules.")
+D = timeline["paid"][1]
+add("paid", "paid", cam_scene("pd", "04-shop-paid.mp4", 27.2, D,
+    ['    tl.to("#pd-wrap", {scale: 1.18, x: 24, y: -59, duration: 1.2, ease: "power1.inOut"}, 0.4);',
+     zoom_to("#pd-wrap", 1690, 200, 1.9, 3.3, 0.9)],
+    headline="Within your rules → <b>paid</b>", head_at=0.4))
 
-# ---- 6. phone approve 63–76
+# ---- 6. hold: the Needs-your-OK card appears, zoom onto "PayPal is holding $129 until you decide"
+D = timeline["hold"][1]
+add("hold", "hold", cam_scene("hd", "05-shop-hold.mp4", 10.8, D,
+    ['    tl.to("#hd-wrap", {scale: 1.12, x: 20, y: -50, duration: 1.2, ease: "power1.inOut"}, 0.2);',
+     zoom_to("#hd-wrap", 1690, 235, 1.9, 1.7, 0.9)],
+    headline="Over your limit → <b>money on hold</b>", head_at=0.4))
+
+# ---- 7/9. phone scenes
 def phone_scene(id_, src, media_start, dur, headline, head_at, chip_text=None):
     body = "\n".join([
         f'    <div id="{id_}-bg" class="clip full" data-start="0" data-duration="{dur}" style="background:#F6F1E7"></div>',
@@ -148,54 +184,43 @@ def phone_scene(id_, src, media_start, dur, headline, head_at, chip_text=None):
     js = "\n".join([f'    tl.fromTo("#{id_}-frame", {{y: 60, opacity: 0}}, {{y: 0, opacity: 1, duration: 0.55, ease: "expo.out"}}, 0.1);',
                     fade_in(f"#{id_}-h", head_at), fade_out(f"#{id_}-h", dur - 0.5)] + ([fade_in(f"#{id_}-chip", 0.3)] if chip_text else []))
     return scene(id_, dur, body, js=js, extra_root_attrs="data-layout-allow-overflow")
-(C / "phone-approve.html").write_text(phone_scene("pa", "06-phone-approve.mp4", 1.6, 11, "Approve on your phone → <b>paid</b>", 0.6, "PayPal Sandbox · test money")); scenes.append(("pa", 63, 11))
+D = timeline["pa"][1]
+add("pa", "phone-approve", phone_scene("pa", "06-phone-approve.mp4", 2.0, D, "Approve on your phone → <b>paid</b>", 0.6, "PayPal Sandbox · test money"))
 
-# ---- 7. blocked 74–100: 07 from 18.5
-S = 26
-body = "\n".join([
-    f'    <div id="bl-wrap" class="wrap" style="z-index:1">{video("bl-v", "07-shop-blocked.mp4", 0, S, 18.5, 1)}</div>',
-    chip("bl-chip", "PayPal Sandbox · test money", 0.3, S - 0.3),
-    head("bl-h", "Hidden instructions for the AI → <b>blocked</b>", 10.0, 14.0),
-])
-js = "\n".join([
-    '    tl.fromTo("#bl-wrap", {scale: 1, x: 0, y: 0}, {scale: 1.5, x: 30, y: -75, duration: 1.0, ease: "power2.inOut"}, 3.5);',
-    '    tl.to("#bl-wrap", {scale: 1, x: 0, y: 0, duration: 1.2, ease: "power2.inOut"}, 15.0);',
-    fade_in("#bl-chip", 0.3), fade_in("#bl-h", 10.0), fade_out("#bl-h", 23.8),
-])
-(C / "blocked.html").write_text(scene("blocked", S, body, js=js, extra_root_attrs="data-layout-allow-overflow")); scenes.append(("blocked", 74, S))
+# ---- 8. blocked: x-ray + stamp on "Allowance caught it", then zoom onto the reason card
+D = timeline["blocked"][1]
+add("blocked", "blocked", cam_scene("bl", "07-shop-blocked.mp4", 22.0, D,
+    ['    tl.to("#bl-wrap", {scale: 1.5, x: -70, y: -75, duration: 0.9, ease: "power2.inOut"}, 0.3);',
+     zoom_to("#bl-wrap", 1690, 240, 1.9, 4.9, 0.9)],
+    headline="Hidden instructions for the AI → <b>blocked</b>", head_at=4.2))
 
-# ---- 8. edge 100–118: phone decline (10 s) then budget block (8 s)
-(C / "phone-decline.html").write_text(phone_scene("pdn", "09-phone-decline.mp4", 2.0, 10, "Say no → <b>hold released</b>", 0.6)); scenes.append(("pdn", 100, 10))
-S = 8
-body = "\n".join([
-    f'    <div id="bg-wrap" class="wrap" style="z-index:1">{video("bg-v", "10-shop-budget.mp4", 0, S, 16.0, 1)}</div>',
-    head("bg-h", "Hit your budget → <b>the agent stops</b>", 0.6, 7.0),
-])
-js = "\n".join(['    tl.fromTo("#bg-wrap", {scale: 1.0}, {scale: 1.0, duration: 0.01}, 0);', fade_in("#bg-h", 0.6), fade_out("#bg-h", 7.5)])
-(C / "budget.html").write_text(scene("budget", S, body, js=js)); scenes.append(("budget", 110, S))
+D = timeline["pdn"][1]
+add("pdn", "phone-decline", phone_scene("pdn", "09-phone-decline.mp4", 3.0, D, "Say no → <b>hold released</b>", 0.6))
 
-# ---- 9. payoff 118–136: plain view, activity, PayPal
-S = 18
-body = "\n".join([
-    video("po-plain", "11-plain-view.mp4", 0, 6, 1.5, 1),
-    head("po-h1", "Plain view, <b>no pixels</b>", 0.4, 5.3),
-    video("po-act", "12-activity.mp4", 6, 7, 1.5, 2),
-    head("po-h2", "Every decision, <b>every PayPal id</b>", 6.3, 6.4),
-    f'    <div id="po-ppwrap" class="wrap" style="z-index:3">{video("po-pp", "13-paypal-sandbox.mp4", 13, 5, 17.0, 3)}</div>',
-    head("po-h3", "Same payments on <b>PayPal</b>", 13.3, 4.4),
-    chip("po-chip", "PayPal Sandbox · test money", 13.2, 4.8),
-])
-js = "\n".join([fade_in("#po-h1", 0.4), fade_out("#po-h1", 5.5),
-                '    tl.fromTo("#po-act", {opacity: 0}, {opacity: 1, duration: 0.25}, 6);', fade_in("#po-h2", 6.3), fade_out("#po-h2", 12.5),
-                '    tl.fromTo("#po-ppwrap", {opacity: 0, scale: 1.3, y: 70}, {opacity: 1, scale: 1.3, y: 70, duration: 0.3}, 13);',
-                '    tl.to("#po-ppwrap", {y: 110, duration: 4.5, ease: "power1.inOut"}, 13.3);',
-                fade_in("#po-h3", 13.3), fade_in("#po-chip", 13.2), fade_out("#po-h3", 17.5)])
-(C / "payoff.html").write_text(scene("payoff", S, body, js=js, extra_root_attrs="data-layout-allow-overflow")); scenes.append(("payoff", 118, S))
+# ---- 10. budget: OVER BUDGET stamp
+D = timeline["budget"][1]
+add("budget", "budget", cam_scene("bg", "10-shop-budget.mp4", 17.6, D,
+    ['    tl.to("#bg-wrap", {scale: 1.5, x: 30, y: -75, duration: 0.9, ease: "power2.inOut"}, 0.3);'],
+    headline="Hit your budget → <b>the agent stops</b>", head_at=0.5, chip_text=None))
 
-# ---- 10. end 136–148
-S = 12
+# ---- 11. log: the Activity table, drawer with PayPal ids opens
+D = timeline["log"][1]
+add("log", "log", cam_scene("lg", "12-activity.mp4", 2.2, D,
+    ['    tl.to("#lg-wrap", {scale: 1.25, x: 0, y: 150, duration: 1.0, ease: "power2.inOut"}, 0.3);',
+     zoom_to("#lg-wrap", 1650, 420, 1.6, 2.3, 0.8)],
+    headline="Every decision, <b>every PayPal id</b>", head_at=0.3, chip_text=None, head_end=2.3))
+
+# ---- 12. paypal ledger
+D = timeline["paypal"][1]
+add("paypal", "paypal", cam_scene("pp", "13-paypal-sandbox.mp4", 17.0, D,
+    ['    tl.fromTo("#pp-wrap", {scale: 1.3, x: 0, y: 70}, {scale: 1.3, x: 0, y: 70, duration: 0.01}, 0);',
+     f'    tl.to("#pp-wrap", {{y: 110, duration: {D - 0.3}, ease: "power1.inOut"}}, 0.2);'],
+    headline="Same payments on <b>PayPal</b>", head_at=0.3))
+
+# ---- 13. end
+D = timeline["end"][1]
 body = "\n".join([
-    '    <div id="en-card" class="clip full" data-start="0" data-duration="12" style="background:#F6F1E7">',
+    f'    <div id="en-card" class="clip full" data-start="0" data-duration="{D}" style="background:#F6F1E7">',
     '      <img id="en-scout" src="assets/img/scout.svg" style="position:absolute;left:560px;top:250px;width:176px;image-rendering:pixelated">',
     '      <img id="en-penny" src="assets/img/penny.svg" style="position:absolute;left:1180px;top:236px;width:170px;image-rendering:pixelated">',
     '      <div id="en-mark" style="position:absolute;left:0;right:0;top:470px;text-align:center;font-family:\'Instrument Serif\',serif;font-style:italic;font-size:150px;line-height:1;color:#1C1B19">Allowance</div>',
@@ -212,26 +237,27 @@ js = "\n".join([
     '    tl.fromTo("#en-url", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.5, ease: "expo.out"}, 2.4);',
     '    tl.fromTo("#en-repo", {opacity: 0, y: 12}, {opacity: 1, y: 0, duration: 0.5, ease: "expo.out"}, 2.8);',
 ])
-(C / "end.html").write_text(scene("end", S, body, js=js)); scenes.append(("end", 136, S))
+add("end", "end", scene("end", D, body, js=js))
 
-# ---- sound placements (film seconds): few and caused by what is on screen
-SFX = [("sfx-glitch", 5.0, 0.7), ("sfx-door-slam", 6.7, 0.7), ("sfx-stamp", 7.1, 0.8), ("penny-block", 7.9, 0.9),
-       ("sfx-coin", 11.7, 0.7),
-       ("scout-not-looking", 21.6, 0.8),
-       ("sfx-coin", 37.8, 0.7), ("penny-paying", 38.6, 0.9), ("sfx-receipt", 39.6, 0.5), ("sfx-coin", 43.4, 0.6), ("sfx-receipt", 46.2, 0.5),
-       ("sfx-jar", 54.6, 0.7), ("penny-hold", 62.0, 0.9),
-       ("sfx-coin-rain", 66.6, 0.7),
-       ("sfx-glitch", 79.5, 0.8), ("sfx-door-slam", 81.3, 0.7), ("sfx-stamp", 81.7, 0.9), ("penny-xray", 84.0, 0.9),
-       ("scout-oh-well", 103.4, 0.8), ("penny-released", 105.4, 0.9),
-       ("sfx-stamp", 114.2, 0.8), ("penny-budget", 114.8, 0.9),
-       ("sfx-coin", 137.2, 0.7)]
+# ---- sound placements: (clip, scene, offset within scene, volume) — each caused by what is on screen
+T = {sid: st for sid, st, _, _ in scenes}
+SFX = [("sfx-glitch", "hook", HOOK_STAMP - 1.9, 0.7), ("sfx-door-slam", "hook", HOOK_STAMP - 0.3, 0.7), ("sfx-stamp", "hook", HOOK_STAMP, 0.8), ("penny-block", "hook", HOOK_STAMP + 0.8, 0.9),
+       ("sfx-coin", "title", 1.7, 0.7),
+       ("sfx-coin", "link", 0.5, 0.6),
+       ("sfx-coin", "paid", 0.9, 0.7), ("sfx-receipt", "paid", 1.0, 0.5), ("penny-paying", "paid", 1.8, 0.9), ("sfx-receipt", "paid", 4.9, 0.5),
+       ("sfx-jar", "hold", 1.3, 0.7), ("penny-hold", "hold", 2.4, 0.9),
+       ("sfx-coin-rain", "pa", 4.0, 0.7),
+       ("sfx-glitch", "blocked", 2.0, 0.8), ("sfx-door-slam", "blocked", 3.7, 0.7), ("sfx-stamp", "blocked", 4.0, 0.9), ("penny-xray", "blocked", 5.0, 0.9),
+       ("scout-oh-well", "pdn", 1.6, 0.8), ("penny-released", "pdn", 2.3, 0.9),
+       ("sfx-stamp", "budget", 2.4, 0.8), ("penny-budget", "budget", 3.0, 0.9),
+       ("sfx-coin", "end", 1.1, 0.7)]
 
 hosts = "\n".join(
     f'      <div id="{sid}" data-composition-id="{sid}" data-composition-src="compositions/{fname}.html" data-start="{st}" data-duration="{du}" data-track-index="{i+1}" data-track-kind="graphics" data-width="1920" data-height="1080"></div>'
-    for i, ((sid, st, du), fname) in enumerate(zip(scenes, ["hook", "title", "setup", "paid", "hold", "phone-approve", "blocked", "phone-decline", "budget", "payoff", "end"])))
+    for i, (sid, st, du, fname) in enumerate(scenes))
 audio = [f'      <audio id="vo" class="clip" data-start="0" data-duration="{TOTAL}" data-volume="1" data-track-index="20" src="assets/audio/vo.wav"></audio>']
-for i, (clip, at, vol) in enumerate(SFX):
-    d = dur_of(HERE / "assets/audio/sfx" / f"{clip}.mp3")
+for i, (clip, sid, off, vol) in enumerate(SFX):
+    d = dur_of(HERE / "assets/audio/sfx" / f"{clip}.mp3"); at = round(T[sid] + off, 2)
     audio.append(f'      <audio id="sfx-{i:02d}" class="clip" data-start="{at}" data-duration="{d}" data-volume="{vol}" data-track-index="{21 + (i % 3)}" src="assets/audio/sfx/{clip}.mp3"></audio>')
 
 index = f'''<!doctype html>
@@ -263,4 +289,17 @@ index = f'''<!doctype html>
 </html>
 '''
 (HERE / "index.html").write_text(index)
-print("scenes:", [(s, st, du) for s, st, du in scenes], "| sfx:", len(SFX))
+
+# ---- narration mix + timing (consumed by build_captions.py)
+starts = [timeline[sid][2] for sid, *_ in SPEC]
+(HERE / "assets/audio/timing.json").write_text(json.dumps({
+    "total": TOTAL,
+    "lines": [{"line": i + 1, "start": s, "end": round(s + VO[i], 2), "text": LINES[i]} for i, s in enumerate(starts)]}, indent=2))
+cmd = ["ffmpeg", "-hide_banner", "-loglevel", "error", "-y"]
+for i in range(len(LINES)): cmd += ["-i", str(VO_DIR / f"{i+1:02d}.mp3")]
+fc = "".join(f"[{i}]adelay={int(s*1000)}|{int(s*1000)}[a{i}];" for i, s in enumerate(starts))
+fc += "".join(f"[a{i}]" for i in range(len(LINES))) + f"amix=inputs={len(LINES)}:normalize=0:duration=longest,apad=whole_dur={TOTAL}[out]"
+cmd += ["-filter_complex", fc, "-map", "[out]", "-ar", "44100", "-ac", "2", str(HERE / "assets/audio/vo.wav")]
+subprocess.check_call(cmd)
+print(f"total {TOTAL}s | scenes:", [(s, st, du) for s, st, du, _ in scenes])
+print("vo starts:", starts)

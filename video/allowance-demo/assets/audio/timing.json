@@ -1,58 +1,82 @@
 {
-  "total": 150.0,
+  "total": 68.2,
   "lines": [
     {
       "line": 1,
-      "start": 1.0,
-      "end": 5.18,
+      "start": 0.6,
+      "end": 4.64,
       "text": "AI agents can shop for you now. But would you hand one your PayPal?"
     },
     {
       "line": 2,
-      "start": 11.5,
-      "end": 15.54,
+      "start": 6.3,
+      "end": 10.48,
       "text": "This is Allowance. Give your agent an allowance, not your wallet."
     },
     {
       "line": 3,
-      "start": 18.5,
-      "end": 23.98,
-      "text": "You link PayPal once. Then you set the rules: a weekly budget, and when it has to ask you."
+      "start": 11.4,
+      "end": 13.03,
+      "text": "You link PayPal once."
     },
     {
       "line": 4,
-      "start": 36.5,
-      "end": 38.4,
-      "text": "Small stuff just goes through."
+      "start": 14.2,
+      "end": 19.08,
+      "text": "Then set the rules: a weekly budget, and the amount where it has to ask you first."
     },
     {
       "line": 5,
-      "start": 56.0,
-      "end": 61.34,
-      "text": "Anything over your limit, PayPal holds the money until you say yes. On your phone, if you like."
+      "start": 20.2,
+      "end": 25.45,
+      "text": "Small stuff just goes through. Groceries, a charger: within your rules, so PayPal pays."
     },
     {
       "line": 6,
-      "start": 76.5,
-      "end": 82.77,
-      "text": "And this store hid instructions for the AI on its page. Allowance caught it, and nothing was charged."
+      "start": 26.8,
+      "end": 30.89,
+      "text": "Anything over your limit, PayPal holds the money until you say yes."
     },
     {
       "line": 7,
-      "start": 100.5,
-      "end": 104.87,
-      "text": "Say no, and the hold is released. Hit your budget, and the agent stops."
+      "start": 32.3,
+      "end": 35.83,
+      "text": "On your phone, if you like. Tap approve, and PayPal pays."
     },
     {
       "line": 8,
-      "start": 118.5,
-      "end": 121.98,
-      "text": "Every decision, every PayPal payment, in one log."
+      "start": 37.2,
+      "end": 43.28,
+      "text": "This store hid instructions for the AI on its page. Allowance caught it, and nothing was charged."
     },
     {
       "line": 9,
-      "start": 136.5,
-      "end": 141.33,
+      "start": 44.7,
+      "end": 46.84,
+      "text": "Say no, and the hold is released."
+    },
+    {
+      "line": 10,
+      "start": 48.7,
+      "end": 50.98,
+      "text": "Hit your budget, and the agent stops."
+    },
+    {
+      "line": 11,
+      "start": 52.7,
+      "end": 56.28,
+      "text": "Every decision, every PayPal payment, in one log."
+    },
+    {
+      "line": 12,
+      "start": 57.3,
+      "end": 59.67,
+      "text": "And the same payments, right there in PayPal."
+    },
+    {
+      "line": 13,
+      "start": 61.1,
+      "end": 65.88,
       "text": "Allowance. For anyone who wants AI to buy for them, without handing over the keys."
     }
   ]

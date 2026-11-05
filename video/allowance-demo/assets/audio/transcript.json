@@ -2,727 +2,871 @@
   {
     "id": "w0",
     "text": "AI",
-    "start": 0.64,
-    "end": 1.36
+    "start": 0.32,
+    "end": 0.96
   },
   {
     "id": "w1",
     "text": "agents",
-    "start": 1.36,
-    "end": 1.84
+    "start": 0.96,
+    "end": 1.36
   },
   {
     "id": "w2",
     "text": "can",
-    "start": 1.84,
-    "end": 2
+    "start": 1.36,
+    "end": 1.52
   },
   {
     "id": "w3",
     "text": "shop",
-    "start": 2,
-    "end": 2.4
+    "start": 1.52,
+    "end": 1.84
   },
   {
     "id": "w4",
     "text": "for",
-    "start": 2.4,
-    "end": 2.56
+    "start": 1.84,
+    "end": 2
   },
   {
     "id": "w5",
     "text": "you",
-    "start": 2.56,
-    "end": 2.72
+    "start": 2,
+    "end": 2.16
   },
   {
     "id": "w6",
     "text": "now,",
-    "start": 2.72,
-    "end": 3.12
+    "start": 2.16,
+    "end": 2.56
   },
   {
     "id": "w7",
     "text": "but",
-    "start": 3.12,
-    "end": 3.44
+    "start": 2.56,
+    "end": 2.8
   },
   {
     "id": "w8",
     "text": "would",
-    "start": 3.44,
-    "end": 3.6
+    "start": 2.8,
+    "end": 3.04
   },
   {
     "id": "w9",
     "text": "you",
-    "start": 3.6,
-    "end": 3.76
+    "start": 3.04,
+    "end": 3.2
   },
   {
     "id": "w10",
     "text": "hand",
-    "start": 3.76,
-    "end": 4
+    "start": 3.2,
+    "end": 3.44
   },
   {
     "id": "w11",
     "text": "one",
-    "start": 4,
-    "end": 4.24
+    "start": 3.44,
+    "end": 3.68
   },
   {
     "id": "w12",
     "text": "your",
-    "start": 4.24,
-    "end": 4.4
+    "start": 3.68,
+    "end": 3.84
   },
   {
     "id": "w13",
     "text": "PayPal?",
-    "start": 4.4,
-    "end": 5.68
+    "start": 3.84,
+    "end": 6.08
   },
   {
     "id": "w14",
     "text": "This",
-    "start": 11.2,
-    "end": 11.52
+    "start": 6.08,
+    "end": 6.4
   },
   {
     "id": "w15",
     "text": "is",
-    "start": 11.52,
-    "end": 11.76
+    "start": 6.4,
+    "end": 6.64
   },
   {
     "id": "w16",
     "text": "allowance.",
-    "start": 11.92,
-    "end": 12.72
+    "start": 6.8,
+    "end": 7.6
   },
   {
     "id": "w17",
     "text": "Give",
-    "start": 12.72,
-    "end": 13.04
+    "start": 7.6,
+    "end": 7.92
   },
   {
     "id": "w18",
     "text": "your",
-    "start": 13.04,
-    "end": 13.2
+    "start": 7.92,
+    "end": 8.08
   },
   {
     "id": "w19",
     "text": "agent",
-    "start": 13.2,
-    "end": 13.6
+    "start": 8.08,
+    "end": 8.48
   },
   {
     "id": "w20",
     "text": "an",
-    "start": 13.6,
-    "end": 13.76
+    "start": 8.48,
+    "end": 8.64
   },
   {
     "id": "w21",
     "text": "allowance,",
-    "start": 13.76,
-    "end": 14.48
+    "start": 8.64,
+    "end": 9.28
   },
   {
     "id": "w22",
     "text": "not",
-    "start": 14.48,
-    "end": 14.72
+    "start": 9.28,
+    "end": 9.52
   },
   {
     "id": "w23",
     "text": "your",
-    "start": 14.72,
-    "end": 14.96
+    "start": 9.52,
+    "end": 9.76
   },
   {
     "id": "w24",
     "text": "wallet.",
-    "start": 14.96,
-    "end": 17.92
+    "start": 9.76,
+    "end": 11.12
   },
   {
     "id": "w25",
     "text": "You",
-    "start": 18.16,
-    "end": 18.48
+    "start": 11.12,
+    "end": 11.36
   },
   {
     "id": "w26",
     "text": "link",
-    "start": 18.48,
-    "end": 18.88
+    "start": 11.36,
+    "end": 11.84
   },
   {
     "id": "w27",
     "text": "PayPal",
-    "start": 18.88,
-    "end": 19.52
+    "start": 11.84,
+    "end": 12.48
   },
   {
     "id": "w28",
-    "text": "once,",
-    "start": 19.52,
-    "end": 20
+    "text": "once.",
+    "start": 12.56,
+    "end": 14
   },
   {
     "id": "w29",
-    "text": "then",
-    "start": 20,
-    "end": 20.24
+    "text": "Then",
+    "start": 14,
+    "end": 14.4
   },
   {
     "id": "w30",
-    "text": "you",
-    "start": 20.24,
-    "end": 20.4
+    "text": "set",
+    "start": 14.4,
+    "end": 14.72
   },
   {
     "id": "w31",
-    "text": "set",
-    "start": 20.4,
-    "end": 20.64
+    "text": "the",
+    "start": 14.72,
+    "end": 14.88
   },
   {
     "id": "w32",
-    "text": "the",
-    "start": 20.64,
-    "end": 20.8
+    "text": "rules,",
+    "start": 14.88,
+    "end": 15.52
   },
   {
     "id": "w33",
-    "text": "rules,",
-    "start": 20.8,
-    "end": 21.28
+    "text": "a",
+    "start": 15.52,
+    "end": 15.68
   },
   {
     "id": "w34",
-    "text": "a",
-    "start": 21.28,
-    "end": 21.44
+    "text": "weekly",
+    "start": 15.68,
+    "end": 16.16
   },
   {
     "id": "w35",
-    "text": "weekly",
-    "start": 21.44,
-    "end": 21.84
+    "text": "budget,",
+    "start": 16.16,
+    "end": 16.56
   },
   {
     "id": "w36",
-    "text": "budget,",
-    "start": 21.84,
-    "end": 22.24
+    "text": "and",
+    "start": 16.64,
+    "end": 16.8
   },
   {
     "id": "w37",
-    "text": "and",
-    "start": 22.24,
-    "end": 22.4
+    "text": "the",
+    "start": 16.8,
+    "end": 16.88
   },
   {
     "id": "w38",
-    "text": "when",
-    "start": 22.4,
-    "end": 22.64
+    "text": "amount",
+    "start": 16.88,
+    "end": 17.28
   },
   {
     "id": "w39",
-    "text": "it",
-    "start": 22.64,
-    "end": 22.8
+    "text": "where",
+    "start": 17.28,
+    "end": 17.44
   },
   {
     "id": "w40",
-    "text": "has",
-    "start": 22.8,
-    "end": 23.04
+    "text": "it",
+    "start": 17.44,
+    "end": 17.6
   },
   {
     "id": "w41",
-    "text": "to",
-    "start": 23.04,
-    "end": 23.2
+    "text": "has",
+    "start": 17.6,
+    "end": 17.76
   },
   {
     "id": "w42",
-    "text": "ask",
-    "start": 23.2,
-    "end": 23.68
+    "text": "to",
+    "start": 17.76,
+    "end": 17.92
   },
   {
     "id": "w43",
-    "text": "you.",
-    "start": 23.68,
-    "end": 35.92
+    "text": "ask",
+    "start": 17.92,
+    "end": 18.24
   },
   {
     "id": "w44",
-    "text": "Small",
-    "start": 36.2,
-    "end": 36.84
+    "text": "you",
+    "start": 18.24,
+    "end": 18.4
   },
   {
     "id": "w45",
-    "text": "stuff",
-    "start": 36.84,
-    "end": 37.24
+    "text": "first.",
+    "start": 18.64,
+    "end": 19.68
   },
   {
     "id": "w46",
-    "text": "just",
-    "start": 37.24,
-    "end": 37.4
+    "text": "Small",
+    "start": 19.92,
+    "end": 20.48
   },
   {
     "id": "w47",
-    "text": "goes",
-    "start": 37.48,
-    "end": 37.88
+    "text": "stuff",
+    "start": 20.48,
+    "end": 20.8
   },
   {
     "id": "w48",
-    "text": "through.",
-    "start": 37.88,
-    "end": 54.84
+    "text": "just",
+    "start": 20.8,
+    "end": 21.04
   },
   {
     "id": "w49",
-    "text": "Anything",
-    "start": 55.69,
-    "end": 56.25
+    "text": "goes",
+    "start": 21.04,
+    "end": 21.28
   },
   {
     "id": "w50",
-    "text": "over",
-    "start": 56.25,
-    "end": 56.49
+    "text": "through.",
+    "start": 21.28,
+    "end": 21.84
   },
   {
     "id": "w51",
-    "text": "your",
-    "start": 56.49,
-    "end": 56.65
+    "text": "Groceries,",
+    "start": 21.84,
+    "end": 22.48
   },
   {
     "id": "w52",
-    "text": "limit,",
-    "start": 56.65,
-    "end": 57.05
+    "text": "a",
+    "start": 22.56,
+    "end": 22.72
   },
   {
     "id": "w53",
-    "text": "PayPal",
-    "start": 57.05,
-    "end": 57.77
+    "text": "charger,",
+    "start": 22.72,
+    "end": 23.2
   },
   {
     "id": "w54",
-    "text": "holds",
-    "start": 57.77,
-    "end": 58.01
+    "text": "within",
+    "start": 23.2,
+    "end": 23.52
   },
   {
     "id": "w55",
-    "text": "the",
-    "start": 58.01,
-    "end": 58.09
+    "text": "your",
+    "start": 23.52,
+    "end": 23.68
   },
   {
     "id": "w56",
-    "text": "money",
-    "start": 58.09,
-    "end": 58.41
+    "text": "rules,",
+    "start": 23.68,
+    "end": 24.08
   },
   {
     "id": "w57",
-    "text": "until",
-    "start": 58.41,
-    "end": 58.73
+    "text": "so",
+    "start": 24.08,
+    "end": 24.32
   },
   {
     "id": "w58",
-    "text": "you",
-    "start": 58.73,
-    "end": 58.89
+    "text": "PayPal",
+    "start": 24.32,
+    "end": 24.96
   },
   {
     "id": "w59",
-    "text": "say",
-    "start": 58.89,
-    "end": 59.05
+    "text": "pays.",
+    "start": 24.96,
+    "end": 26.24
   },
   {
     "id": "w60",
-    "text": "yes",
-    "start": 59.21,
-    "end": 59.61
+    "text": "Anything",
+    "start": 26.48,
+    "end": 27.12
   },
   {
     "id": "w61",
-    "text": "on",
-    "start": 59.77,
-    "end": 60.01
+    "text": "over",
+    "start": 27.12,
+    "end": 27.36
   },
   {
     "id": "w62",
     "text": "your",
-    "start": 60.01,
-    "end": 60.17
+    "start": 27.36,
+    "end": 27.52
   },
   {
     "id": "w63",
-    "text": "phone,",
-    "start": 60.17,
-    "end": 60.49
+    "text": "limit,",
+    "start": 27.52,
+    "end": 27.92
   },
   {
     "id": "w64",
-    "text": "if",
-    "start": 60.49,
-    "end": 60.73
+    "text": "PayPal",
+    "start": 27.92,
+    "end": 28.64
   },
   {
     "id": "w65",
-    "text": "you",
-    "start": 60.73,
-    "end": 61.05
+    "text": "holds",
+    "start": 28.64,
+    "end": 28.96
   },
   {
     "id": "w66",
-    "text": "like.",
-    "start": 61.05,
-    "end": 62.01
+    "text": "the",
+    "start": 28.96,
+    "end": 29.04
   },
   {
     "id": "w67",
-    "text": "This",
-    "start": 76.57,
-    "end": 76.89
+    "text": "money",
+    "start": 29.04,
+    "end": 29.36
   },
   {
     "id": "w68",
-    "text": "store",
-    "start": 76.89,
-    "end": 77.29
+    "text": "until",
+    "start": 29.36,
+    "end": 29.68
   },
   {
     "id": "w69",
-    "text": "hid",
-    "start": 77.29,
-    "end": 77.69
+    "text": "you",
+    "start": 29.68,
+    "end": 29.92
   },
   {
     "id": "w70",
-    "text": "instructions",
-    "start": 77.69,
-    "end": 78.17
+    "text": "say",
+    "start": 29.92,
+    "end": 30.24
   },
   {
     "id": "w71",
-    "text": "for",
-    "start": 78.17,
-    "end": 78.33
+    "text": "yes.",
+    "start": 30.24,
+    "end": 32
   },
   {
     "id": "w72",
-    "text": "the",
-    "start": 78.33,
-    "end": 78.49
+    "text": "On",
+    "start": 32,
+    "end": 32.32
   },
   {
     "id": "w73",
-    "text": "AI",
-    "start": 78.49,
-    "end": 78.97
+    "text": "your",
+    "start": 32.32,
+    "end": 32.48
   },
   {
     "id": "w74",
-    "text": "on",
-    "start": 78.97,
-    "end": 79.13
+    "text": "phone,",
+    "start": 32.48,
+    "end": 32.88
   },
   {
     "id": "w75",
-    "text": "its",
-    "start": 79.13,
-    "end": 79.37
+    "text": "if",
+    "start": 32.88,
+    "end": 33.04
   },
   {
     "id": "w76",
-    "text": "page.",
-    "start": 79.37,
-    "end": 80.01
+    "text": "you",
+    "start": 33.04,
+    "end": 33.12
   },
   {
     "id": "w77",
-    "text": "Allowance",
-    "start": 80.01,
-    "end": 80.65
+    "text": "like.",
+    "start": 33.12,
+    "end": 33.52
   },
   {
     "id": "w78",
-    "text": "caught",
-    "start": 80.65,
-    "end": 81.05
+    "text": "Tap",
+    "start": 33.52,
+    "end": 33.92
   },
   {
     "id": "w79",
-    "text": "it,",
-    "start": 81.05,
-    "end": 81.29
+    "text": "approve",
+    "start": 33.92,
+    "end": 34.32
   },
   {
     "id": "w80",
     "text": "and",
-    "start": 81.29,
-    "end": 81.45
+    "start": 34.4,
+    "end": 34.56
   },
   {
     "id": "w81",
-    "text": "nothing",
-    "start": 81.45,
-    "end": 81.77
+    "text": "PayPal",
+    "start": 34.56,
+    "end": 35.28
   },
   {
     "id": "w82",
-    "text": "was",
-    "start": 81.77,
-    "end": 82.01
+    "text": "Pays.",
+    "start": 35.28,
+    "end": 36.64
   },
   {
     "id": "w83",
-    "text": "charged.",
-    "start": 82.01,
-    "end": 83.29
+    "text": "This",
+    "start": 36.96,
+    "end": 37.28
   },
   {
     "id": "w84",
-    "text": "Say",
-    "start": 100.17,
-    "end": 100.73
+    "text": "store",
+    "start": 37.28,
+    "end": 37.6
   },
   {
     "id": "w85",
-    "text": "no,",
-    "start": 100.73,
-    "end": 101.05
+    "text": "hid",
+    "start": 37.76,
+    "end": 38.16
   },
   {
     "id": "w86",
-    "text": "and",
-    "start": 101.05,
-    "end": 101.21
+    "text": "instructions",
+    "start": 38.16,
+    "end": 38.72
   },
   {
     "id": "w87",
-    "text": "the",
-    "start": 101.21,
-    "end": 101.37
+    "text": "for",
+    "start": 38.72,
+    "end": 38.88
   },
   {
     "id": "w88",
-    "text": "hold",
-    "start": 101.37,
-    "end": 101.77
+    "text": "the",
+    "start": 38.88,
+    "end": 39.04
   },
   {
     "id": "w89",
-    "text": "is",
-    "start": 101.77,
-    "end": 101.85
+    "text": "AI",
+    "start": 39.04,
+    "end": 39.52
   },
   {
     "id": "w90",
-    "text": "released.",
-    "start": 101.85,
-    "end": 102.57
+    "text": "on",
+    "start": 39.52,
+    "end": 39.68
   },
   {
     "id": "w91",
-    "text": "Hit",
-    "start": 102.57,
-    "end": 102.81
+    "text": "its",
+    "start": 39.68,
+    "end": 39.92
   },
   {
     "id": "w92",
-    "text": "your",
-    "start": 102.81,
-    "end": 102.97
+    "text": "page.",
+    "start": 39.92,
+    "end": 40.64
   },
   {
     "id": "w93",
-    "text": "budget,",
-    "start": 102.97,
-    "end": 103.45
+    "text": "Allowance",
+    "start": 40.64,
+    "end": 41.2
   },
   {
     "id": "w94",
-    "text": "and",
-    "start": 103.45,
-    "end": 103.61
+    "text": "caught",
+    "start": 41.2,
+    "end": 41.52
   },
   {
     "id": "w95",
-    "text": "the",
-    "start": 103.61,
-    "end": 103.77
+    "text": "it,",
+    "start": 41.52,
+    "end": 41.76
   },
   {
     "id": "w96",
-    "text": "agent",
-    "start": 103.77,
-    "end": 104.33
+    "text": "and",
+    "start": 41.76,
+    "end": 42
   },
   {
     "id": "w97",
-    "text": "stops.",
-    "start": 104.33,
-    "end": 109.77
+    "text": "nothing",
+    "start": 42,
+    "end": 42.32
   },
   {
     "id": "w98",
-    "text": "Every",
-    "start": 118.26,
-    "end": 118.74
+    "text": "was",
+    "start": 42.32,
+    "end": 42.56
   },
   {
     "id": "w99",
-    "text": "decision,",
-    "start": 118.74,
-    "end": 119.46
+    "text": "charged.",
+    "start": 42.56,
+    "end": 44.48
   },
   {
     "id": "w100",
-    "text": "every",
-    "start": 119.46,
-    "end": 119.62
+    "text": "Say",
+    "start": 44.48,
+    "end": 44.96
   },
   {
     "id": "w101",
-    "text": "PayPal",
-    "start": 119.7,
-    "end": 120.42
+    "text": "no",
+    "start": 44.96,
+    "end": 45.2
   },
   {
     "id": "w102",
-    "text": "payment",
-    "start": 120.42,
-    "end": 120.82
+    "text": "and",
+    "start": 45.28,
+    "end": 45.44
   },
   {
     "id": "w103",
-    "text": "in",
-    "start": 120.82,
-    "end": 121.06
+    "text": "the",
+    "start": 45.44,
+    "end": 45.6
   },
   {
     "id": "w104",
-    "text": "one",
-    "start": 121.06,
-    "end": 121.38
+    "text": "hold",
+    "start": 45.6,
+    "end": 46
   },
   {
     "id": "w105",
-    "text": "log.",
-    "start": 121.38,
-    "end": 136.34
+    "text": "is",
+    "start": 46,
+    "end": 46.16
   },
   {
     "id": "w106",
-    "text": "Allowance",
-    "start": 136.34,
-    "end": 137.3
+    "text": "released.",
+    "start": 46.16,
+    "end": 48.4
   },
   {
     "id": "w107",
-    "text": "for",
-    "start": 137.3,
-    "end": 137.54
+    "text": "Hit",
+    "start": 48.4,
+    "end": 48.88
   },
   {
     "id": "w108",
-    "text": "anyone",
-    "start": 137.54,
-    "end": 137.94
+    "text": "your",
+    "start": 48.88,
+    "end": 49.04
   },
   {
     "id": "w109",
-    "text": "who",
-    "start": 137.94,
-    "end": 138.1
+    "text": "budget",
+    "start": 49.04,
+    "end": 49.36
   },
   {
     "id": "w110",
-    "text": "wants",
-    "start": 138.1,
-    "end": 138.42
+    "text": "and",
+    "start": 49.44,
+    "end": 49.6
   },
   {
     "id": "w111",
-    "text": "AI",
-    "start": 138.42,
-    "end": 138.9
+    "text": "the",
+    "start": 49.6,
+    "end": 49.84
   },
   {
     "id": "w112",
-    "text": "to",
-    "start": 138.9,
-    "end": 139.06
+    "text": "agent",
+    "start": 49.84,
+    "end": 50.4
   },
   {
     "id": "w113",
-    "text": "buy",
-    "start": 139.06,
-    "end": 139.22
+    "text": "stops.",
+    "start": 50.4,
+    "end": 52.48
   },
   {
     "id": "w114",
-    "text": "for",
-    "start": 139.22,
-    "end": 139.38
+    "text": "Every",
+    "start": 52.48,
+    "end": 52.96
   },
   {
     "id": "w115",
-    "text": "them",
-    "start": 139.38,
-    "end": 139.54
+    "text": "decision,",
+    "start": 52.96,
+    "end": 53.68
   },
   {
     "id": "w116",
-    "text": "without",
-    "start": 139.62,
-    "end": 140.02
+    "text": "every",
+    "start": 53.68,
+    "end": 53.92
   },
   {
     "id": "w117",
-    "text": "handing",
-    "start": 140.02,
-    "end": 140.34
+    "text": "PayPal",
+    "start": 53.92,
+    "end": 54.64
   },
   {
     "id": "w118",
-    "text": "over",
-    "start": 140.34,
-    "end": 140.58
+    "text": "payment",
+    "start": 54.64,
+    "end": 54.96
   },
   {
     "id": "w119",
-    "text": "the",
-    "start": 140.58,
-    "end": 140.82
+    "text": "in",
+    "start": 55.04,
+    "end": 55.2
   },
   {
     "id": "w120",
+    "text": "one",
+    "start": 55.2,
+    "end": 55.52
+  },
+  {
+    "id": "w121",
+    "text": "log.",
+    "start": 55.52,
+    "end": 56.16
+  },
+  {
+    "id": "w122",
+    "text": "And",
+    "start": 56.99,
+    "end": 57.31
+  },
+  {
+    "id": "w123",
+    "text": "the",
+    "start": 57.31,
+    "end": 57.47
+  },
+  {
+    "id": "w124",
+    "text": "same",
+    "start": 57.47,
+    "end": 57.79
+  },
+  {
+    "id": "w125",
+    "text": "payments",
+    "start": 57.79,
+    "end": 58.27
+  },
+  {
+    "id": "w126",
+    "text": "right",
+    "start": 58.27,
+    "end": 58.51
+  },
+  {
+    "id": "w127",
+    "text": "there",
+    "start": 58.51,
+    "end": 58.67
+  },
+  {
+    "id": "w128",
+    "text": "in",
+    "start": 58.67,
+    "end": 58.83
+  },
+  {
+    "id": "w129",
+    "text": "PayPal.",
+    "start": 58.83,
+    "end": 60.99
+  },
+  {
+    "id": "w130",
+    "text": "Allowance",
+    "start": 60.99,
+    "end": 61.87
+  },
+  {
+    "id": "w131",
+    "text": "for",
+    "start": 62.03,
+    "end": 62.27
+  },
+  {
+    "id": "w132",
+    "text": "anyone",
+    "start": 62.27,
+    "end": 62.59
+  },
+  {
+    "id": "w133",
+    "text": "who",
+    "start": 62.59,
+    "end": 62.75
+  },
+  {
+    "id": "w134",
+    "text": "wants",
+    "start": 62.75,
+    "end": 62.99
+  },
+  {
+    "id": "w135",
+    "text": "AI",
+    "start": 62.99,
+    "end": 63.47
+  },
+  {
+    "id": "w136",
+    "text": "to",
+    "start": 63.47,
+    "end": 63.55
+  },
+  {
+    "id": "w137",
+    "text": "buy",
+    "start": 63.55,
+    "end": 63.79
+  },
+  {
+    "id": "w138",
+    "text": "for",
+    "start": 63.79,
+    "end": 63.95
+  },
+  {
+    "id": "w139",
+    "text": "them",
+    "start": 63.95,
+    "end": 64.11
+  },
+  {
+    "id": "w140",
+    "text": "without",
+    "start": 64.19,
+    "end": 64.51
+  },
+  {
+    "id": "w141",
+    "text": "handing",
+    "start": 64.51,
+    "end": 64.91
+  },
+  {
+    "id": "w142",
+    "text": "over",
+    "start": 64.91,
+    "end": 65.15
+  },
+  {
+    "id": "w143",
+    "text": "the",
+    "start": 65.15,
+    "end": 65.31
+  },
+  {
+    "id": "w144",
     "text": "keys.",
-    "start": 140.82,
-    "end": 141.78
+    "start": 65.31,
+    "end": 66.91
   }
 ]
