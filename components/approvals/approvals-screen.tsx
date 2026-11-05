@@ -1,6 +1,6 @@
 "use client";
 // Needs your OK — desktop list + the phone card (design/needs-ok-mobile.dc.html).
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { CoinRain } from "@/components/stage/coin-rain";
 import { Halftone } from "@/components/stage/halftone";
 import { Sprite } from "@/components/stage/sprite";
@@ -32,14 +32,25 @@ export function ApprovalsScreen() {
   const { sequence } = useSound();
   const [list, setList] = useState<Approval[] | null>(null);
   const [outcomes, setOutcomes] = useState<Record<string, Outcome>>({});
+  const outcomesRef = useRef<Record<string, Outcome>>({});
+  useEffect(() => { outcomesRef.current = outcomes; }, [outcomes]);
   const [busy, setBusy] = useState<Record<string, boolean>>({});
   const [open, setOpen] = useState<Record<string, boolean>>({});
   const [now, setNow] = useState(0);
 
+  // Keep items the person just decided on in the list even after the server
+  // stops returning them, so the Paid / Hold-released screen stays until "Back".
   const load = useCallback(() => {
     fetch("/api/approvals?status=PENDING", { cache: "no-store" })
       .then((r) => (r.ok ? r.json() : null))
-      .then((d) => { if (d) setList(d.approvals); })
+      .then((d) => {
+        if (!d) return;
+        setList((prev) => {
+          const fresh = d.approvals as Approval[];
+          const kept = (prev ?? []).filter((a) => outcomesRef.current[a.requestId] && !fresh.some((f) => f.requestId === a.requestId));
+          return [...kept, ...fresh];
+        });
+      })
       .catch(() => {});
   }, []);
   useEffect(() => { load(); const iv = setInterval(load, 10000); return () => clearInterval(iv); }, [load]);
@@ -68,6 +79,7 @@ export function ApprovalsScreen() {
   }
   function dismiss(id: string) {
     setOutcomes((o) => { const n = { ...o }; delete n[id]; return n; });
+    setList((prev) => (prev ?? []).filter((a) => a.requestId !== id));
     load();
   }
 
