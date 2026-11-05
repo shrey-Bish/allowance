@@ -1,5 +1,5 @@
 {
-  "total": 78.2,
+  "total": 78.9,
   "lines": [
     {
       "line": 1,
@@ -45,44 +45,44 @@
     },
     {
       "line": 8,
-      "start": 37.7,
-      "end": 45.73,
+      "start": 38.4,
+      "end": 46.43,
       "text": "This store looks like a deal. But hidden in its page, in text you can't see, is a note telling the AI to skip every check."
     },
     {
       "line": 9,
-      "start": 47.0,
-      "end": 52.99,
+      "start": 47.7,
+      "end": 53.69,
       "text": "Allowance reads the page too. It caught the note, blocked the purchase, and nothing was charged."
     },
     {
       "line": 10,
-      "start": 54.4,
-      "end": 56.44,
+      "start": 55.1,
+      "end": 57.14,
       "text": "Say no, and the hold is released."
     },
     {
       "line": 11,
-      "start": 58.4,
-      "end": 60.77,
+      "start": 59.1,
+      "end": 61.47,
       "text": "Hit your budget, and the agent stops."
     },
     {
       "line": 12,
-      "start": 62.5,
-      "end": 65.94,
+      "start": 63.2,
+      "end": 66.64,
       "text": "Every decision, every PayPal payment, in one log."
     },
     {
       "line": 13,
-      "start": 67.0,
-      "end": 69.41,
+      "start": 67.7,
+      "end": 70.11,
       "text": "And the same payments, right there in PayPal."
     },
     {
       "line": 14,
-      "start": 70.8,
-      "end": 75.91,
+      "start": 71.5,
+      "end": 76.61,
       "text": "Allowance. For anyone who wants AI to buy for them, without handing over the keys."
     }
   ]

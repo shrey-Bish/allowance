@@ -11,7 +11,7 @@
       {
         "code": "composition_file_too_large",
         "severity": "warning",
-        "message": "This HTML composition file has 326 lines. Smaller sub-compositions are easier to read, iterate on, and diff.",
+        "message": "This HTML composition file has 379 lines. Smaller sub-compositions are easier to read, iterate on, and diff.",
         "selector": "[data-composition-id]",
         "dataAttributes": {},
         "sourceFile": "/Users/shrey/Downloads/paypalai/video/allowance-demo/compositions/captions.html",
@@ -57,7 +57,7 @@
         "fixHint": "Add `immediateRender: false` to every fromTo except the earliest-positioned one (at 0s), so pre-first-tween seeks keep its \"from\" values. A hiding `tl.set(..., 0)` baseline trips gsap_timeline_set_initial_hide, and a `gsap.set` authored before the fromTo calls is overwritten by them."
       }
     ],
-    "filesScanned": 15
+    "filesScanned": 16
   },
   "runtime": {
     "ok": true,
@@ -72,17 +72,17 @@
     "warningCount": 0,
     "infoCount": 0,
     "findings": [],
-    "duration": 68.2,
+    "duration": 78.9,
     "samples": [
-      3.789,
-      11.367,
-      18.944,
-      26.522,
-      34.1,
-      41.678,
-      49.256,
-      56.833,
-      64.411
+      4.383,
+      13.15,
+      21.917,
+      30.683,
+      39.45,
+      48.217,
+      56.983,
+      65.75,
+      74.517
     ],
     "transitionSamples": [],
     "transitionSamplesDropped": 0,
@@ -107,14 +107,14 @@
     "findings": [],
     "enabled": true,
     "samples": [
-      3.789,
-      18.944,
-      34.1,
-      49.256,
-      64.411
+      4.383,
+      21.917,
+      39.45,
+      56.983,
+      74.517
     ],
-    "checked": 25,
-    "passed": 25
+    "checked": 22,
+    "passed": 22
   },
   "craft": {
     "ok": true,
@@ -123,8 +123,8 @@
     "infoCount": 0,
     "findings": [],
     "enabled": true,
-    "step": 0.125,
-    "samples": 546
+    "step": 0.1319999999999979,
+    "samples": 599
   },
   "audio": {
     "ok": true,

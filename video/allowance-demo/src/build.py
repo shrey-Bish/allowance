@@ -23,7 +23,7 @@ SPEC = [
     ("rules",   3, 0.3, 0.8, 6.0),
     ("paid",    4, 0.3, 0.9, 6.5),
     ("hold",    5, 0.4, 1.0, 5.5),
-    ("pa",      6, 0.4, 1.1, 5.0),
+    ("pa",      6, 0.4, 1.8, 5.0),
     ("store",   7, 0.3, 1.0, 7.5),
     ("blocked", 8, 0.3, 1.1, 6.5),
     ("pdn",     9, 0.3, 1.5, 4.0),
@@ -177,8 +177,26 @@ add("hold", "hold", cam_scene("hd", "05-shop-hold.mp4", 10.8, D,
     headline="Over your limit → <b>money on hold</b>", head_at=0.4))
 
 # ---- 7/9. phone scenes
-def phone_scene(id_, src, media_start, dur, headline, head_at, chip_text=None):
-    body = "\n".join([
+def phone_scene(id_, src, media_start, dur, headline, head_at, chip_text=None, tap=None):
+    """tap = (x, y, w, h, t): a touch pointer slides onto the button centred at (x, y) and presses at t."""
+    extra, ejs = [], []
+    if tap:
+        x, y, w, h, t = tap
+        extra = [
+            f'    <div id="{id_}-hl" class="clip" data-start="{round(t - 0.1, 2)}" data-duration="1.0" data-layout-ignore style="position:absolute;left:{x - w // 2 - 7}px;top:{y - h // 2 - 7}px;width:{w + 14}px;height:{h + 14}px;border-radius:999px;border:4px solid #1C1B19;z-index:3;opacity:0"></div>',
+            f'    <div id="{id_}-rip" class="clip" data-start="{t}" data-duration="0.7" data-layout-ignore style="position:absolute;left:{x - 24}px;top:{y - 24}px;width:48px;height:48px;border-radius:50%;border:3px solid #1C1B19;z-index:4;opacity:0"></div>',
+            f'    <div id="{id_}-cur" class="clip" data-start="{round(t - 0.8, 2)}" data-duration="1.4" data-layout-ignore style="position:absolute;left:{x - 23}px;top:{y - 23}px;width:46px;height:46px;border-radius:50%;background:rgba(28,27,25,.88);border:3px solid #FFFDF8;box-shadow:0 6px 18px rgba(28,27,25,.35);z-index:5;opacity:0"></div>',
+        ]
+        ejs = [
+            f'    tl.fromTo("#{id_}-cur", {{opacity: 0, x: 150, y: 170, scale: 1}}, {{opacity: 1, x: 0, y: 0, duration: 0.55, ease: "expo.out"}}, {round(t - 0.7, 2)});',
+            f'    tl.to("#{id_}-cur", {{scale: 0.72, duration: 0.09, ease: "power2.in"}}, {t});',
+            f'    tl.to("#{id_}-cur", {{scale: 1, duration: 0.16, ease: "back.out(2)"}}, {round(t + 0.09, 2)});',
+            f'    tl.to("#{id_}-cur", {{opacity: 0, duration: 0.25, ease: "power3.in"}}, {round(t + 0.3, 2)});',
+            f'    tl.fromTo("#{id_}-rip", {{opacity: 0.9, scale: 1}}, {{opacity: 0, scale: 2.8, duration: 0.55, ease: "power2.out"}}, {t});',
+            f'    tl.to("#{id_}-hl", {{opacity: 1, duration: 0.12, ease: "power2.out"}}, {round(t - 0.05, 2)});',
+            f'    tl.to("#{id_}-hl", {{opacity: 0, duration: 0.3, ease: "power2.in"}}, {round(t + 0.55, 2)});',
+        ]
+    body = "\n".join(extra + [
         f'    <div id="{id_}-bg" class="clip full" data-start="0" data-duration="{dur}" style="background:#F6F1E7"></div>',
         f'    <div id="{id_}-frame" style="position:absolute;left:720px;top:160px;width:480px;height:804px;border-radius:56px;background:#1C1B19;padding:10px;box-sizing:border-box;z-index:2;box-shadow:0 40px 90px rgba(28,27,25,.25)" data-layout-ignore>',
         f'      <div style="position:relative;width:100%;height:100%;border-radius:46px;overflow:hidden;background:#F6F1E7"><video id="{id_}-v" class="clip" data-start="0" data-duration="{dur}" data-media-start="{media_start}" muted playsinline src="assets/video/{src}" style="position:absolute;left:0;top:0;width:460px;height:784px;object-fit:fill"></video></div>',
@@ -186,10 +204,12 @@ def phone_scene(id_, src, media_start, dur, headline, head_at, chip_text=None):
         head(f"{id_}-h", headline, head_at, dur - head_at - 0.4),
     ] + ([chip(f"{id_}-chip", chip_text, 0.3, dur - 0.3)] if chip_text else []))
     js = "\n".join([f'    tl.fromTo("#{id_}-frame", {{y: 60, opacity: 0}}, {{y: 0, opacity: 1, duration: 0.55, ease: "expo.out"}}, 0.1);',
-                    fade_in(f"#{id_}-h", head_at), fade_out(f"#{id_}-h", dur - 0.5)] + ([fade_in(f"#{id_}-chip", 0.3)] if chip_text else []))
+                    fade_in(f"#{id_}-h", head_at), fade_out(f"#{id_}-h", dur - 0.5)] + ([fade_in(f"#{id_}-chip", 0.3)] if chip_text else []) + ejs)
     return scene(id_, dur, body, js=js, extra_root_attrs="data-layout-allow-overflow")
 D = timeline["pa"][1]
-add("pa", "phone-approve", phone_scene("pa", "06-phone-approve.mp4", 2.0, D, "Approve on your phone → <b>paid</b>", 0.6, "PayPal Sandbox · test money"))
+# phone video 634x1080 → 460x784 at (730,170): Approve centre (960,672), Don't buy centre (960,746), 412x64
+PA_MEDIA = 1.8; PA_TAP = round(4.8 - PA_MEDIA, 2)          # the recording scrolls + taps Approve at clip 4.4 s
+add("pa", "phone-approve", phone_scene("pa", "06-phone-approve.mp4", PA_MEDIA, D, "Approve on your phone → <b>paid</b>", 0.6, "PayPal Sandbox · test money", tap=(960, 672, 412, 64, PA_TAP)))
 
 STORE_REVEAL = 5.2            # seconds into the scene where "is a note" is spoken
 STORE_MEDIA = round(STORE_CLIP_REVEAL - STORE_REVEAL, 2)
@@ -211,7 +231,8 @@ add("blocked", "blocked", cam_scene("bl", "07-shop-blocked.mp4", 22.0, D,
     headline="Hidden instructions for the AI → <b>blocked</b>", head_at=4.1))
 
 D = timeline["pdn"][1]
-add("pdn", "phone-decline", phone_scene("pdn", "09-phone-decline.mp4", 3.0, D, "Say no → <b>hold released</b>", 0.6))
+PDN_MEDIA = 2.4; PDN_TAP = round(3.8 - PDN_MEDIA, 2)      # taps Don't buy at clip 3.6 s
+add("pdn", "phone-decline", phone_scene("pdn", "09-phone-decline.mp4", PDN_MEDIA, D, "Say no → <b>hold released</b>", 0.6, tap=(960, 746, 412, 64, PDN_TAP)))
 
 # ---- 10. budget: OVER BUDGET stamp
 D = timeline["budget"][1]
@@ -262,7 +283,7 @@ SFX = [("sfx-glitch", "hook", HOOK_STAMP - 1.9, 0.45), ("sfx-door-slam", "hook",
        ("sfx-coin", "link", 0.5, 0.4),
        ("sfx-coin", "paid", 0.9, 0.45), ("sfx-receipt", "paid", 1.0, 0.35), ("sfx-receipt", "paid", 4.9, 0.35),
        ("sfx-jar", "hold", 1.3, 0.45),
-       ("sfx-coin-rain", "pa", 4.0, 0.45),
+       ("sfx-coin-rain", "pa", PA_TAP + 2.0, 0.45),
        ("sfx-glitch", "store", STORE_REVEAL, 0.5),
        ("sfx-glitch", "blocked", 2.0, 0.5), ("sfx-door-slam", "blocked", 3.7, 0.45), ("sfx-stamp", "blocked", 4.0, 0.6),
        ("sfx-stamp", "budget", 2.4, 0.55),
