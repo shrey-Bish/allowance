@@ -190,3 +190,18 @@ Activity log shows every row with the right PayPal status and ids. Budget: $172.
 - Recordings: `scripts/record-scenes.mjs` drives the hosted app in recording mode (`?record=1`) at 1920×1080 with Playwright, one scene per file, phone scenes on an iPhone 13 profile; the PayPal ledger scene logs into the sandbox business account (login read from `~/.allowance-paypal-sandbox`, never committed). Raw recordings + converted mp4s + renders are gitignored (hundreds of MB).
 - Narration: 9 ElevenLabs lines (George), mixed at the planned beat times into `assets/audio/vo.wav`; SFX and Scout/Penny lines from `public/audio` placed on their visible causes.
 - Output: `renders/allowance-demo-final.mp4` (also `~/Downloads/allowance-demo-final.mp4`): 2:28, 1920×1080 30 fps H.264 + AAC 192k, −15 LUFS integrated (loudnorm two-pass to −14; measured, not heard), peak −1.5 dBFS. No music under narration (spec §21). Every screen is a real recording; chips: "PayPal Sandbox · test money".
+
+## 2026-11-05 — New ASU key, checker model replaced
+
+- The ASU key was rotated (old one now returns 401). The new key sees a different model list: `llama3-groq-70b-tool-use` answers **410 model_retired**, so every purchase on the hosted demo fell to the fail-safe ("Automatic safety check unavailable", held for OK). Scout's `gpt-oss-120b` is unaffected.
+- The gateway's suggested replacement `qwen36-35b-a3b` does **not** work with the checker call: 14–18 s and no valid JSON (also `qwen36-27b`, `qwen38-27b`; `mistral-large-4` times out).
+- `scripts/risk-bench.ts` now has four cases (grocery basket, VoltHub charger, VoltHub headphones, scam charger). Three rounds each:
+
+  | model | basket | charger | headphones | scam |
+  |---|---|---|---|---|
+  | granite41-30b | ok, 2.9 s | ok, 2.8 s | review (rules' own), 3.7 s | block 95, 4.5 s, "Price is 2.8× the usual $19…" ✓ |
+  | llama4-maverick-17b | ok, 3.0 s | ok, 3.0 s | review, 3.3 s | block 95, 4.0 s, leads with "Store is only 3 days old." |
+  | llama4-scout-17b | ok, 1.8 s | **review, invented intent mismatch** ✗ | review, 1.6 s | block 100, 2.5 s |
+  | qwen3-235b-a22b | ok, 4–9 s | — | — | block 95, 8–12 s (too close to the 12 s timeout) |
+
+- **Chosen: `CHECKER_MODEL=granite41-30b`** (identical results in all three rounds). Fallback: `llama4-maverick-17b`. Local walkthrough on the PayPal sandbox: charger auto-paid, headphones held, MegaDealz247 blocked with all three reasons.

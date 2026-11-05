@@ -26,7 +26,7 @@ Everything lands in an Activity log (AG Grid) with the PayPal reference ids, and
 
 ### Challenges I ran into
 - The sandbox buyer must have a funding source or PayPal's vault approval page fails with a generic error. A custom sandbox account with a card fixed it.
-- Picking the checker model: a small model hallucinated "hidden instructions" on an honest store; a reasoning model was right but took 11–14 s on the real prompt. I measured on the real prompt and settled on a fast tool-use Llama that answers in about 3 s.
+- Picking the checker model: a small model hallucinated "hidden instructions" on an honest store; a reasoning model was right but took 11–14 s on the real prompt. I measured on the real prompt and settled on a mid-size model that answers in 3–5 s.
 - The agent would pre-refuse purchases it guessed were over budget, so nothing showed up in the log. I made Allowance the only judge: Scout asks, the Guard decides.
 - Reference prices: excluding a store's own listing made the scam store's price the "usual" price. The median across all listings fixed it.
 
@@ -52,7 +52,7 @@ https://youtu.be/G9VkxEoQeQU (2:47)
 ## Additional info (judges)
 
 **How the project meets the technology requirement:**
-PayPal developer platform (sandbox): Vault API (`/v3/vault/setup-tokens`, `/v3/vault/payment-tokens`) to save the buyer's PayPal wallet once; Orders API v2 (`/v2/checkout/orders` with `vault_id`, intents `CAPTURE` and `AUTHORIZE`); Payments API v2 (`/v2/payments/authorizations/{id}/capture` and `/void`); Webhooks with `/v1/notifications/verify-webhook-signature`; the PayPal JS SDK button for the one-time link. AI: two LLMs served through ASU Research Computing's OpenAI-compatible LLM API, `gpt-oss-120b` as the tool-using shopping agent and `llama3-groq-70b-tool-use` as the structured-JSON safety checker; ElevenLabs for the characters' voices, sound effects and the video narration.
+PayPal developer platform (sandbox): Vault API (`/v3/vault/setup-tokens`, `/v3/vault/payment-tokens`) to save the buyer's PayPal wallet once; Orders API v2 (`/v2/checkout/orders` with `vault_id`, intents `CAPTURE` and `AUTHORIZE`); Payments API v2 (`/v2/payments/authorizations/{id}/capture` and `/void`); Webhooks with `/v1/notifications/verify-webhook-signature`; the PayPal JS SDK button for the one-time link. AI: two LLMs served through ASU Research Computing's OpenAI-compatible LLM API, `gpt-oss-120b` as the tool-using shopping agent and `granite41-30b` as the structured-JSON safety checker; ElevenLabs for the characters' voices, sound effects and the video narration.
 
 **Additional sponsor tools:** AG Grid (Community) for the Activity log: sortable/filterable grid, quick search, pinned totals row, CSV export, custom status renderer, row-click detail drawer. Render for hosting.
 

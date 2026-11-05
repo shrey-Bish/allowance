@@ -35,7 +35,7 @@ services:
       - key: AGENT_MODEL
         value: gpt-oss-120b
       - key: CHECKER_MODEL
-        value: llama3-groq-70b-tool-use
+        value: granite41-30b
       - key: AGENT_API_KEY
         generateValue: true
       - key: APP_BASE_URL
