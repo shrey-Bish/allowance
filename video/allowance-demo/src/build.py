@@ -187,8 +187,8 @@ body = "\n".join([
 ])
 js = "\n".join([fade_in("#po-h1", 0.4), fade_out("#po-h1", 5.5),
                 '    tl.fromTo("#po-act", {opacity: 0}, {opacity: 1, duration: 0.25}, 6);', fade_in("#po-h2", 6.3), fade_out("#po-h2", 12.5),
-                '    tl.fromTo("#po-ppwrap", {opacity: 0, scale: 1.3, y: -70}, {opacity: 1, scale: 1.3, y: -70, duration: 0.3}, 13);',
-                '    tl.to("#po-ppwrap", {y: -120, duration: 4.5, ease: "power1.inOut"}, 13.3);',
+                '    tl.fromTo("#po-ppwrap", {opacity: 0, scale: 1.3, y: 70}, {opacity: 1, scale: 1.3, y: 70, duration: 0.3}, 13);',
+                '    tl.to("#po-ppwrap", {y: 110, duration: 4.5, ease: "power1.inOut"}, 13.3);',
                 fade_in("#po-h3", 13.3), fade_in("#po-chip", 13.2), fade_out("#po-h3", 17.5)])
 (C / "payoff.html").write_text(scene("payoff", S, body, js=js, extra_root_attrs="data-layout-allow-overflow")); scenes.append(("payoff", 118, S))
 
