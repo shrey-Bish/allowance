@@ -1,0 +1,28 @@
+18:52:50 saved store 4 events
+18:52:50 === day attempt 1
+18:52:51 reset 200
+18:54:28 saved paid 20 events
+18:54:28 groceries paid: $28.35
+18:55:14 saved hold 17 events
+18:55:31 saved approve 5 events
+18:57:25 saved blocked 27 events
+18:57:53 saved hold2 11 events
+18:58:09 saved decline 5 events
+18:59:24 saved budget 12 events
+18:59:24 day recorded on-story
+18:59:42 saved activity 5 events
+18:59:52 PAGE ERROR paypal Minified React error #418; visit https://reactjs.org/docs/error-decoder.html?invariant=418 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.
+18:59:52 PAGE ERROR paypal Minified React error #423; visit https://reactjs.org/docs/error-decoder.html?invariant=423 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.
+18:59:52 PAGE ERROR paypal Failed to fetch
+18:59:52 PAGE ERROR paypal Failed to fetch
+18:59:52 PAGE ERROR paypal Failed to fetch
+18:59:52 PAGE ERROR paypal Failed to fetch
+18:59:52 PAGE ERROR paypal Failed to fetch
+18:59:52 PAGE ERROR paypal Failed to fetch
+18:59:52 PAGE ERROR paypal Failed to fetch
+18:59:52 PAGE ERROR paypal Failed to fetch
+18:59:52 PAGE ERROR paypal Failed to fetch
+19:00:14 paypal url: https://www.sandbox.paypal.com/unifiedtransactions/?filter=0&query=
+19:00:17 saved paypal 3 events
+19:00:17 reset 200
+19:00:18 all scenes done

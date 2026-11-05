@@ -6,6 +6,8 @@ Allowance is a safety layer between any AI shopping agent and your PayPal. You l
 
 Built for the [PayPal AI Hackathon](https://paypalaihackathon.devpost.com) (Nov 2026). Sandbox only, test money only.
 
+**▶ Watch the demo (2:47):** https://youtu.be/G9VkxEoQeQU
+
 ## Try it (judges)
 
 **Hosted demo:** https://allowance-kdvo.onrender.com — the PayPal sandbox buyer is already linked, so go straight to **Shop with Scout** and type a task. Suggested run:
@@ -19,7 +21,7 @@ To see the money move on PayPal's side, log in at https://www.sandbox.paypal.com
 
 The AI calls take a few seconds each; a Scout run is usually 20–60 s.
 
-> **Status (2026-11-02):** working end to end on the PayPal sandbox — wallet vaulted once, then auto-pay / hold-then-capture / hold-then-void / block all exercised with real PayPal ids. Core screens (Shop with Scout, Needs your OK, Link PayPal) and the pixel Agent Cam are built. Rules, Activity (AG Grid), Settings, storefront pages, hosting and the video are in progress. See `docs/DECISIONS.md`.
+> **Status (2026-11-05):** working end to end on the PayPal sandbox and hosted — wallet vaulted once, then auto-pay / hold-then-capture / hold-then-void / block all exercised with real PayPal ids. All screens are built: Shop with Scout, Needs your OK, Your rules, Activity (AG Grid), Settings, Link PayPal, the three storefront pages and the pixel Agent Cam. See `docs/DECISIONS.md`.
 
 ## How it works
 

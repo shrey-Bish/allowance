@@ -1,0 +1,290 @@
+[
+  {
+    "id": "w0",
+    "text": "Then",
+    "start": 0,
+    "end": 0.32
+  },
+  {
+    "id": "w1",
+    "text": "I",
+    "start": 0.32,
+    "end": 0.56
+  },
+  {
+    "id": "w2",
+    "text": "get",
+    "start": 0.56,
+    "end": 0.8
+  },
+  {
+    "id": "w3",
+    "text": "ambitious.",
+    "start": 0.8,
+    "end": 1.76
+  },
+  {
+    "id": "w4",
+    "text": "Headphones,",
+    "start": 1.76,
+    "end": 2.56
+  },
+  {
+    "id": "w5",
+    "text": "$129.",
+    "start": 2.72,
+    "end": 4.48
+  },
+  {
+    "id": "w6",
+    "text": "That's",
+    "start": 4.48,
+    "end": 4.88
+  },
+  {
+    "id": "w7",
+    "text": "over",
+    "start": 4.88,
+    "end": 5.12
+  },
+  {
+    "id": "w8",
+    "text": "my",
+    "start": 5.12,
+    "end": 5.28
+  },
+  {
+    "id": "w9",
+    "text": "$50",
+    "start": 5.28,
+    "end": 5.68
+  },
+  {
+    "id": "w10",
+    "text": "line,",
+    "start": 6,
+    "end": 6.32
+  },
+  {
+    "id": "w11",
+    "text": "so",
+    "start": 6.32,
+    "end": 6.56
+  },
+  {
+    "id": "w12",
+    "text": "Scout",
+    "start": 6.56,
+    "end": 6.96
+  },
+  {
+    "id": "w13",
+    "text": "can't",
+    "start": 7.04,
+    "end": 7.36
+  },
+  {
+    "id": "w14",
+    "text": "just",
+    "start": 7.36,
+    "end": 7.52
+  },
+  {
+    "id": "w15",
+    "text": "buy",
+    "start": 7.52,
+    "end": 7.92
+  },
+  {
+    "id": "w16",
+    "text": "them.",
+    "start": 7.92,
+    "end": 8.4
+  },
+  {
+    "id": "w17",
+    "text": "PayPal",
+    "start": 8.4,
+    "end": 9.2
+  },
+  {
+    "id": "w18",
+    "text": "puts",
+    "start": 9.2,
+    "end": 9.44
+  },
+  {
+    "id": "w19",
+    "text": "the",
+    "start": 9.44,
+    "end": 9.52
+  },
+  {
+    "id": "w20",
+    "text": "money",
+    "start": 9.52,
+    "end": 9.76
+  },
+  {
+    "id": "w21",
+    "text": "on",
+    "start": 9.76,
+    "end": 9.92
+  },
+  {
+    "id": "w22",
+    "text": "hold",
+    "start": 9.92,
+    "end": 10.16
+  },
+  {
+    "id": "w23",
+    "text": "and",
+    "start": 10.24,
+    "end": 10.4
+  },
+  {
+    "id": "w24",
+    "text": "Penny",
+    "start": 10.4,
+    "end": 10.96
+  },
+  {
+    "id": "w25",
+    "text": "keeps",
+    "start": 10.96,
+    "end": 11.2
+  },
+  {
+    "id": "w26",
+    "text": "it",
+    "start": 11.2,
+    "end": 11.28
+  },
+  {
+    "id": "w27",
+    "text": "in",
+    "start": 11.28,
+    "end": 11.44
+  },
+  {
+    "id": "w28",
+    "text": "a",
+    "start": 11.44,
+    "end": 11.52
+  },
+  {
+    "id": "w29",
+    "text": "jar",
+    "start": 11.52,
+    "end": 11.84
+  },
+  {
+    "id": "w30",
+    "text": "with",
+    "start": 11.84,
+    "end": 12
+  },
+  {
+    "id": "w31",
+    "text": "a",
+    "start": 12,
+    "end": 12.16
+  },
+  {
+    "id": "w32",
+    "text": "10",
+    "start": 12.16,
+    "end": 12.4
+  },
+  {
+    "id": "w33",
+    "text": "minute",
+    "start": 12.48,
+    "end": 12.8
+  },
+  {
+    "id": "w34",
+    "text": "timer.",
+    "start": 12.8,
+    "end": 13.6
+  },
+  {
+    "id": "w35",
+    "text": "The",
+    "start": 13.6,
+    "end": 13.76
+  },
+  {
+    "id": "w36",
+    "text": "question",
+    "start": 13.76,
+    "end": 14.16
+  },
+  {
+    "id": "w37",
+    "text": "comes",
+    "start": 14.16,
+    "end": 14.48
+  },
+  {
+    "id": "w38",
+    "text": "to",
+    "start": 14.48,
+    "end": 14.64
+  },
+  {
+    "id": "w39",
+    "text": "my",
+    "start": 14.64,
+    "end": 14.72
+  },
+  {
+    "id": "w40",
+    "text": "phone.",
+    "start": 14.72,
+    "end": 15.2
+  },
+  {
+    "id": "w41",
+    "text": "I",
+    "start": 15.2,
+    "end": 15.36
+  },
+  {
+    "id": "w42",
+    "text": "tap",
+    "start": 15.36,
+    "end": 15.6
+  },
+  {
+    "id": "w43",
+    "text": "approve,",
+    "start": 15.84,
+    "end": 16.48
+  },
+  {
+    "id": "w44",
+    "text": "and",
+    "start": 16.48,
+    "end": 16.72
+  },
+  {
+    "id": "w45",
+    "text": "now",
+    "start": 16.72,
+    "end": 16.88
+  },
+  {
+    "id": "w46",
+    "text": "PayPal",
+    "start": 16.88,
+    "end": 17.6
+  },
+  {
+    "id": "w47",
+    "text": "pays.",
+    "start": 17.6,
+    "end": 18
+  }
+]

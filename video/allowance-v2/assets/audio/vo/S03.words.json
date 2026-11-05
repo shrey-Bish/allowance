@@ -1,0 +1,284 @@
+[
+  {
+    "id": "w0",
+    "text": "Meet",
+    "start": 0,
+    "end": 0.48
+  },
+  {
+    "id": "w1",
+    "text": "Scout.",
+    "start": 0.48,
+    "end": 1.2
+  },
+  {
+    "id": "w2",
+    "text": "Scout",
+    "start": 1.2,
+    "end": 1.68
+  },
+  {
+    "id": "w3",
+    "text": "does",
+    "start": 1.68,
+    "end": 1.92
+  },
+  {
+    "id": "w4",
+    "text": "the",
+    "start": 1.92,
+    "end": 2
+  },
+  {
+    "id": "w5",
+    "text": "shopping,",
+    "start": 2,
+    "end": 2.56
+  },
+  {
+    "id": "w6",
+    "text": "and",
+    "start": 2.56,
+    "end": 2.72
+  },
+  {
+    "id": "w7",
+    "text": "this",
+    "start": 2.72,
+    "end": 2.88
+  },
+  {
+    "id": "w8",
+    "text": "is",
+    "start": 2.88,
+    "end": 3.04
+  },
+  {
+    "id": "w9",
+    "text": "Penny.",
+    "start": 3.04,
+    "end": 3.76
+  },
+  {
+    "id": "w10",
+    "text": "Penny",
+    "start": 3.76,
+    "end": 4.24
+  },
+  {
+    "id": "w11",
+    "text": "holds",
+    "start": 4.24,
+    "end": 4.48
+  },
+  {
+    "id": "w12",
+    "text": "the",
+    "start": 4.48,
+    "end": 4.56
+  },
+  {
+    "id": "w13",
+    "text": "money",
+    "start": 4.56,
+    "end": 4.8
+  },
+  {
+    "id": "w14",
+    "text": "and",
+    "start": 4.96,
+    "end": 5.12
+  },
+  {
+    "id": "w15",
+    "text": "she",
+    "start": 5.12,
+    "end": 5.36
+  },
+  {
+    "id": "w16",
+    "text": "only",
+    "start": 5.36,
+    "end": 5.6
+  },
+  {
+    "id": "w17",
+    "text": "pays",
+    "start": 5.6,
+    "end": 6
+  },
+  {
+    "id": "w18",
+    "text": "when",
+    "start": 6,
+    "end": 6.24
+  },
+  {
+    "id": "w19",
+    "text": "my",
+    "start": 6.24,
+    "end": 6.4
+  },
+  {
+    "id": "w20",
+    "text": "rules",
+    "start": 6.4,
+    "end": 6.8
+  },
+  {
+    "id": "w21",
+    "text": "say",
+    "start": 6.8,
+    "end": 7.04
+  },
+  {
+    "id": "w22",
+    "text": "yes.",
+    "start": 7.04,
+    "end": 7.68
+  },
+  {
+    "id": "w23",
+    "text": "I",
+    "start": 7.68,
+    "end": 7.84
+  },
+  {
+    "id": "w24",
+    "text": "link",
+    "start": 7.84,
+    "end": 8.24
+  },
+  {
+    "id": "w25",
+    "text": "my",
+    "start": 8.24,
+    "end": 8.32
+  },
+  {
+    "id": "w26",
+    "text": "PayPal",
+    "start": 8.32,
+    "end": 8.96
+  },
+  {
+    "id": "w27",
+    "text": "once,",
+    "start": 8.96,
+    "end": 9.44
+  },
+  {
+    "id": "w28",
+    "text": "Scout",
+    "start": 9.44,
+    "end": 10
+  },
+  {
+    "id": "w29",
+    "text": "never",
+    "start": 10,
+    "end": 10.16
+  },
+  {
+    "id": "w30",
+    "text": "sees",
+    "start": 10.16,
+    "end": 10.48
+  },
+  {
+    "id": "w31",
+    "text": "it.",
+    "start": 10.48,
+    "end": 10.8
+  },
+  {
+    "id": "w32",
+    "text": "Then",
+    "start": 10.8,
+    "end": 11.04
+  },
+  {
+    "id": "w33",
+    "text": "I",
+    "start": 11.04,
+    "end": 11.28
+  },
+  {
+    "id": "w34",
+    "text": "set",
+    "start": 11.28,
+    "end": 11.52
+  },
+  {
+    "id": "w35",
+    "text": "two",
+    "start": 11.52,
+    "end": 11.76
+  },
+  {
+    "id": "w36",
+    "text": "rules,",
+    "start": 11.76,
+    "end": 12.48
+  },
+  {
+    "id": "w37",
+    "text": "$250",
+    "start": 12.48,
+    "end": 13.52
+  },
+  {
+    "id": "w38",
+    "text": "a",
+    "start": 13.84,
+    "end": 14
+  },
+  {
+    "id": "w39",
+    "text": "week",
+    "start": 14,
+    "end": 14.24
+  },
+  {
+    "id": "w40",
+    "text": "and",
+    "start": 14.32,
+    "end": 14.56
+  },
+  {
+    "id": "w41",
+    "text": "anything",
+    "start": 14.56,
+    "end": 15.04
+  },
+  {
+    "id": "w42",
+    "text": "over",
+    "start": 15.04,
+    "end": 15.28
+  },
+  {
+    "id": "w43",
+    "text": "50.",
+    "start": 15.28,
+    "end": 16
+  },
+  {
+    "id": "w44",
+    "text": "Ask",
+    "start": 16,
+    "end": 16.4
+  },
+  {
+    "id": "w45",
+    "text": "me",
+    "start": 16.4,
+    "end": 16.56
+  },
+  {
+    "id": "w46",
+    "text": "first.",
+    "start": 16.56,
+    "end": 17.04
+  }
+]

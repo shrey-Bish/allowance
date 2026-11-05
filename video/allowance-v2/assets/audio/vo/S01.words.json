@@ -1,0 +1,260 @@
+[
+  {
+    "id": "w0",
+    "text": "AI",
+    "start": 0,
+    "end": 0.56
+  },
+  {
+    "id": "w1",
+    "text": "agents",
+    "start": 0.56,
+    "end": 0.96
+  },
+  {
+    "id": "w2",
+    "text": "can",
+    "start": 0.96,
+    "end": 1.2
+  },
+  {
+    "id": "w3",
+    "text": "do",
+    "start": 1.2,
+    "end": 1.36
+  },
+  {
+    "id": "w4",
+    "text": "your",
+    "start": 1.36,
+    "end": 1.52
+  },
+  {
+    "id": "w5",
+    "text": "shopping",
+    "start": 1.52,
+    "end": 2
+  },
+  {
+    "id": "w6",
+    "text": "now,",
+    "start": 2,
+    "end": 2.56
+  },
+  {
+    "id": "w7",
+    "text": "groceries,",
+    "start": 2.56,
+    "end": 3.28
+  },
+  {
+    "id": "w8",
+    "text": "a",
+    "start": 3.28,
+    "end": 3.44
+  },
+  {
+    "id": "w9",
+    "text": "charger,",
+    "start": 3.44,
+    "end": 4.08
+  },
+  {
+    "id": "w10",
+    "text": "whatever",
+    "start": 4.08,
+    "end": 4.4
+  },
+  {
+    "id": "w11",
+    "text": "you",
+    "start": 4.4,
+    "end": 4.56
+  },
+  {
+    "id": "w12",
+    "text": "ask",
+    "start": 4.56,
+    "end": 4.96
+  },
+  {
+    "id": "w13",
+    "text": "for.",
+    "start": 4.96,
+    "end": 5.44
+  },
+  {
+    "id": "w14",
+    "text": "There's",
+    "start": 5.44,
+    "end": 5.84
+  },
+  {
+    "id": "w15",
+    "text": "just",
+    "start": 5.84,
+    "end": 6.08
+  },
+  {
+    "id": "w16",
+    "text": "one",
+    "start": 6.08,
+    "end": 6.4
+  },
+  {
+    "id": "w17",
+    "text": "catch.",
+    "start": 6.4,
+    "end": 7.2
+  },
+  {
+    "id": "w18",
+    "text": "To",
+    "start": 7.2,
+    "end": 7.44
+  },
+  {
+    "id": "w19",
+    "text": "buy",
+    "start": 7.44,
+    "end": 7.68
+  },
+  {
+    "id": "w20",
+    "text": "things",
+    "start": 7.68,
+    "end": 8
+  },
+  {
+    "id": "w21",
+    "text": "it",
+    "start": 8.08,
+    "end": 8.24
+  },
+  {
+    "id": "w22",
+    "text": "needs",
+    "start": 8.24,
+    "end": 8.56
+  },
+  {
+    "id": "w23",
+    "text": "your",
+    "start": 8.56,
+    "end": 8.72
+  },
+  {
+    "id": "w24",
+    "text": "wallet,",
+    "start": 8.72,
+    "end": 9.44
+  },
+  {
+    "id": "w25",
+    "text": "and",
+    "start": 9.44,
+    "end": 9.68
+  },
+  {
+    "id": "w26",
+    "text": "an",
+    "start": 9.68,
+    "end": 9.92
+  },
+  {
+    "id": "w27",
+    "text": "agent",
+    "start": 9.92,
+    "end": 10.32
+  },
+  {
+    "id": "w28",
+    "text": "will",
+    "start": 10.32,
+    "end": 10.56
+  },
+  {
+    "id": "w29",
+    "text": "believe",
+    "start": 10.56,
+    "end": 11.04
+  },
+  {
+    "id": "w30",
+    "text": "almost",
+    "start": 11.04,
+    "end": 11.36
+  },
+  {
+    "id": "w31",
+    "text": "anything",
+    "start": 11.36,
+    "end": 11.92
+  },
+  {
+    "id": "w32",
+    "text": "a",
+    "start": 11.92,
+    "end": 12.08
+  },
+  {
+    "id": "w33",
+    "text": "webpage",
+    "start": 12.08,
+    "end": 12.72
+  },
+  {
+    "id": "w34",
+    "text": "tells",
+    "start": 12.72,
+    "end": 13.12
+  },
+  {
+    "id": "w35",
+    "text": "it.",
+    "start": 13.12,
+    "end": 13.6
+  },
+  {
+    "id": "w36",
+    "text": "So,",
+    "start": 13.6,
+    "end": 14.08
+  },
+  {
+    "id": "w37",
+    "text": "would",
+    "start": 14.08,
+    "end": 14.4
+  },
+  {
+    "id": "w38",
+    "text": "you",
+    "start": 14.4,
+    "end": 14.56
+  },
+  {
+    "id": "w39",
+    "text": "hand",
+    "start": 14.56,
+    "end": 14.88
+  },
+  {
+    "id": "w40",
+    "text": "one",
+    "start": 14.88,
+    "end": 15.04
+  },
+  {
+    "id": "w41",
+    "text": "your",
+    "start": 15.04,
+    "end": 15.2
+  },
+  {
+    "id": "w42",
+    "text": "PayPal?",
+    "start": 15.2,
+    "end": 15.92
+  }
+]

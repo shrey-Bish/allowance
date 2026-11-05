@@ -1,0 +1,312 @@
+{
+ "name": "paypal",
+ "viewport": {
+  "width": 1280,
+  "height": 650
+ },
+ "events": [
+  {
+   "t": 16.77,
+   "name": "activities"
+  },
+  {
+   "t": 22.01,
+   "name": "cookie-dismissed",
+   "label": "Decline"
+  },
+  {
+   "t": 23.53,
+   "name": "rows",
+   "rows": [
+    {
+     "text": "Toggle all rowsDateTypeNameStatusGrossFeeNetActions",
+     "box": {
+      "x": 20,
+      "y": 309,
+      "w": 1240,
+      "h": 72
+     }
+    },
+    {
+     "text": "40H08618WF044332X06/11/26, 12:27 amAuthorisation fromJohn DoeVoided$59.00 USD$0.00 USD$59.00 USDTransaction actionsArchive",
+     "box": {
+      "x": 20,
+      "y": 381,
+      "w": 1240,
+      "h": 73
+     }
+    },
+    {
+     "text": "5K8707222S855732106/11/26, 12:25 amPayment fromJohn DoeCompleted$129.00 USD$6.29 USD$122.71 USDTransaction actionsRefundArchive",
+     "box": {
+      "x": 20,
+      "y": 454,
+      "w": 1240,
+      "h": 73
+     }
+    },
+    {
+     "text": "0B641764F3331525506/11/26, 12:24 amPayment fromJohn DoeCompleted$19.00 USD$1.23 USD$17.77 USDTransaction actionsAdd trackingRefundArchive",
+     "box": {
+      "x": 20,
+      "y": 527,
+      "w": 1240,
+      "h": 73
+     }
+    },
+    {
+     "text": "2YW67938P2569363E06/11/26, 12:24 amPayment fromJohn DoeCompleted$28.35 USD$1.66 USD$26.69 USDTransaction actionsAdd trackingRefundArchive",
+     "box": {
+      "x": 20,
+      "y": 599,
+      "w": 1240,
+      "h": 73
+     }
+    },
+    {
+     "text": "5X688780JX562780S06/11/26, 12:17 amPayment fromJohn DoeCompleted$19.00 USD$1.23 USD$17.77 USDTransaction actionsAdd trackingRefundArchive",
+     "box": {
+      "x": 20,
+      "y": 672,
+      "w": 1240,
+      "h": 73
+     }
+    },
+    {
+     "text": "1JN97363LL954983L06/11/26, 12:17 amAuthorisation fromJohn DoeVoided$55.79 USD$0.00 USD$55.79 USDTransaction actionsArchive",
+     "box": {
+      "x": 20,
+      "y": 745,
+      "w": 1240,
+      "h": 73
+     }
+    },
+    {
+     "text": "6FW69217MA148033606/11/26, 12:16 amPayment fromJohn DoeCompleted$19.00 USD$1.23 USD$17.77 USDTransaction actionsAdd trackingRefundArchive",
+     "box": {
+      "x": 20,
+      "y": 817,
+      "w": 1240,
+      "h": 73
+     }
+    },
+    {
+     "text": "1WK36524VA299300B06/11/26, 12:16 amAuthorisation fromJohn DoeVoided$52.09 USD$0.00 USD$52.09 USDTransaction actionsArchive",
+     "box": {
+      "x": 20,
+      "y": 890,
+      "w": 1240,
+      "h": 73
+     }
+    },
+    {
+     "text": "2J286078YR411292306/11/26, 12:14 amPayment fromJohn DoeCompleted$19.00 USD$1.23 USD$17.77 USDTransaction actionsAdd trackingRefundArchive",
+     "box": {
+      "x": 20,
+      "y": 963,
+      "w": 1240,
+      "h": 73
+     }
+    },
+    {
+     "text": "5LK55252S0162712W06/11/26, 12:13 amPayment fromJohn DoeCompleted$29.85 USD$1.72 USD$28.13 USDTransaction actionsAdd trackingRefundArchive",
+     "box": {
+      "x": 20,
+      "y": 1035,
+      "w": 1240,
+      "h": 73
+     }
+    },
+    {
+     "text": "23Y51689HF214514G06/11/26, 12:12 amPayment fromJohn DoeCompleted$19.00 USD$1.23 USD$17.77 USDTransaction actionsAdd trackingRefundArchive",
+     "box": {
+      "x": 20,
+      "y": 1108,
+      "w": 1240,
+      "h": 73
+     }
+    },
+    {
+     "text": "1SD595367E740733806/11/26, 12:11 amPayment fromJohn DoeCompleted$48.60 USD$2.60 USD$46.00 USDTransaction actionsAdd trackingRefundArchive",
+     "box": {
+      "x": 20,
+      "y": 1181,
+      "w": 1240,
+      "h": 73
+     }
+    },
+    {
+     "text": "8U2113040J947012D06/11/26, 12:10 amPayment fromJohn DoeCompleted$19.00 USD$1.23 USD$17.77 USDTransaction actionsAdd trackingRefundArchive",
+     "box": {
+      "x": 20,
+      "y": 1253,
+      "w": 1240,
+      "h": 73
+     }
+    },
+    {
+     "text": "2LH20112M7667291N06/11/26, 12:09 amPayment fromJohn DoeCompleted$28.35 USD$1.66 USD$26.69 USDTransaction actionsAdd trackingRefundArchive",
+     "box": {
+      "x": 20,
+      "y": 1326,
+      "w": 1240,
+      "h": 73
+     }
+    },
+    {
+     "text": "3MN361534D609804306/11/26, 12:02 amAuthorisation fromJohn DoeVoided$59.00 USD$0.00 USD$59.00 USDTransaction actionsArchive",
+     "box": {
+      "x": 20,
+      "y": 1399,
+      "w": 1240,
+      "h": 73
+     }
+    },
+    {
+     "text": "8YN25701GG941203C05/11/26, 11:58 pmPayment fromJohn DoeCompleted$129.00 USD$6.29 USD$122.71 USDTransaction actionsRefundArchive",
+     "box": {
+      "x": 20,
+      "y": 1471,
+      "w": 1240,
+      "h": 73
+     }
+    },
+    {
+     "text": "1F133402A4877022G05/11/26, 11:57 pmPayment fromJohn DoeCompleted$19.00 USD$1.23 USD$17.77 USDTransaction actionsAdd trackingRefundArchive",
+     "box": {
+      "x": 20,
+      "y": 1544,
+      "w": 1240,
+      "h": 73
+     }
+    },
+    {
+     "text": "2TL677486A684633905/11/26, 11:57 pmAuthorisation fromJohn DoeVoided$26.35 USD$0.00 USD$26.35 USDTransaction actionsArchive",
+     "box": {
+      "x": 20,
+      "y": 1617,
+      "w": 1240,
+      "h": 73
+     }
+    },
+    {
+     "text": "2W858273UE707801605/11/26, 5:11 amAuthorisation fromJohn DoeVoided$59.00 USD$0.00 USD$59.00 USDTransaction actionsArchive",
+     "box": {
+      "x": 20,
+      "y": 1689,
+      "w": 1240,
+      "h": 73
+     }
+    },
+    {
+     "text": "9YJ39707JF346592M05/11/26, 5:07 amPayment fromJohn DoeCompleted$129.00 USD$6.29 USD$122.71 USDTransaction actionsRefundArchive",
+     "box": {
+      "x": 20,
+      "y": 1762,
+      "w": 1240,
+      "h": 73
+     }
+    },
+    {
+     "text": "1M269975S8696631R05/11/26, 5:06 amPayment fromJohn DoeCompleted$19.00 USD$1.23 USD$17.77 USDTransaction actionsAdd trackingRefundArchive",
+     "box": {
+      "x": 20,
+      "y": 1835,
+      "w": 1240,
+      "h": 73
+     }
+    },
+    {
+     "text": "7U497792U9803692N05/11/26, 5:06 amPayment fromJohn DoeCompleted$24.36 USD$1.48 USD$22.88 USDTransaction actionsAdd trackingRefundArchive",
+     "box": {
+      "x": 20,
+      "y": 1907,
+      "w": 1240,
+      "h": 73
+     }
+    },
+    {
+     "text": "42C4828039656801V05/11/26, 4:57 amPayment fromJohn DoeCompleted$129.00 USD$6.29 USD$122.71 USDTransaction actionsRefundArchive",
+     "box": {
+      "x": 20,
+      "y": 1980,
+      "w": 1240,
+      "h": 73
+     }
+    },
+    {
+     "text": "4PU293330N946341R05/11/26, 4:55 amPayment fromJohn DoeCompleted$19.00 USD$1.23 USD$17.77 USDTransaction actionsAdd trackingRefundArchive",
+     "box": {
+      "x": 20,
+      "y": 2053,
+      "w": 1240,
+      "h": 73
+     }
+    },
+    {
+     "text": "8TA85992T8695700X05/11/26, 4:55 amPayment fromJohn DoeCompleted$28.35 USD$1.66 USD$26.69 USDTransaction actionsAdd trackingRefundArchive",
+     "box": {
+      "x": 20,
+      "y": 2125,
+      "w": 1240,
+      "h": 73
+     }
+    },
+    {
+     "text": "5UR423302V368121205/11/26, 4:52 amPayment fromJohn DoeCompleted$129.00 USD$6.29 USD$122.71 USDTransaction actionsRefundArchive",
+     "box": {
+      "x": 20,
+      "y": 2198,
+      "w": 1240,
+      "h": 73
+     }
+    },
+    {
+     "text": "1AE52188T7354932C05/11/26, 4:49 amPayment fromJohn DoeCompleted$129.00 USD$6.29 USD$122.71 USDTransaction actionsRefundArchive",
+     "box": {
+      "x": 20,
+      "y": 2271,
+      "w": 1240,
+      "h": 73
+     }
+    },
+    {
+     "text": "37A76324VV992362F05/11/26, 4:48 amPayment fromJohn DoeCompleted$19.00 USD$1.23 USD$17.77 USDTransaction actionsAdd trackingRefundArchive",
+     "box": {
+      "x": 20,
+      "y": 2343,
+      "w": 1240,
+      "h": 73
+     }
+    },
+    {
+     "text": "69247486S2382341405/11/26, 4:47 amPayment fromJohn DoeCompleted$24.36 USD$1.48 USD$22.88 USDTransaction actionsAdd trackingRefundArchive",
+     "box": {
+      "x": 20,
+      "y": 2416,
+      "w": 1240,
+      "h": 73
+     }
+    },
+    {
+     "text": "9CT55420YD849044W05/11/26, 4:28 amAuthorisation fromJohn DoeVoided$19.00 USD$0.00 USD$19.00 USDTransaction actionsArchive",
+     "box": {
+      "x": 20,
+      "y": 2489,
+      "w": 1240,
+      "h": 73
+     }
+    },
+    {
+     "text": "Load moreBack to Top",
+     "box": {
+      "x": 20,
+      "y": 2561,
+      "w": 1240,
+      "h": 88
+     }
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,9 @@
+# v2 film: keep sources, events and converted footage; skip raw captures, renders and the mixed narration
+recordings-v2/*.webm
+allowance-v2/renders/
+allowance-v2/assets/audio/vo.wav
+allowance-v2/.hyperframes/
+# footage is re-recordable with scripts/record-v2.mjs; generated film files are rebuilt by allowance-v2/src/build.py
+allowance-v2/assets/video/
+allowance-v2/compositions/
+allowance-v2/index.html

@@ -1,0 +1,35 @@
+{
+ "name": "approve",
+ "viewport": {
+  "width": 390,
+  "height": 664
+ },
+ "events": [
+  {
+   "t": 2.3,
+   "name": "loaded"
+  },
+  {
+   "t": 5.58,
+   "name": "scrolled"
+  },
+  {
+   "t": 6.89,
+   "name": "button",
+   "box": {
+    "x": 20,
+    "y": 399.671875,
+    "width": 350,
+    "height": 52
+   }
+  },
+  {
+   "t": 6.96,
+   "name": "tap"
+  },
+  {
+   "t": 9.8,
+   "name": "result"
+  }
+ ]
+}

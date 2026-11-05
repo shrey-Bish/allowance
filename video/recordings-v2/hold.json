@@ -1,0 +1,1177 @@
+{
+ "name": "hold",
+ "viewport": {
+  "width": 1280,
+  "height": 650
+ },
+ "events": [
+  {
+   "t": 3.65,
+   "name": "loaded"
+  },
+  {
+   "t": 5.47,
+   "name": "snap",
+   "vw": 1280,
+   "cards": [
+    {
+     "pill": "Paid",
+     "title": "USB-C wall charger, 30 W",
+     "store": "VoltHub",
+     "amount": "$19.00",
+     "box": {
+      "x": 856,
+      "y": 160,
+      "w": 400,
+      "h": 192
+     },
+     "amountBox": {
+      "x": 1173,
+      "y": 215,
+      "w": 65,
+      "h": 27
+     },
+     "sentence": "Within your rules.",
+     "sentenceBox": {
+      "x": 875,
+      "y": 277,
+      "w": 363,
+      "h": 23
+     },
+     "extraBox": null
+    },
+    {
+     "pill": "Paid",
+     "title": "4 grocery items",
+     "store": "FreshCart",
+     "amount": "$28.35",
+     "box": {
+      "x": 856,
+      "y": 363,
+      "w": 400,
+      "h": 192
+     },
+     "amountBox": {
+      "x": 1173,
+      "y": 419,
+      "w": 65,
+      "h": 27
+     },
+     "sentence": "Within your rules.",
+     "sentenceBox": {
+      "x": 875,
+      "y": 480,
+      "w": 363,
+      "h": 23
+     },
+     "extraBox": null
+    }
+   ],
+   "cam": {
+    "x": 412,
+    "y": 287,
+    "w": 416,
+    "h": 234
+   },
+   "camFrame": {
+    "x": 404,
+    "y": 242,
+    "w": 432,
+    "h": 287
+   },
+   "camWhere": "Scout is napping",
+   "feed": {
+    "x": 856,
+    "y": 92,
+    "w": 400,
+    "h": 534
+   },
+   "spent": {
+    "x": 1024,
+    "y": 17,
+    "w": 228,
+    "h": 38
+   },
+   "spentText": "$47.35 of $250 this week$47.35 of $250 spent this week"
+  },
+  {
+   "t": 5.59,
+   "name": "type-start",
+   "text": "also get me the wireless over-ear headphones from VoltHub"
+  },
+  {
+   "t": 7.23,
+   "name": "type-end"
+  },
+  {
+   "t": 7.79,
+   "name": "sent"
+  },
+  {
+   "t": 8.1,
+   "name": "snap",
+   "vw": 1280,
+   "cards": [
+    {
+     "pill": "Paid",
+     "title": "USB-C wall charger, 30 W",
+     "store": "VoltHub",
+     "amount": "$19.00",
+     "box": {
+      "x": 856,
+      "y": 160,
+      "w": 400,
+      "h": 192
+     },
+     "amountBox": {
+      "x": 1173,
+      "y": 215,
+      "w": 65,
+      "h": 27
+     },
+     "sentence": "Within your rules.",
+     "sentenceBox": {
+      "x": 875,
+      "y": 277,
+      "w": 363,
+      "h": 23
+     },
+     "extraBox": null
+    },
+    {
+     "pill": "Paid",
+     "title": "4 grocery items",
+     "store": "FreshCart",
+     "amount": "$28.35",
+     "box": {
+      "x": 856,
+      "y": 363,
+      "w": 400,
+      "h": 192
+     },
+     "amountBox": {
+      "x": 1173,
+      "y": 419,
+      "w": 65,
+      "h": 27
+     },
+     "sentence": "Within your rules.",
+     "sentenceBox": {
+      "x": 875,
+      "y": 480,
+      "w": 363,
+      "h": 23
+     },
+     "extraBox": null
+    }
+   ],
+   "cam": {
+    "x": 412,
+    "y": 287,
+    "w": 416,
+    "h": 234
+   },
+   "camFrame": {
+    "x": 404,
+    "y": 242,
+    "w": 432,
+    "h": 287
+   },
+   "camWhere": "Scout at FreshCart",
+   "feed": {
+    "x": 856,
+    "y": 92,
+    "w": 400,
+    "h": 534
+   },
+   "spent": {
+    "x": 1024,
+    "y": 17,
+    "w": 228,
+    "h": 38
+   },
+   "spentText": "$47.35 of $250 this week$47.35 of $250 spent this week"
+  },
+  {
+   "t": 14.1,
+   "name": "snap",
+   "vw": 1280,
+   "cards": [
+    {
+     "pill": "Paid",
+     "title": "USB-C wall charger, 30 W",
+     "store": "VoltHub",
+     "amount": "$19.00",
+     "box": {
+      "x": 856,
+      "y": 160,
+      "w": 400,
+      "h": 192
+     },
+     "amountBox": {
+      "x": 1173,
+      "y": 215,
+      "w": 65,
+      "h": 27
+     },
+     "sentence": "Within your rules.",
+     "sentenceBox": {
+      "x": 875,
+      "y": 277,
+      "w": 363,
+      "h": 23
+     },
+     "extraBox": null
+    },
+    {
+     "pill": "Paid",
+     "title": "4 grocery items",
+     "store": "FreshCart",
+     "amount": "$28.35",
+     "box": {
+      "x": 856,
+      "y": 363,
+      "w": 400,
+      "h": 192
+     },
+     "amountBox": {
+      "x": 1173,
+      "y": 419,
+      "w": 65,
+      "h": 27
+     },
+     "sentence": "Within your rules.",
+     "sentenceBox": {
+      "x": 875,
+      "y": 480,
+      "w": 363,
+      "h": 23
+     },
+     "extraBox": null
+    }
+   ],
+   "cam": {
+    "x": 412,
+    "y": 287,
+    "w": 416,
+    "h": 234
+   },
+   "camFrame": {
+    "x": 404,
+    "y": 242,
+    "w": 432,
+    "h": 287
+   },
+   "camWhere": "Scout at VoltHub",
+   "feed": {
+    "x": 856,
+    "y": 92,
+    "w": 400,
+    "h": 534
+   },
+   "spent": {
+    "x": 1024,
+    "y": 17,
+    "w": 228,
+    "h": 38
+   },
+   "spentText": "$47.35 of $250 this week$47.35 of $250 spent this week"
+  },
+  {
+   "t": 26.66,
+   "name": "snap",
+   "vw": 1280,
+   "cards": [
+    {
+     "pill": "Needs your OK",
+     "title": "Wireless over-ear headphones",
+     "store": "VoltHub",
+     "amount": "$129.00",
+     "box": {
+      "x": 856,
+      "y": 163,
+      "w": 400,
+      "h": 300
+     },
+     "amountBox": {
+      "x": 1162,
+      "y": 218,
+      "w": 76,
+      "h": 27
+     },
+     "sentence": "$129.00 is over your $50.00 limit. PayPal is holding $129.00 until you decide.",
+     "sentenceBox": {
+      "x": 875,
+      "y": 280,
+      "w": 363,
+      "h": 46
+     },
+     "extraBox": null
+    },
+    {
+     "pill": "Paid",
+     "title": "USB-C wall charger, 30 W",
+     "store": "VoltHub",
+     "amount": "$19.00",
+     "box": {
+      "x": 856,
+      "y": 472,
+      "w": 400,
+      "h": 192
+     },
+     "amountBox": {
+      "x": 1173,
+      "y": 527,
+      "w": 65,
+      "h": 27
+     },
+     "sentence": "Within your rules.",
+     "sentenceBox": {
+      "x": 875,
+      "y": 589,
+      "w": 363,
+      "h": 23
+     },
+     "extraBox": null
+    },
+    {
+     "pill": "Paid",
+     "title": "4 grocery items",
+     "store": "FreshCart",
+     "amount": "$28.35",
+     "box": {
+      "x": 856,
+      "y": 675,
+      "w": 400,
+      "h": 192
+     },
+     "amountBox": {
+      "x": 1173,
+      "y": 731,
+      "w": 65,
+      "h": 27
+     },
+     "sentence": "Within your rules.",
+     "sentenceBox": {
+      "x": 875,
+      "y": 792,
+      "w": 363,
+      "h": 23
+     },
+     "extraBox": null
+    }
+   ],
+   "cam": {
+    "x": 412,
+    "y": 287,
+    "w": 416,
+    "h": 234
+   },
+   "camFrame": {
+    "x": 404,
+    "y": 242,
+    "w": 432,
+    "h": 287
+   },
+   "camWhere": "Scout at VoltHub",
+   "feed": {
+    "x": 856,
+    "y": 92,
+    "w": 400,
+    "h": 534
+   },
+   "spent": {
+    "x": 1024,
+    "y": 17,
+    "w": 228,
+    "h": 38
+   },
+   "spentText": "$47.35 of $250 this week$47.35 of $250 spent this week"
+  },
+  {
+   "t": 26.7,
+   "name": "held"
+  },
+  {
+   "t": 26.81,
+   "name": "snap",
+   "vw": 1280,
+   "cards": [
+    {
+     "pill": "Needs your OK",
+     "title": "Wireless over-ear headphones",
+     "store": "VoltHub",
+     "amount": "$129.00",
+     "box": {
+      "x": 856,
+      "y": 160,
+      "w": 400,
+      "h": 300
+     },
+     "amountBox": {
+      "x": 1162,
+      "y": 215,
+      "w": 76,
+      "h": 27
+     },
+     "sentence": "$129.00 is over your $50.00 limit. PayPal is holding $129.00 until you decide.",
+     "sentenceBox": {
+      "x": 875,
+      "y": 277,
+      "w": 363,
+      "h": 46
+     },
+     "extraBox": null
+    },
+    {
+     "pill": "Paid",
+     "title": "USB-C wall charger, 30 W",
+     "store": "VoltHub",
+     "amount": "$19.00",
+     "box": {
+      "x": 856,
+      "y": 472,
+      "w": 400,
+      "h": 192
+     },
+     "amountBox": {
+      "x": 1173,
+      "y": 527,
+      "w": 65,
+      "h": 27
+     },
+     "sentence": "Within your rules.",
+     "sentenceBox": {
+      "x": 875,
+      "y": 589,
+      "w": 363,
+      "h": 23
+     },
+     "extraBox": null
+    },
+    {
+     "pill": "Paid",
+     "title": "4 grocery items",
+     "store": "FreshCart",
+     "amount": "$28.35",
+     "box": {
+      "x": 856,
+      "y": 675,
+      "w": 400,
+      "h": 192
+     },
+     "amountBox": {
+      "x": 1173,
+      "y": 731,
+      "w": 65,
+      "h": 27
+     },
+     "sentence": "Within your rules.",
+     "sentenceBox": {
+      "x": 875,
+      "y": 792,
+      "w": 363,
+      "h": 23
+     },
+     "extraBox": null
+    }
+   ],
+   "cam": {
+    "x": 412,
+    "y": 287,
+    "w": 416,
+    "h": 234
+   },
+   "camFrame": {
+    "x": 404,
+    "y": 242,
+    "w": 432,
+    "h": 287
+   },
+   "camWhere": "Scout at VoltHub",
+   "feed": {
+    "x": 856,
+    "y": 92,
+    "w": 400,
+    "h": 534
+   },
+   "spent": {
+    "x": 1024,
+    "y": 17,
+    "w": 228,
+    "h": 38
+   },
+   "spentText": "$47.35 of $250 this week$47.35 of $250 spent this week"
+  },
+  {
+   "t": 27.42,
+   "name": "snap",
+   "vw": 1280,
+   "cards": [
+    {
+     "pill": "Needs your OK",
+     "title": "Wireless over-ear headphones",
+     "store": "VoltHub",
+     "amount": "$129.00",
+     "box": {
+      "x": 856,
+      "y": 160,
+      "w": 400,
+      "h": 300
+     },
+     "amountBox": {
+      "x": 1162,
+      "y": 215,
+      "w": 76,
+      "h": 27
+     },
+     "sentence": "$129.00 is over your $50.00 limit. PayPal is holding $129.00 until you decide.",
+     "sentenceBox": {
+      "x": 875,
+      "y": 277,
+      "w": 363,
+      "h": 46
+     },
+     "extraBox": null
+    },
+    {
+     "pill": "Paid",
+     "title": "USB-C wall charger, 30 W",
+     "store": "VoltHub",
+     "amount": "$19.00",
+     "box": {
+      "x": 856,
+      "y": 472,
+      "w": 400,
+      "h": 192
+     },
+     "amountBox": {
+      "x": 1173,
+      "y": 527,
+      "w": 65,
+      "h": 27
+     },
+     "sentence": "Within your rules.",
+     "sentenceBox": {
+      "x": 875,
+      "y": 589,
+      "w": 363,
+      "h": 23
+     },
+     "extraBox": null
+    },
+    {
+     "pill": "Paid",
+     "title": "4 grocery items",
+     "store": "FreshCart",
+     "amount": "$28.35",
+     "box": {
+      "x": 856,
+      "y": 675,
+      "w": 400,
+      "h": 192
+     },
+     "amountBox": {
+      "x": 1173,
+      "y": 731,
+      "w": 65,
+      "h": 27
+     },
+     "sentence": "Within your rules.",
+     "sentenceBox": {
+      "x": 875,
+      "y": 792,
+      "w": 363,
+      "h": 23
+     },
+     "extraBox": null
+    }
+   ],
+   "cam": {
+    "x": 412,
+    "y": 287,
+    "w": 416,
+    "h": 234
+   },
+   "camFrame": {
+    "x": 404,
+    "y": 242,
+    "w": 432,
+    "h": 287
+   },
+   "camWhere": "Waiting for your OK",
+   "feed": {
+    "x": 856,
+    "y": 92,
+    "w": 400,
+    "h": 534
+   },
+   "spent": {
+    "x": 1024,
+    "y": 17,
+    "w": 228,
+    "h": 38
+   },
+   "spentText": "$47.35 of $250 this week$47.35 of $250 spent this week"
+  },
+  {
+   "t": 33.85,
+   "name": "snap",
+   "vw": 860,
+   "cards": [
+    {
+     "pill": "Needs your OK",
+     "title": "Wireless over-ear headphones",
+     "store": "VoltHub",
+     "amount": "$129.00",
+     "box": {
+      "x": 16,
+      "y": 1300,
+      "w": 828,
+      "h": 277
+     },
+     "amountBox": {
+      "x": 750,
+      "y": 1355,
+      "w": 76,
+      "h": 27
+     },
+     "sentence": "$129.00 is over your $50.00 limit. PayPal is holding $129.00 until you decide.",
+     "sentenceBox": {
+      "x": 35,
+      "y": 1417,
+      "w": 791,
+      "h": 23
+     },
+     "extraBox": null
+    },
+    {
+     "pill": "Paid",
+     "title": "USB-C wall charger, 30 W",
+     "store": "VoltHub",
+     "amount": "$19.00",
+     "box": {
+      "x": 16,
+      "y": 1589,
+      "w": 828,
+      "h": 192
+     },
+     "amountBox": {
+      "x": 761,
+      "y": 1644,
+      "w": 65,
+      "h": 27
+     },
+     "sentence": "Within your rules.",
+     "sentenceBox": {
+      "x": 35,
+      "y": 1706,
+      "w": 791,
+      "h": 23
+     },
+     "extraBox": null
+    },
+    {
+     "pill": "Paid",
+     "title": "4 grocery items",
+     "store": "FreshCart",
+     "amount": "$28.35",
+     "box": {
+      "x": 16,
+      "y": 1792,
+      "w": 828,
+      "h": 192
+     },
+     "amountBox": {
+      "x": 761,
+      "y": 1848,
+      "w": 65,
+      "h": 27
+     },
+     "sentence": "Within your rules.",
+     "sentenceBox": {
+      "x": 35,
+      "y": 1909,
+      "w": 791,
+      "h": 23
+     },
+     "extraBox": null
+    }
+   ],
+   "cam": {
+    "x": 24,
+    "y": 198,
+    "w": 812,
+    "h": 457
+   },
+   "camFrame": {
+    "x": 16,
+    "y": 154,
+    "w": 828,
+    "h": 509
+   },
+   "camWhere": "Waiting for your OK",
+   "feed": {
+    "x": 16,
+    "y": 1232,
+    "w": 828,
+    "h": 756
+   },
+   "spent": {
+    "x": 604,
+    "y": 17,
+    "w": 228,
+    "h": 38
+   },
+   "spentText": "$47.35 of $250 this week$47.35 of $250 spent this week"
+  },
+  {
+   "t": 34.16,
+   "name": "snap",
+   "vw": 860,
+   "cards": [
+    {
+     "pill": "Needs your OK",
+     "title": "Wireless over-ear headphones",
+     "store": "VoltHub",
+     "amount": "$129.00",
+     "box": {
+      "x": 16,
+      "y": 1228,
+      "w": 828,
+      "h": 277
+     },
+     "amountBox": {
+      "x": 750,
+      "y": 1284,
+      "w": 76,
+      "h": 27
+     },
+     "sentence": "$129.00 is over your $50.00 limit. PayPal is holding $129.00 until you decide.",
+     "sentenceBox": {
+      "x": 35,
+      "y": 1345,
+      "w": 791,
+      "h": 23
+     },
+     "extraBox": null
+    },
+    {
+     "pill": "Paid",
+     "title": "USB-C wall charger, 30 W",
+     "store": "VoltHub",
+     "amount": "$19.00",
+     "box": {
+      "x": 16,
+      "y": 1517,
+      "w": 828,
+      "h": 192
+     },
+     "amountBox": {
+      "x": 761,
+      "y": 1573,
+      "w": 65,
+      "h": 27
+     },
+     "sentence": "Within your rules.",
+     "sentenceBox": {
+      "x": 35,
+      "y": 1634,
+      "w": 791,
+      "h": 23
+     },
+     "extraBox": null
+    },
+    {
+     "pill": "Paid",
+     "title": "4 grocery items",
+     "store": "FreshCart",
+     "amount": "$28.35",
+     "box": {
+      "x": 16,
+      "y": 1721,
+      "w": 828,
+      "h": 192
+     },
+     "amountBox": {
+      "x": 761,
+      "y": 1777,
+      "w": 65,
+      "h": 27
+     },
+     "sentence": "Within your rules.",
+     "sentenceBox": {
+      "x": 35,
+      "y": 1838,
+      "w": 791,
+      "h": 23
+     },
+     "extraBox": null
+    }
+   ],
+   "cam": {
+    "x": 24,
+    "y": 127,
+    "w": 812,
+    "h": 457
+   },
+   "camFrame": {
+    "x": 16,
+    "y": 82,
+    "w": 828,
+    "h": 509
+   },
+   "camWhere": "Waiting for your OK",
+   "feed": {
+    "x": 16,
+    "y": 1161,
+    "w": 828,
+    "h": 756
+   },
+   "spent": {
+    "x": 604,
+    "y": 17,
+    "w": 228,
+    "h": 38
+   },
+   "spentText": "$47.35 of $250 this week$47.35 of $250 spent this week"
+  },
+  {
+   "t": 34.36,
+   "name": "narrow",
+   "vw": 860,
+   "cards": [
+    {
+     "pill": "Needs your OK",
+     "title": "Wireless over-ear headphones",
+     "store": "VoltHub",
+     "amount": "$129.00",
+     "box": {
+      "x": 16,
+      "y": 1228,
+      "w": 828,
+      "h": 277
+     },
+     "amountBox": {
+      "x": 750,
+      "y": 1284,
+      "w": 76,
+      "h": 27
+     },
+     "sentence": "$129.00 is over your $50.00 limit. PayPal is holding $129.00 until you decide.",
+     "sentenceBox": {
+      "x": 35,
+      "y": 1345,
+      "w": 791,
+      "h": 23
+     },
+     "extraBox": null
+    },
+    {
+     "pill": "Paid",
+     "title": "USB-C wall charger, 30 W",
+     "store": "VoltHub",
+     "amount": "$19.00",
+     "box": {
+      "x": 16,
+      "y": 1517,
+      "w": 828,
+      "h": 192
+     },
+     "amountBox": {
+      "x": 761,
+      "y": 1573,
+      "w": 65,
+      "h": 27
+     },
+     "sentence": "Within your rules.",
+     "sentenceBox": {
+      "x": 35,
+      "y": 1634,
+      "w": 791,
+      "h": 23
+     },
+     "extraBox": null
+    },
+    {
+     "pill": "Paid",
+     "title": "4 grocery items",
+     "store": "FreshCart",
+     "amount": "$28.35",
+     "box": {
+      "x": 16,
+      "y": 1721,
+      "w": 828,
+      "h": 192
+     },
+     "amountBox": {
+      "x": 761,
+      "y": 1777,
+      "w": 65,
+      "h": 27
+     },
+     "sentence": "Within your rules.",
+     "sentenceBox": {
+      "x": 35,
+      "y": 1838,
+      "w": 791,
+      "h": 23
+     },
+     "extraBox": null
+    }
+   ],
+   "cam": {
+    "x": 24,
+    "y": 127,
+    "w": 812,
+    "h": 457
+   },
+   "camFrame": {
+    "x": 16,
+    "y": 82,
+    "w": 828,
+    "h": 509
+   },
+   "camWhere": "Waiting for your OK",
+   "feed": {
+    "x": 16,
+    "y": 1161,
+    "w": 828,
+    "h": 756
+   },
+   "spent": {
+    "x": 604,
+    "y": 17,
+    "w": 228,
+    "h": 38
+   },
+   "spentText": "$47.35 of $250 this week$47.35 of $250 spent this week"
+  },
+  {
+   "t": 42.43,
+   "name": "snap",
+   "vw": 1280,
+   "cards": [
+    {
+     "pill": "Needs your OK",
+     "title": "Wireless over-ear headphones",
+     "store": "VoltHub",
+     "amount": "$129.00",
+     "box": {
+      "x": 856,
+      "y": 160,
+      "w": 400,
+      "h": 300
+     },
+     "amountBox": {
+      "x": 1162,
+      "y": 215,
+      "w": 76,
+      "h": 27
+     },
+     "sentence": "$129.00 is over your $50.00 limit. PayPal is holding $129.00 until you decide.",
+     "sentenceBox": {
+      "x": 875,
+      "y": 277,
+      "w": 363,
+      "h": 46
+     },
+     "extraBox": null
+    },
+    {
+     "pill": "Paid",
+     "title": "USB-C wall charger, 30 W",
+     "store": "VoltHub",
+     "amount": "$19.00",
+     "box": {
+      "x": 856,
+      "y": 472,
+      "w": 400,
+      "h": 192
+     },
+     "amountBox": {
+      "x": 1173,
+      "y": 527,
+      "w": 65,
+      "h": 27
+     },
+     "sentence": "Within your rules.",
+     "sentenceBox": {
+      "x": 875,
+      "y": 589,
+      "w": 363,
+      "h": 23
+     },
+     "extraBox": null
+    },
+    {
+     "pill": "Paid",
+     "title": "4 grocery items",
+     "store": "FreshCart",
+     "amount": "$28.35",
+     "box": {
+      "x": 856,
+      "y": 675,
+      "w": 400,
+      "h": 192
+     },
+     "amountBox": {
+      "x": 1173,
+      "y": 731,
+      "w": 65,
+      "h": 27
+     },
+     "sentence": "Within your rules.",
+     "sentenceBox": {
+      "x": 875,
+      "y": 792,
+      "w": 363,
+      "h": 23
+     },
+     "extraBox": null
+    }
+   ],
+   "cam": {
+    "x": 412,
+    "y": 287,
+    "w": 416,
+    "h": 234
+   },
+   "camFrame": {
+    "x": 404,
+    "y": 242,
+    "w": 432,
+    "h": 287
+   },
+   "camWhere": "Waiting for your OK",
+   "feed": {
+    "x": 856,
+    "y": 92,
+    "w": 400,
+    "h": 534
+   },
+   "spent": {
+    "x": 1024,
+    "y": 17,
+    "w": 228,
+    "h": 38
+   },
+   "spentText": "$47.35 of $250 this week$47.35 of $250 spent this week"
+  },
+  {
+   "t": 42.99,
+   "name": "wide",
+   "vw": 1280,
+   "cards": [
+    {
+     "pill": "Needs your OK",
+     "title": "Wireless over-ear headphones",
+     "store": "VoltHub",
+     "amount": "$129.00",
+     "box": {
+      "x": 856,
+      "y": 160,
+      "w": 400,
+      "h": 300
+     },
+     "amountBox": {
+      "x": 1162,
+      "y": 215,
+      "w": 76,
+      "h": 27
+     },
+     "sentence": "$129.00 is over your $50.00 limit. PayPal is holding $129.00 until you decide.",
+     "sentenceBox": {
+      "x": 875,
+      "y": 277,
+      "w": 363,
+      "h": 46
+     },
+     "extraBox": null
+    },
+    {
+     "pill": "Paid",
+     "title": "USB-C wall charger, 30 W",
+     "store": "VoltHub",
+     "amount": "$19.00",
+     "box": {
+      "x": 856,
+      "y": 472,
+      "w": 400,
+      "h": 192
+     },
+     "amountBox": {
+      "x": 1173,
+      "y": 527,
+      "w": 65,
+      "h": 27
+     },
+     "sentence": "Within your rules.",
+     "sentenceBox": {
+      "x": 875,
+      "y": 589,
+      "w": 363,
+      "h": 23
+     },
+     "extraBox": null
+    },
+    {
+     "pill": "Paid",
+     "title": "4 grocery items",
+     "store": "FreshCart",
+     "amount": "$28.35",
+     "box": {
+      "x": 856,
+      "y": 675,
+      "w": 400,
+      "h": 192
+     },
+     "amountBox": {
+      "x": 1173,
+      "y": 731,
+      "w": 65,
+      "h": 27
+     },
+     "sentence": "Within your rules.",
+     "sentenceBox": {
+      "x": 875,
+      "y": 792,
+      "w": 363,
+      "h": 23
+     },
+     "extraBox": null
+    }
+   ],
+   "cam": {
+    "x": 412,
+    "y": 287,
+    "w": 416,
+    "h": 234
+   },
+   "camFrame": {
+    "x": 404,
+    "y": 242,
+    "w": 432,
+    "h": 287
+   },
+   "camWhere": "Waiting for your OK",
+   "feed": {
+    "x": 856,
+    "y": 92,
+    "w": 400,
+    "h": 534
+   },
+   "spent": {
+    "x": 1024,
+    "y": 17,
+    "w": 228,
+    "h": 38
+   },
+   "spentText": "$47.35 of $250 this week$47.35 of $250 spent this week"
+  },
+  {
+   "t": 43.01,
+   "name": "done"
+  }
+ ]
+}

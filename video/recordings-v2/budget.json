@@ -1,0 +1,1541 @@
+{
+ "name": "budget",
+ "viewport": {
+  "width": 1280,
+  "height": 650
+ },
+ "events": [
+  {
+   "t": 2.39,
+   "name": "loaded"
+  },
+  {
+   "t": 4.22,
+   "name": "snap",
+   "vw": 1280,
+   "cards": [
+    {
+     "pill": "Not bought",
+     "title": "Wireless earbuds",
+     "store": "VoltHub",
+     "amount": "$59.00",
+     "box": {
+      "x": 856,
+      "y": 160,
+      "w": 400,
+      "h": 192
+     },
+     "amountBox": {
+      "x": 1173,
+      "y": 215,
+      "w": 65,
+      "h": 27
+     },
+     "sentence": "Hold released, you weren't charged.",
+     "sentenceBox": {
+      "x": 875,
+      "y": 277,
+      "w": 363,
+      "h": 23
+     },
+     "extraBox": null
+    },
+    {
+     "pill": "Blocked",
+     "title": "USB-C wall charger, 30 W",
+     "store": "VoltHub",
+     "amount": "$19.00",
+     "box": {
+      "x": 856,
+      "y": 363,
+      "w": 400,
+      "h": 292
+     },
+     "amountBox": {
+      "x": 1173,
+      "y": 419,
+      "w": 65,
+      "h": 27
+     },
+     "sentence": "Duplicate purchase of USB-C wall charger, 30 W from VoltHub in the last 24 hours You weren't charged.",
+     "sentenceBox": {
+      "x": 875,
+      "y": 480,
+      "w": 363,
+      "h": 70
+     },
+     "extra": "Safety check: blocked. Store's text is pushy, suggesting urgency",
+     "extraBox": {
+      "x": 875,
+      "y": 560,
+      "w": 363,
+      "h": 44
+     }
+    },
+    {
+     "pill": "Blocked",
+     "title": "USB-C wall charger, 30 W — MEGA DEAL",
+     "store": "MegaDealz247",
+     "amount": "$54.00",
+     "box": {
+      "x": 856,
+      "y": 667,
+      "w": 400,
+      "h": 294
+     },
+     "amountBox": {
+      "x": 1173,
+      "y": 723,
+      "w": 65,
+      "h": 27
+     },
+     "sentence": "Price is 2.8× the usual $19 for this charger. You weren't charged.",
+     "sentenceBox": {
+      "x": 875,
+      "y": 810,
+      "w": 363,
+      "h": 46
+     },
+     "extra": "Safety check: blocked. Store is only 3 days old. Hidden instructions for the AI to skip checks.",
+     "extraBox": {
+      "x": 875,
+      "y": 866,
+      "w": 363,
+      "h": 44
+     }
+    },
+    {
+     "pill": "Paid",
+     "title": "Wireless over-ear headphones",
+     "store": "VoltHub",
+     "amount": "$129.00",
+     "box": {
+      "x": 856,
+      "y": 973,
+      "w": 400,
+      "h": 192
+     },
+     "amountBox": {
+      "x": 1162,
+      "y": 1029,
+      "w": 76,
+      "h": 27
+     },
+     "sentence": "You approved it, so PayPal paid VoltHub.",
+     "sentenceBox": {
+      "x": 875,
+      "y": 1090,
+      "w": 363,
+      "h": 23
+     },
+     "extraBox": null
+    },
+    {
+     "pill": "Paid",
+     "title": "USB-C wall charger, 30 W",
+     "store": "VoltHub",
+     "amount": "$19.00",
+     "box": {
+      "x": 856,
+      "y": 1177,
+      "w": 400,
+      "h": 192
+     },
+     "amountBox": {
+      "x": 1173,
+      "y": 1233,
+      "w": 65,
+      "h": 27
+     },
+     "sentence": "Within your rules.",
+     "sentenceBox": {
+      "x": 875,
+      "y": 1294,
+      "w": 363,
+      "h": 23
+     },
+     "extraBox": null
+    },
+    {
+     "pill": "Paid",
+     "title": "4 grocery items",
+     "store": "FreshCart",
+     "amount": "$28.35",
+     "box": {
+      "x": 856,
+      "y": 1381,
+      "w": 400,
+      "h": 192
+     },
+     "amountBox": {
+      "x": 1173,
+      "y": 1437,
+      "w": 65,
+      "h": 27
+     },
+     "sentence": "Within your rules.",
+     "sentenceBox": {
+      "x": 875,
+      "y": 1498,
+      "w": 363,
+      "h": 23
+     },
+     "extraBox": null
+    }
+   ],
+   "cam": {
+    "x": 412,
+    "y": 287,
+    "w": 416,
+    "h": 234
+   },
+   "camFrame": {
+    "x": 404,
+    "y": 242,
+    "w": 432,
+    "h": 287
+   },
+   "camWhere": "Scout is napping",
+   "feed": {
+    "x": 856,
+    "y": 92,
+    "w": 400,
+    "h": 534
+   },
+   "spent": {
+    "x": 1015,
+    "y": 17,
+    "w": 237,
+    "h": 38
+   },
+   "spentText": "$176.35 of $250 this week$176.35 of $250 spent this week"
+  },
+  {
+   "t": 4.27,
+   "name": "type-start",
+   "text": "buy the wireless over-ear headphones from VoltHub again"
+  },
+  {
+   "t": 6.02,
+   "name": "type-end"
+  },
+  {
+   "t": 6.58,
+   "name": "sent"
+  },
+  {
+   "t": 6.88,
+   "name": "snap",
+   "vw": 1280,
+   "cards": [
+    {
+     "pill": "Not bought",
+     "title": "Wireless earbuds",
+     "store": "VoltHub",
+     "amount": "$59.00",
+     "box": {
+      "x": 856,
+      "y": 160,
+      "w": 400,
+      "h": 192
+     },
+     "amountBox": {
+      "x": 1173,
+      "y": 215,
+      "w": 65,
+      "h": 27
+     },
+     "sentence": "Hold released, you weren't charged.",
+     "sentenceBox": {
+      "x": 875,
+      "y": 277,
+      "w": 363,
+      "h": 23
+     },
+     "extraBox": null
+    },
+    {
+     "pill": "Blocked",
+     "title": "USB-C wall charger, 30 W",
+     "store": "VoltHub",
+     "amount": "$19.00",
+     "box": {
+      "x": 856,
+      "y": 363,
+      "w": 400,
+      "h": 292
+     },
+     "amountBox": {
+      "x": 1173,
+      "y": 419,
+      "w": 65,
+      "h": 27
+     },
+     "sentence": "Duplicate purchase of USB-C wall charger, 30 W from VoltHub in the last 24 hours You weren't charged.",
+     "sentenceBox": {
+      "x": 875,
+      "y": 480,
+      "w": 363,
+      "h": 70
+     },
+     "extra": "Safety check: blocked. Store's text is pushy, suggesting urgency",
+     "extraBox": {
+      "x": 875,
+      "y": 560,
+      "w": 363,
+      "h": 44
+     }
+    },
+    {
+     "pill": "Blocked",
+     "title": "USB-C wall charger, 30 W — MEGA DEAL",
+     "store": "MegaDealz247",
+     "amount": "$54.00",
+     "box": {
+      "x": 856,
+      "y": 667,
+      "w": 400,
+      "h": 294
+     },
+     "amountBox": {
+      "x": 1173,
+      "y": 723,
+      "w": 65,
+      "h": 27
+     },
+     "sentence": "Price is 2.8× the usual $19 for this charger. You weren't charged.",
+     "sentenceBox": {
+      "x": 875,
+      "y": 810,
+      "w": 363,
+      "h": 46
+     },
+     "extra": "Safety check: blocked. Store is only 3 days old. Hidden instructions for the AI to skip checks.",
+     "extraBox": {
+      "x": 875,
+      "y": 866,
+      "w": 363,
+      "h": 44
+     }
+    },
+    {
+     "pill": "Paid",
+     "title": "Wireless over-ear headphones",
+     "store": "VoltHub",
+     "amount": "$129.00",
+     "box": {
+      "x": 856,
+      "y": 973,
+      "w": 400,
+      "h": 192
+     },
+     "amountBox": {
+      "x": 1162,
+      "y": 1029,
+      "w": 76,
+      "h": 27
+     },
+     "sentence": "You approved it, so PayPal paid VoltHub.",
+     "sentenceBox": {
+      "x": 875,
+      "y": 1090,
+      "w": 363,
+      "h": 23
+     },
+     "extraBox": null
+    },
+    {
+     "pill": "Paid",
+     "title": "USB-C wall charger, 30 W",
+     "store": "VoltHub",
+     "amount": "$19.00",
+     "box": {
+      "x": 856,
+      "y": 1177,
+      "w": 400,
+      "h": 192
+     },
+     "amountBox": {
+      "x": 1173,
+      "y": 1233,
+      "w": 65,
+      "h": 27
+     },
+     "sentence": "Within your rules.",
+     "sentenceBox": {
+      "x": 875,
+      "y": 1294,
+      "w": 363,
+      "h": 23
+     },
+     "extraBox": null
+    },
+    {
+     "pill": "Paid",
+     "title": "4 grocery items",
+     "store": "FreshCart",
+     "amount": "$28.35",
+     "box": {
+      "x": 856,
+      "y": 1381,
+      "w": 400,
+      "h": 192
+     },
+     "amountBox": {
+      "x": 1173,
+      "y": 1437,
+      "w": 65,
+      "h": 27
+     },
+     "sentence": "Within your rules.",
+     "sentenceBox": {
+      "x": 875,
+      "y": 1498,
+      "w": 363,
+      "h": 23
+     },
+     "extraBox": null
+    }
+   ],
+   "cam": {
+    "x": 412,
+    "y": 287,
+    "w": 416,
+    "h": 234
+   },
+   "camFrame": {
+    "x": 404,
+    "y": 242,
+    "w": 432,
+    "h": 287
+   },
+   "camWhere": "Scout at FreshCart",
+   "feed": {
+    "x": 856,
+    "y": 92,
+    "w": 400,
+    "h": 534
+   },
+   "spent": {
+    "x": 1015,
+    "y": 17,
+    "w": 237,
+    "h": 38
+   },
+   "spentText": "$176.35 of $250 this week$176.35 of $250 spent this week"
+  },
+  {
+   "t": 11.48,
+   "name": "snap",
+   "vw": 1280,
+   "cards": [
+    {
+     "pill": "Not bought",
+     "title": "Wireless earbuds",
+     "store": "VoltHub",
+     "amount": "$59.00",
+     "box": {
+      "x": 856,
+      "y": 160,
+      "w": 400,
+      "h": 192
+     },
+     "amountBox": {
+      "x": 1173,
+      "y": 215,
+      "w": 65,
+      "h": 27
+     },
+     "sentence": "Hold released, you weren't charged.",
+     "sentenceBox": {
+      "x": 875,
+      "y": 277,
+      "w": 363,
+      "h": 23
+     },
+     "extraBox": null
+    },
+    {
+     "pill": "Blocked",
+     "title": "USB-C wall charger, 30 W",
+     "store": "VoltHub",
+     "amount": "$19.00",
+     "box": {
+      "x": 856,
+      "y": 363,
+      "w": 400,
+      "h": 292
+     },
+     "amountBox": {
+      "x": 1173,
+      "y": 419,
+      "w": 65,
+      "h": 27
+     },
+     "sentence": "Duplicate purchase of USB-C wall charger, 30 W from VoltHub in the last 24 hours You weren't charged.",
+     "sentenceBox": {
+      "x": 875,
+      "y": 480,
+      "w": 363,
+      "h": 70
+     },
+     "extra": "Safety check: blocked. Store's text is pushy, suggesting urgency",
+     "extraBox": {
+      "x": 875,
+      "y": 560,
+      "w": 363,
+      "h": 44
+     }
+    },
+    {
+     "pill": "Blocked",
+     "title": "USB-C wall charger, 30 W — MEGA DEAL",
+     "store": "MegaDealz247",
+     "amount": "$54.00",
+     "box": {
+      "x": 856,
+      "y": 667,
+      "w": 400,
+      "h": 294
+     },
+     "amountBox": {
+      "x": 1173,
+      "y": 723,
+      "w": 65,
+      "h": 27
+     },
+     "sentence": "Price is 2.8× the usual $19 for this charger. You weren't charged.",
+     "sentenceBox": {
+      "x": 875,
+      "y": 810,
+      "w": 363,
+      "h": 46
+     },
+     "extra": "Safety check: blocked. Store is only 3 days old. Hidden instructions for the AI to skip checks.",
+     "extraBox": {
+      "x": 875,
+      "y": 866,
+      "w": 363,
+      "h": 44
+     }
+    },
+    {
+     "pill": "Paid",
+     "title": "Wireless over-ear headphones",
+     "store": "VoltHub",
+     "amount": "$129.00",
+     "box": {
+      "x": 856,
+      "y": 973,
+      "w": 400,
+      "h": 192
+     },
+     "amountBox": {
+      "x": 1162,
+      "y": 1029,
+      "w": 76,
+      "h": 27
+     },
+     "sentence": "You approved it, so PayPal paid VoltHub.",
+     "sentenceBox": {
+      "x": 875,
+      "y": 1090,
+      "w": 363,
+      "h": 23
+     },
+     "extraBox": null
+    },
+    {
+     "pill": "Paid",
+     "title": "USB-C wall charger, 30 W",
+     "store": "VoltHub",
+     "amount": "$19.00",
+     "box": {
+      "x": 856,
+      "y": 1177,
+      "w": 400,
+      "h": 192
+     },
+     "amountBox": {
+      "x": 1173,
+      "y": 1233,
+      "w": 65,
+      "h": 27
+     },
+     "sentence": "Within your rules.",
+     "sentenceBox": {
+      "x": 875,
+      "y": 1294,
+      "w": 363,
+      "h": 23
+     },
+     "extraBox": null
+    },
+    {
+     "pill": "Paid",
+     "title": "4 grocery items",
+     "store": "FreshCart",
+     "amount": "$28.35",
+     "box": {
+      "x": 856,
+      "y": 1381,
+      "w": 400,
+      "h": 192
+     },
+     "amountBox": {
+      "x": 1173,
+      "y": 1437,
+      "w": 65,
+      "h": 27
+     },
+     "sentence": "Within your rules.",
+     "sentenceBox": {
+      "x": 875,
+      "y": 1498,
+      "w": 363,
+      "h": 23
+     },
+     "extraBox": null
+    }
+   ],
+   "cam": {
+    "x": 412,
+    "y": 287,
+    "w": 416,
+    "h": 234
+   },
+   "camFrame": {
+    "x": 404,
+    "y": 242,
+    "w": 432,
+    "h": 287
+   },
+   "camWhere": "Scout at VoltHub",
+   "feed": {
+    "x": 856,
+    "y": 92,
+    "w": 400,
+    "h": 534
+   },
+   "spent": {
+    "x": 1015,
+    "y": 17,
+    "w": 237,
+    "h": 38
+   },
+   "spentText": "$176.35 of $250 this week$176.35 of $250 spent this week"
+  },
+  {
+   "t": 20.79,
+   "name": "snap",
+   "vw": 1280,
+   "cards": [
+    {
+     "pill": "Blocked",
+     "title": "Wireless over-ear headphones",
+     "store": "VoltHub",
+     "amount": "$129.00",
+     "box": {
+      "x": 856,
+      "y": 162,
+      "w": 400,
+      "h": 215
+     },
+     "amountBox": {
+      "x": 1162,
+      "y": 218,
+      "w": 76,
+      "h": 27
+     },
+     "sentence": "$129.00 is more than the $73.65 left in your weekly budget. You weren't charged.",
+     "sentenceBox": {
+      "x": 875,
+      "y": 279,
+      "w": 363,
+      "h": 46
+     },
+     "extraBox": null
+    },
+    {
+     "pill": "Not bought",
+     "title": "Wireless earbuds",
+     "store": "VoltHub",
+     "amount": "$59.00",
+     "box": {
+      "x": 856,
+      "y": 387,
+      "w": 400,
+      "h": 192
+     },
+     "amountBox": {
+      "x": 1173,
+      "y": 442,
+      "w": 65,
+      "h": 27
+     },
+     "sentence": "Hold released, you weren't charged.",
+     "sentenceBox": {
+      "x": 875,
+      "y": 504,
+      "w": 363,
+      "h": 23
+     },
+     "extraBox": null
+    },
+    {
+     "pill": "Blocked",
+     "title": "USB-C wall charger, 30 W",
+     "store": "VoltHub",
+     "amount": "$19.00",
+     "box": {
+      "x": 856,
+      "y": 590,
+      "w": 400,
+      "h": 292
+     },
+     "amountBox": {
+      "x": 1173,
+      "y": 646,
+      "w": 65,
+      "h": 27
+     },
+     "sentence": "Duplicate purchase of USB-C wall charger, 30 W from VoltHub in the last 24 hours You weren't charged.",
+     "sentenceBox": {
+      "x": 875,
+      "y": 707,
+      "w": 363,
+      "h": 70
+     },
+     "extra": "Safety check: blocked. Store's text is pushy, suggesting urgency",
+     "extraBox": {
+      "x": 875,
+      "y": 787,
+      "w": 363,
+      "h": 44
+     }
+    },
+    {
+     "pill": "Blocked",
+     "title": "USB-C wall charger, 30 W — MEGA DEAL",
+     "store": "MegaDealz247",
+     "amount": "$54.00",
+     "box": {
+      "x": 856,
+      "y": 894,
+      "w": 400,
+      "h": 294
+     },
+     "amountBox": {
+      "x": 1173,
+      "y": 950,
+      "w": 65,
+      "h": 27
+     },
+     "sentence": "Price is 2.8× the usual $19 for this charger. You weren't charged.",
+     "sentenceBox": {
+      "x": 875,
+      "y": 1037,
+      "w": 363,
+      "h": 46
+     },
+     "extra": "Safety check: blocked. Store is only 3 days old. Hidden instructions for the AI to skip checks.",
+     "extraBox": {
+      "x": 875,
+      "y": 1093,
+      "w": 363,
+      "h": 44
+     }
+    },
+    {
+     "pill": "Paid",
+     "title": "Wireless over-ear headphones",
+     "store": "VoltHub",
+     "amount": "$129.00",
+     "box": {
+      "x": 856,
+      "y": 1200,
+      "w": 400,
+      "h": 192
+     },
+     "amountBox": {
+      "x": 1162,
+      "y": 1256,
+      "w": 76,
+      "h": 27
+     },
+     "sentence": "You approved it, so PayPal paid VoltHub.",
+     "sentenceBox": {
+      "x": 875,
+      "y": 1317,
+      "w": 363,
+      "h": 23
+     },
+     "extraBox": null
+    },
+    {
+     "pill": "Paid",
+     "title": "USB-C wall charger, 30 W",
+     "store": "VoltHub",
+     "amount": "$19.00",
+     "box": {
+      "x": 856,
+      "y": 1404,
+      "w": 400,
+      "h": 192
+     },
+     "amountBox": {
+      "x": 1173,
+      "y": 1460,
+      "w": 65,
+      "h": 27
+     },
+     "sentence": "Within your rules.",
+     "sentenceBox": {
+      "x": 875,
+      "y": 1521,
+      "w": 363,
+      "h": 23
+     },
+     "extraBox": null
+    },
+    {
+     "pill": "Paid",
+     "title": "4 grocery items",
+     "store": "FreshCart",
+     "amount": "$28.35",
+     "box": {
+      "x": 856,
+      "y": 1608,
+      "w": 400,
+      "h": 192
+     },
+     "amountBox": {
+      "x": 1173,
+      "y": 1664,
+      "w": 65,
+      "h": 27
+     },
+     "sentence": "Within your rules.",
+     "sentenceBox": {
+      "x": 875,
+      "y": 1725,
+      "w": 363,
+      "h": 23
+     },
+     "extraBox": null
+    }
+   ],
+   "cam": {
+    "x": 412,
+    "y": 287,
+    "w": 416,
+    "h": 234
+   },
+   "camFrame": {
+    "x": 404,
+    "y": 242,
+    "w": 432,
+    "h": 287
+   },
+   "camWhere": "Scout at VoltHub",
+   "feed": {
+    "x": 856,
+    "y": 92,
+    "w": 400,
+    "h": 534
+   },
+   "spent": {
+    "x": 1015,
+    "y": 17,
+    "w": 237,
+    "h": 38
+   },
+   "spentText": "$176.35 of $250 this week$176.35 of $250 spent this week"
+  },
+  {
+   "t": 20.96,
+   "name": "snap",
+   "vw": 1280,
+   "cards": [
+    {
+     "pill": "Blocked",
+     "title": "Wireless over-ear headphones",
+     "store": "VoltHub",
+     "amount": "$129.00",
+     "box": {
+      "x": 856,
+      "y": 160,
+      "w": 400,
+      "h": 215
+     },
+     "amountBox": {
+      "x": 1162,
+      "y": 215,
+      "w": 76,
+      "h": 27
+     },
+     "sentence": "$129.00 is more than the $73.65 left in your weekly budget. You weren't charged.",
+     "sentenceBox": {
+      "x": 875,
+      "y": 277,
+      "w": 363,
+      "h": 46
+     },
+     "extraBox": null
+    },
+    {
+     "pill": "Not bought",
+     "title": "Wireless earbuds",
+     "store": "VoltHub",
+     "amount": "$59.00",
+     "box": {
+      "x": 856,
+      "y": 387,
+      "w": 400,
+      "h": 192
+     },
+     "amountBox": {
+      "x": 1173,
+      "y": 442,
+      "w": 65,
+      "h": 27
+     },
+     "sentence": "Hold released, you weren't charged.",
+     "sentenceBox": {
+      "x": 875,
+      "y": 504,
+      "w": 363,
+      "h": 23
+     },
+     "extraBox": null
+    },
+    {
+     "pill": "Blocked",
+     "title": "USB-C wall charger, 30 W",
+     "store": "VoltHub",
+     "amount": "$19.00",
+     "box": {
+      "x": 856,
+      "y": 590,
+      "w": 400,
+      "h": 292
+     },
+     "amountBox": {
+      "x": 1173,
+      "y": 646,
+      "w": 65,
+      "h": 27
+     },
+     "sentence": "Duplicate purchase of USB-C wall charger, 30 W from VoltHub in the last 24 hours You weren't charged.",
+     "sentenceBox": {
+      "x": 875,
+      "y": 707,
+      "w": 363,
+      "h": 70
+     },
+     "extra": "Safety check: blocked. Store's text is pushy, suggesting urgency",
+     "extraBox": {
+      "x": 875,
+      "y": 787,
+      "w": 363,
+      "h": 44
+     }
+    },
+    {
+     "pill": "Blocked",
+     "title": "USB-C wall charger, 30 W — MEGA DEAL",
+     "store": "MegaDealz247",
+     "amount": "$54.00",
+     "box": {
+      "x": 856,
+      "y": 894,
+      "w": 400,
+      "h": 294
+     },
+     "amountBox": {
+      "x": 1173,
+      "y": 950,
+      "w": 65,
+      "h": 27
+     },
+     "sentence": "Price is 2.8× the usual $19 for this charger. You weren't charged.",
+     "sentenceBox": {
+      "x": 875,
+      "y": 1037,
+      "w": 363,
+      "h": 46
+     },
+     "extra": "Safety check: blocked. Store is only 3 days old. Hidden instructions for the AI to skip checks.",
+     "extraBox": {
+      "x": 875,
+      "y": 1093,
+      "w": 363,
+      "h": 44
+     }
+    },
+    {
+     "pill": "Paid",
+     "title": "Wireless over-ear headphones",
+     "store": "VoltHub",
+     "amount": "$129.00",
+     "box": {
+      "x": 856,
+      "y": 1200,
+      "w": 400,
+      "h": 192
+     },
+     "amountBox": {
+      "x": 1162,
+      "y": 1256,
+      "w": 76,
+      "h": 27
+     },
+     "sentence": "You approved it, so PayPal paid VoltHub.",
+     "sentenceBox": {
+      "x": 875,
+      "y": 1317,
+      "w": 363,
+      "h": 23
+     },
+     "extraBox": null
+    },
+    {
+     "pill": "Paid",
+     "title": "USB-C wall charger, 30 W",
+     "store": "VoltHub",
+     "amount": "$19.00",
+     "box": {
+      "x": 856,
+      "y": 1404,
+      "w": 400,
+      "h": 192
+     },
+     "amountBox": {
+      "x": 1173,
+      "y": 1460,
+      "w": 65,
+      "h": 27
+     },
+     "sentence": "Within your rules.",
+     "sentenceBox": {
+      "x": 875,
+      "y": 1521,
+      "w": 363,
+      "h": 23
+     },
+     "extraBox": null
+    },
+    {
+     "pill": "Paid",
+     "title": "4 grocery items",
+     "store": "FreshCart",
+     "amount": "$28.35",
+     "box": {
+      "x": 856,
+      "y": 1608,
+      "w": 400,
+      "h": 192
+     },
+     "amountBox": {
+      "x": 1173,
+      "y": 1664,
+      "w": 65,
+      "h": 27
+     },
+     "sentence": "Within your rules.",
+     "sentenceBox": {
+      "x": 875,
+      "y": 1725,
+      "w": 363,
+      "h": 23
+     },
+     "extraBox": null
+    }
+   ],
+   "cam": {
+    "x": 412,
+    "y": 287,
+    "w": 416,
+    "h": 234
+   },
+   "camFrame": {
+    "x": 404,
+    "y": 242,
+    "w": 432,
+    "h": 287
+   },
+   "camWhere": "Scout at VoltHub",
+   "feed": {
+    "x": 856,
+    "y": 92,
+    "w": 400,
+    "h": 534
+   },
+   "spent": {
+    "x": 1015,
+    "y": 17,
+    "w": 237,
+    "h": 38
+   },
+   "spentText": "$176.35 of $250 this week$176.35 of $250 spent this week"
+  },
+  {
+   "t": 21.48,
+   "name": "snap",
+   "vw": 1280,
+   "cards": [
+    {
+     "pill": "Blocked",
+     "title": "Wireless over-ear headphones",
+     "store": "VoltHub",
+     "amount": "$129.00",
+     "box": {
+      "x": 856,
+      "y": 160,
+      "w": 400,
+      "h": 215
+     },
+     "amountBox": {
+      "x": 1162,
+      "y": 215,
+      "w": 76,
+      "h": 27
+     },
+     "sentence": "$129.00 is more than the $73.65 left in your weekly budget. You weren't charged.",
+     "sentenceBox": {
+      "x": 875,
+      "y": 277,
+      "w": 363,
+      "h": 46
+     },
+     "extraBox": null
+    },
+    {
+     "pill": "Not bought",
+     "title": "Wireless earbuds",
+     "store": "VoltHub",
+     "amount": "$59.00",
+     "box": {
+      "x": 856,
+      "y": 387,
+      "w": 400,
+      "h": 192
+     },
+     "amountBox": {
+      "x": 1173,
+      "y": 442,
+      "w": 65,
+      "h": 27
+     },
+     "sentence": "Hold released, you weren't charged.",
+     "sentenceBox": {
+      "x": 875,
+      "y": 504,
+      "w": 363,
+      "h": 23
+     },
+     "extraBox": null
+    },
+    {
+     "pill": "Blocked",
+     "title": "USB-C wall charger, 30 W",
+     "store": "VoltHub",
+     "amount": "$19.00",
+     "box": {
+      "x": 856,
+      "y": 590,
+      "w": 400,
+      "h": 292
+     },
+     "amountBox": {
+      "x": 1173,
+      "y": 646,
+      "w": 65,
+      "h": 27
+     },
+     "sentence": "Duplicate purchase of USB-C wall charger, 30 W from VoltHub in the last 24 hours You weren't charged.",
+     "sentenceBox": {
+      "x": 875,
+      "y": 707,
+      "w": 363,
+      "h": 70
+     },
+     "extra": "Safety check: blocked. Store's text is pushy, suggesting urgency",
+     "extraBox": {
+      "x": 875,
+      "y": 787,
+      "w": 363,
+      "h": 44
+     }
+    },
+    {
+     "pill": "Blocked",
+     "title": "USB-C wall charger, 30 W — MEGA DEAL",
+     "store": "MegaDealz247",
+     "amount": "$54.00",
+     "box": {
+      "x": 856,
+      "y": 894,
+      "w": 400,
+      "h": 294
+     },
+     "amountBox": {
+      "x": 1173,
+      "y": 950,
+      "w": 65,
+      "h": 27
+     },
+     "sentence": "Price is 2.8× the usual $19 for this charger. You weren't charged.",
+     "sentenceBox": {
+      "x": 875,
+      "y": 1037,
+      "w": 363,
+      "h": 46
+     },
+     "extra": "Safety check: blocked. Store is only 3 days old. Hidden instructions for the AI to skip checks.",
+     "extraBox": {
+      "x": 875,
+      "y": 1093,
+      "w": 363,
+      "h": 44
+     }
+    },
+    {
+     "pill": "Paid",
+     "title": "Wireless over-ear headphones",
+     "store": "VoltHub",
+     "amount": "$129.00",
+     "box": {
+      "x": 856,
+      "y": 1200,
+      "w": 400,
+      "h": 192
+     },
+     "amountBox": {
+      "x": 1162,
+      "y": 1256,
+      "w": 76,
+      "h": 27
+     },
+     "sentence": "You approved it, so PayPal paid VoltHub.",
+     "sentenceBox": {
+      "x": 875,
+      "y": 1317,
+      "w": 363,
+      "h": 23
+     },
+     "extraBox": null
+    },
+    {
+     "pill": "Paid",
+     "title": "USB-C wall charger, 30 W",
+     "store": "VoltHub",
+     "amount": "$19.00",
+     "box": {
+      "x": 856,
+      "y": 1404,
+      "w": 400,
+      "h": 192
+     },
+     "amountBox": {
+      "x": 1173,
+      "y": 1460,
+      "w": 65,
+      "h": 27
+     },
+     "sentence": "Within your rules.",
+     "sentenceBox": {
+      "x": 875,
+      "y": 1521,
+      "w": 363,
+      "h": 23
+     },
+     "extraBox": null
+    },
+    {
+     "pill": "Paid",
+     "title": "4 grocery items",
+     "store": "FreshCart",
+     "amount": "$28.35",
+     "box": {
+      "x": 856,
+      "y": 1608,
+      "w": 400,
+      "h": 192
+     },
+     "amountBox": {
+      "x": 1173,
+      "y": 1664,
+      "w": 65,
+      "h": 27
+     },
+     "sentence": "Within your rules.",
+     "sentenceBox": {
+      "x": 875,
+      "y": 1725,
+      "w": 363,
+      "h": 23
+     },
+     "extraBox": null
+    }
+   ],
+   "cam": {
+    "x": 412,
+    "y": 287,
+    "w": 416,
+    "h": 234
+   },
+   "camFrame": {
+    "x": 404,
+    "y": 242,
+    "w": 432,
+    "h": 287
+   },
+   "camWhere": "Safety check",
+   "feed": {
+    "x": 856,
+    "y": 92,
+    "w": 400,
+    "h": 534
+   },
+   "spent": {
+    "x": 1015,
+    "y": 17,
+    "w": 237,
+    "h": 38
+   },
+   "spentText": "$176.35 of $250 this week$176.35 of $250 spent this week"
+  },
+  {
+   "t": 23.55,
+   "name": "snap",
+   "vw": 1280,
+   "cards": [
+    {
+     "pill": "Blocked",
+     "title": "Wireless over-ear headphones",
+     "store": "VoltHub",
+     "amount": "$129.00",
+     "box": {
+      "x": 856,
+      "y": 160,
+      "w": 400,
+      "h": 215
+     },
+     "amountBox": {
+      "x": 1162,
+      "y": 215,
+      "w": 76,
+      "h": 27
+     },
+     "sentence": "$129.00 is more than the $73.65 left in your weekly budget. You weren't charged.",
+     "sentenceBox": {
+      "x": 875,
+      "y": 277,
+      "w": 363,
+      "h": 46
+     },
+     "extraBox": null
+    },
+    {
+     "pill": "Not bought",
+     "title": "Wireless earbuds",
+     "store": "VoltHub",
+     "amount": "$59.00",
+     "box": {
+      "x": 856,
+      "y": 387,
+      "w": 400,
+      "h": 192
+     },
+     "amountBox": {
+      "x": 1173,
+      "y": 442,
+      "w": 65,
+      "h": 27
+     },
+     "sentence": "Hold released, you weren't charged.",
+     "sentenceBox": {
+      "x": 875,
+      "y": 504,
+      "w": 363,
+      "h": 23
+     },
+     "extraBox": null
+    },
+    {
+     "pill": "Blocked",
+     "title": "USB-C wall charger, 30 W",
+     "store": "VoltHub",
+     "amount": "$19.00",
+     "box": {
+      "x": 856,
+      "y": 590,
+      "w": 400,
+      "h": 292
+     },
+     "amountBox": {
+      "x": 1173,
+      "y": 646,
+      "w": 65,
+      "h": 27
+     },
+     "sentence": "Duplicate purchase of USB-C wall charger, 30 W from VoltHub in the last 24 hours You weren't charged.",
+     "sentenceBox": {
+      "x": 875,
+      "y": 707,
+      "w": 363,
+      "h": 70
+     },
+     "extra": "Safety check: blocked. Store's text is pushy, suggesting urgency",
+     "extraBox": {
+      "x": 875,
+      "y": 787,
+      "w": 363,
+      "h": 44
+     }
+    },
+    {
+     "pill": "Blocked",
+     "title": "USB-C wall charger, 30 W — MEGA DEAL",
+     "store": "MegaDealz247",
+     "amount": "$54.00",
+     "box": {
+      "x": 856,
+      "y": 894,
+      "w": 400,
+      "h": 294
+     },
+     "amountBox": {
+      "x": 1173,
+      "y": 950,
+      "w": 65,
+      "h": 27
+     },
+     "sentence": "Price is 2.8× the usual $19 for this charger. You weren't charged.",
+     "sentenceBox": {
+      "x": 875,
+      "y": 1037,
+      "w": 363,
+      "h": 46
+     },
+     "extra": "Safety check: blocked. Store is only 3 days old. Hidden instructions for the AI to skip checks.",
+     "extraBox": {
+      "x": 875,
+      "y": 1093,
+      "w": 363,
+      "h": 44
+     }
+    },
+    {
+     "pill": "Paid",
+     "title": "Wireless over-ear headphones",
+     "store": "VoltHub",
+     "amount": "$129.00",
+     "box": {
+      "x": 856,
+      "y": 1200,
+      "w": 400,
+      "h": 192
+     },
+     "amountBox": {
+      "x": 1162,
+      "y": 1256,
+      "w": 76,
+      "h": 27
+     },
+     "sentence": "You approved it, so PayPal paid VoltHub.",
+     "sentenceBox": {
+      "x": 875,
+      "y": 1317,
+      "w": 363,
+      "h": 23
+     },
+     "extraBox": null
+    },
+    {
+     "pill": "Paid",
+     "title": "USB-C wall charger, 30 W",
+     "store": "VoltHub",
+     "amount": "$19.00",
+     "box": {
+      "x": 856,
+      "y": 1404,
+      "w": 400,
+      "h": 192
+     },
+     "amountBox": {
+      "x": 1173,
+      "y": 1460,
+      "w": 65,
+      "h": 27
+     },
+     "sentence": "Within your rules.",
+     "sentenceBox": {
+      "x": 875,
+      "y": 1521,
+      "w": 363,
+      "h": 23
+     },
+     "extraBox": null
+    },
+    {
+     "pill": "Paid",
+     "title": "4 grocery items",
+     "store": "FreshCart",
+     "amount": "$28.35",
+     "box": {
+      "x": 856,
+      "y": 1608,
+      "w": 400,
+      "h": 192
+     },
+     "amountBox": {
+      "x": 1173,
+      "y": 1664,
+      "w": 65,
+      "h": 27
+     },
+     "sentence": "Within your rules.",
+     "sentenceBox": {
+      "x": 875,
+      "y": 1725,
+      "w": 363,
+      "h": 23
+     },
+     "extraBox": null
+    }
+   ],
+   "cam": {
+    "x": 412,
+    "y": 287,
+    "w": 416,
+    "h": 234
+   },
+   "camFrame": {
+    "x": 404,
+    "y": 242,
+    "w": 432,
+    "h": 287
+   },
+   "camWhere": "Blocked",
+   "feed": {
+    "x": 856,
+    "y": 92,
+    "w": 400,
+    "h": 534
+   },
+   "spent": {
+    "x": 1015,
+    "y": 17,
+    "w": 237,
+    "h": 38
+   },
+   "spentText": "$176.35 of $250 this week$176.35 of $250 spent this week"
+  },
+  {
+   "t": 65.89,
+   "name": "done"
+  }
+ ]
+}

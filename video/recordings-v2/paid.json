@@ -1,0 +1,909 @@
+{
+ "name": "paid",
+ "viewport": {
+  "width": 1280,
+  "height": 650
+ },
+ "events": [
+  {
+   "t": 2.92,
+   "name": "loaded"
+  },
+  {
+   "t": 4.74,
+   "name": "snap",
+   "vw": 1280,
+   "cards": [],
+   "cam": {
+    "x": 412,
+    "y": 287,
+    "w": 416,
+    "h": 234
+   },
+   "camFrame": {
+    "x": 404,
+    "y": 242,
+    "w": 432,
+    "h": 287
+   },
+   "camWhere": "Scout is napping",
+   "feed": {
+    "x": 856,
+    "y": 92,
+    "w": 400,
+    "h": 534
+   },
+   "spent": {
+    "x": 1032,
+    "y": 17,
+    "w": 220,
+    "h": 38
+   },
+   "spentText": "$0.00 of $250 this week$0.00 of $250 spent this week"
+  },
+  {
+   "t": 4.84,
+   "name": "type-start",
+   "text": "buy groceries for the week under $60, and a phone charger"
+  },
+  {
+   "t": 6.46,
+   "name": "type-end"
+  },
+  {
+   "t": 7.01,
+   "name": "sent"
+  },
+  {
+   "t": 7.33,
+   "name": "snap",
+   "vw": 1280,
+   "cards": [],
+   "cam": {
+    "x": 412,
+    "y": 287,
+    "w": 416,
+    "h": 234
+   },
+   "camFrame": {
+    "x": 404,
+    "y": 242,
+    "w": 432,
+    "h": 287
+   },
+   "camWhere": "Scout at FreshCart",
+   "feed": {
+    "x": 856,
+    "y": 92,
+    "w": 400,
+    "h": 534
+   },
+   "spent": {
+    "x": 1032,
+    "y": 17,
+    "w": 220,
+    "h": 38
+   },
+   "spentText": "$0.00 of $250 this week$0.00 of $250 spent this week"
+  },
+  {
+   "t": 8.24,
+   "name": "snap",
+   "vw": 860,
+   "cards": [],
+   "cam": {
+    "x": 24,
+    "y": 198,
+    "w": 812,
+    "h": 457
+   },
+   "camFrame": {
+    "x": 16,
+    "y": 154,
+    "w": 828,
+    "h": 509
+   },
+   "camWhere": "Scout at FreshCart",
+   "feed": {
+    "x": 16,
+    "y": 1059,
+    "w": 828,
+    "h": 402
+   },
+   "spent": {
+    "x": 612,
+    "y": 17,
+    "w": 220,
+    "h": 38
+   },
+   "spentText": "$0.00 of $250 this week$0.00 of $250 spent this week"
+  },
+  {
+   "t": 8.88,
+   "name": "narrow",
+   "vw": 860,
+   "cards": [],
+   "cam": {
+    "x": 24,
+    "y": 127,
+    "w": 812,
+    "h": 457
+   },
+   "camFrame": {
+    "x": 16,
+    "y": 82,
+    "w": 828,
+    "h": 509
+   },
+   "camWhere": "Scout at FreshCart",
+   "feed": {
+    "x": 16,
+    "y": 988,
+    "w": 828,
+    "h": 402
+   },
+   "spent": {
+    "x": 612,
+    "y": 17,
+    "w": 220,
+    "h": 38
+   },
+   "spentText": "$0.00 of $250 this week$0.00 of $250 spent this week"
+  },
+  {
+   "t": 32.11,
+   "name": "snap",
+   "vw": 860,
+   "cards": [],
+   "cam": {
+    "x": 24,
+    "y": 127,
+    "w": 812,
+    "h": 457
+   },
+   "camFrame": {
+    "x": 16,
+    "y": 82,
+    "w": 828,
+    "h": 509
+   },
+   "camWhere": "Scout at VoltHub",
+   "feed": {
+    "x": 16,
+    "y": 1143,
+    "w": 828,
+    "h": 402
+   },
+   "spent": {
+    "x": 612,
+    "y": 17,
+    "w": 220,
+    "h": 38
+   },
+   "spentText": "$0.00 of $250 this week$0.00 of $250 spent this week"
+  },
+  {
+   "t": 35.73,
+   "name": "snap",
+   "vw": 860,
+   "cards": [],
+   "cam": {
+    "x": 24,
+    "y": 127,
+    "w": 812,
+    "h": 457
+   },
+   "camFrame": {
+    "x": 16,
+    "y": 82,
+    "w": 828,
+    "h": 509
+   },
+   "camWhere": "Scout at FreshCart",
+   "feed": {
+    "x": 16,
+    "y": 1161,
+    "w": 828,
+    "h": 402
+   },
+   "spent": {
+    "x": 612,
+    "y": 17,
+    "w": 220,
+    "h": 38
+   },
+   "spentText": "$0.00 of $250 this week$0.00 of $250 spent this week"
+  },
+  {
+   "t": 73.61,
+   "name": "snap",
+   "vw": 860,
+   "cards": [
+    {
+     "pill": "Paid",
+     "title": "4 grocery items",
+     "store": "FreshCart",
+     "amount": "$28.35",
+     "box": {
+      "x": 16,
+      "y": 1231,
+      "w": 828,
+      "h": 192
+     },
+     "amountBox": {
+      "x": 761,
+      "y": 1287,
+      "w": 65,
+      "h": 27
+     },
+     "sentence": "Within your rules.",
+     "sentenceBox": {
+      "x": 35,
+      "y": 1348,
+      "w": 791,
+      "h": 23
+     },
+     "extraBox": null
+    }
+   ],
+   "cam": {
+    "x": 24,
+    "y": 127,
+    "w": 812,
+    "h": 457
+   },
+   "camFrame": {
+    "x": 16,
+    "y": 82,
+    "w": 828,
+    "h": 509
+   },
+   "camWhere": "Scout at FreshCart",
+   "feed": {
+    "x": 16,
+    "y": 1161,
+    "w": 828,
+    "h": 263
+   },
+   "spent": {
+    "x": 612,
+    "y": 17,
+    "w": 220,
+    "h": 38
+   },
+   "spentText": "$0.00 of $250 this week$0.00 of $250 spent this week"
+  },
+  {
+   "t": 73.77,
+   "name": "snap",
+   "vw": 860,
+   "cards": [
+    {
+     "pill": "Paid",
+     "title": "4 grocery items",
+     "store": "FreshCart",
+     "amount": "$28.35",
+     "box": {
+      "x": 16,
+      "y": 1228,
+      "w": 828,
+      "h": 192
+     },
+     "amountBox": {
+      "x": 761,
+      "y": 1284,
+      "w": 65,
+      "h": 27
+     },
+     "sentence": "Within your rules.",
+     "sentenceBox": {
+      "x": 35,
+      "y": 1345,
+      "w": 791,
+      "h": 23
+     },
+     "extraBox": null
+    }
+   ],
+   "cam": {
+    "x": 24,
+    "y": 127,
+    "w": 812,
+    "h": 457
+   },
+   "camFrame": {
+    "x": 16,
+    "y": 82,
+    "w": 828,
+    "h": 509
+   },
+   "camWhere": "Scout at FreshCart",
+   "feed": {
+    "x": 16,
+    "y": 1161,
+    "w": 828,
+    "h": 263
+   },
+   "spent": {
+    "x": 604,
+    "y": 17,
+    "w": 228,
+    "h": 38
+   },
+   "spentText": "$28.35 of $250 this week$28.35 of $250 spent this week"
+  },
+  {
+   "t": 75.75,
+   "name": "snap",
+   "vw": 860,
+   "cards": [
+    {
+     "pill": "Paid",
+     "title": "4 grocery items",
+     "store": "FreshCart",
+     "amount": "$28.35",
+     "box": {
+      "x": 16,
+      "y": 1228,
+      "w": 828,
+      "h": 192
+     },
+     "amountBox": {
+      "x": 761,
+      "y": 1284,
+      "w": 65,
+      "h": 27
+     },
+     "sentence": "Within your rules.",
+     "sentenceBox": {
+      "x": 35,
+      "y": 1345,
+      "w": 791,
+      "h": 23
+     },
+     "extraBox": null
+    }
+   ],
+   "cam": {
+    "x": 24,
+    "y": 127,
+    "w": 812,
+    "h": 457
+   },
+   "camFrame": {
+    "x": 16,
+    "y": 82,
+    "w": 828,
+    "h": 509
+   },
+   "camWhere": "Paid at FreshCart",
+   "feed": {
+    "x": 16,
+    "y": 1161,
+    "w": 828,
+    "h": 263
+   },
+   "spent": {
+    "x": 604,
+    "y": 17,
+    "w": 228,
+    "h": 38
+   },
+   "spentText": "$28.35 of $250 this week$28.35 of $250 spent this week"
+  },
+  {
+   "t": 84.44,
+   "name": "snap",
+   "vw": 860,
+   "cards": [
+    {
+     "pill": "Paid",
+     "title": "USB-C wall charger, 30 W",
+     "store": "VoltHub",
+     "amount": "$19.00",
+     "box": {
+      "x": 16,
+      "y": 1236,
+      "w": 828,
+      "h": 192
+     },
+     "amountBox": {
+      "x": 761,
+      "y": 1292,
+      "w": 65,
+      "h": 27
+     },
+     "sentence": "Within your rules.",
+     "sentenceBox": {
+      "x": 35,
+      "y": 1353,
+      "w": 791,
+      "h": 23
+     },
+     "extraBox": null
+    },
+    {
+     "pill": "Paid",
+     "title": "4 grocery items",
+     "store": "FreshCart",
+     "amount": "$28.35",
+     "box": {
+      "x": 16,
+      "y": 1432,
+      "w": 828,
+      "h": 192
+     },
+     "amountBox": {
+      "x": 761,
+      "y": 1488,
+      "w": 65,
+      "h": 27
+     },
+     "sentence": "Within your rules.",
+     "sentenceBox": {
+      "x": 35,
+      "y": 1549,
+      "w": 791,
+      "h": 23
+     },
+     "extraBox": null
+    }
+   ],
+   "cam": {
+    "x": 24,
+    "y": 127,
+    "w": 812,
+    "h": 457
+   },
+   "camFrame": {
+    "x": 16,
+    "y": 82,
+    "w": 828,
+    "h": 509
+   },
+   "camWhere": "Scout at VoltHub",
+   "feed": {
+    "x": 16,
+    "y": 1161,
+    "w": 828,
+    "h": 467
+   },
+   "spent": {
+    "x": 604,
+    "y": 17,
+    "w": 228,
+    "h": 38
+   },
+   "spentText": "$28.35 of $250 this week$28.35 of $250 spent this week"
+  },
+  {
+   "t": 84.59,
+   "name": "snap",
+   "vw": 860,
+   "cards": [
+    {
+     "pill": "Paid",
+     "title": "USB-C wall charger, 30 W",
+     "store": "VoltHub",
+     "amount": "$19.00",
+     "box": {
+      "x": 16,
+      "y": 1229,
+      "w": 828,
+      "h": 192
+     },
+     "amountBox": {
+      "x": 761,
+      "y": 1285,
+      "w": 65,
+      "h": 27
+     },
+     "sentence": "Within your rules.",
+     "sentenceBox": {
+      "x": 35,
+      "y": 1346,
+      "w": 791,
+      "h": 23
+     },
+     "extraBox": null
+    },
+    {
+     "pill": "Paid",
+     "title": "4 grocery items",
+     "store": "FreshCart",
+     "amount": "$28.35",
+     "box": {
+      "x": 16,
+      "y": 1432,
+      "w": 828,
+      "h": 192
+     },
+     "amountBox": {
+      "x": 761,
+      "y": 1488,
+      "w": 65,
+      "h": 27
+     },
+     "sentence": "Within your rules.",
+     "sentenceBox": {
+      "x": 35,
+      "y": 1549,
+      "w": 791,
+      "h": 23
+     },
+     "extraBox": null
+    }
+   ],
+   "cam": {
+    "x": 24,
+    "y": 127,
+    "w": 812,
+    "h": 457
+   },
+   "camFrame": {
+    "x": 16,
+    "y": 82,
+    "w": 828,
+    "h": 509
+   },
+   "camWhere": "Scout at VoltHub",
+   "feed": {
+    "x": 16,
+    "y": 1161,
+    "w": 828,
+    "h": 467
+   },
+   "spent": {
+    "x": 604,
+    "y": 17,
+    "w": 228,
+    "h": 38
+   },
+   "spentText": "$28.35 of $250 this week$28.35 of $250 spent this week"
+  },
+  {
+   "t": 84.74,
+   "name": "snap",
+   "vw": 860,
+   "cards": [
+    {
+     "pill": "Paid",
+     "title": "USB-C wall charger, 30 W",
+     "store": "VoltHub",
+     "amount": "$19.00",
+     "box": {
+      "x": 16,
+      "y": 1228,
+      "w": 828,
+      "h": 192
+     },
+     "amountBox": {
+      "x": 761,
+      "y": 1284,
+      "w": 65,
+      "h": 27
+     },
+     "sentence": "Within your rules.",
+     "sentenceBox": {
+      "x": 35,
+      "y": 1345,
+      "w": 791,
+      "h": 23
+     },
+     "extraBox": null
+    },
+    {
+     "pill": "Paid",
+     "title": "4 grocery items",
+     "store": "FreshCart",
+     "amount": "$28.35",
+     "box": {
+      "x": 16,
+      "y": 1432,
+      "w": 828,
+      "h": 192
+     },
+     "amountBox": {
+      "x": 761,
+      "y": 1488,
+      "w": 65,
+      "h": 27
+     },
+     "sentence": "Within your rules.",
+     "sentenceBox": {
+      "x": 35,
+      "y": 1549,
+      "w": 791,
+      "h": 23
+     },
+     "extraBox": null
+    }
+   ],
+   "cam": {
+    "x": 24,
+    "y": 127,
+    "w": 812,
+    "h": 457
+   },
+   "camFrame": {
+    "x": 16,
+    "y": 82,
+    "w": 828,
+    "h": 509
+   },
+   "camWhere": "Scout at VoltHub",
+   "feed": {
+    "x": 16,
+    "y": 1161,
+    "w": 828,
+    "h": 467
+   },
+   "spent": {
+    "x": 604,
+    "y": 17,
+    "w": 228,
+    "h": 38
+   },
+   "spentText": "$47.35 of $250 this week$47.35 of $250 spent this week"
+  },
+  {
+   "t": 86.42,
+   "name": "snap",
+   "vw": 860,
+   "cards": [
+    {
+     "pill": "Paid",
+     "title": "USB-C wall charger, 30 W",
+     "store": "VoltHub",
+     "amount": "$19.00",
+     "box": {
+      "x": 16,
+      "y": 1228,
+      "w": 828,
+      "h": 192
+     },
+     "amountBox": {
+      "x": 761,
+      "y": 1284,
+      "w": 65,
+      "h": 27
+     },
+     "sentence": "Within your rules.",
+     "sentenceBox": {
+      "x": 35,
+      "y": 1345,
+      "w": 791,
+      "h": 23
+     },
+     "extraBox": null
+    },
+    {
+     "pill": "Paid",
+     "title": "4 grocery items",
+     "store": "FreshCart",
+     "amount": "$28.35",
+     "box": {
+      "x": 16,
+      "y": 1432,
+      "w": 828,
+      "h": 192
+     },
+     "amountBox": {
+      "x": 761,
+      "y": 1488,
+      "w": 65,
+      "h": 27
+     },
+     "sentence": "Within your rules.",
+     "sentenceBox": {
+      "x": 35,
+      "y": 1549,
+      "w": 791,
+      "h": 23
+     },
+     "extraBox": null
+    }
+   ],
+   "cam": {
+    "x": 24,
+    "y": 127,
+    "w": 812,
+    "h": 457
+   },
+   "camFrame": {
+    "x": 16,
+    "y": 82,
+    "w": 828,
+    "h": 509
+   },
+   "camWhere": "Paid at VoltHub",
+   "feed": {
+    "x": 16,
+    "y": 1161,
+    "w": 828,
+    "h": 467
+   },
+   "spent": {
+    "x": 604,
+    "y": 17,
+    "w": 228,
+    "h": 38
+   },
+   "spentText": "$47.35 of $250 this week$47.35 of $250 spent this week"
+  },
+  {
+   "t": 86.83,
+   "name": "done"
+  },
+  {
+   "t": 89.47,
+   "name": "snap",
+   "vw": 1280,
+   "cards": [
+    {
+     "pill": "Paid",
+     "title": "USB-C wall charger, 30 W",
+     "store": "VoltHub",
+     "amount": "$19.00",
+     "box": {
+      "x": 856,
+      "y": 160,
+      "w": 400,
+      "h": 192
+     },
+     "amountBox": {
+      "x": 1173,
+      "y": 215,
+      "w": 65,
+      "h": 27
+     },
+     "sentence": "Within your rules.",
+     "sentenceBox": {
+      "x": 875,
+      "y": 277,
+      "w": 363,
+      "h": 23
+     },
+     "extraBox": null
+    },
+    {
+     "pill": "Paid",
+     "title": "4 grocery items",
+     "store": "FreshCart",
+     "amount": "$28.35",
+     "box": {
+      "x": 856,
+      "y": 363,
+      "w": 400,
+      "h": 192
+     },
+     "amountBox": {
+      "x": 1173,
+      "y": 419,
+      "w": 65,
+      "h": 27
+     },
+     "sentence": "Within your rules.",
+     "sentenceBox": {
+      "x": 875,
+      "y": 480,
+      "w": 363,
+      "h": 23
+     },
+     "extraBox": null
+    }
+   ],
+   "cam": {
+    "x": 412,
+    "y": 287,
+    "w": 416,
+    "h": 234
+   },
+   "camFrame": {
+    "x": 404,
+    "y": 242,
+    "w": 432,
+    "h": 287
+   },
+   "camWhere": "Paid at VoltHub",
+   "feed": {
+    "x": 856,
+    "y": 92,
+    "w": 400,
+    "h": 534
+   },
+   "spent": {
+    "x": 1024,
+    "y": 17,
+    "w": 228,
+    "h": 38
+   },
+   "spentText": "$47.35 of $250 this week$47.35 of $250 spent this week"
+  },
+  {
+   "t": 89.96,
+   "name": "wide",
+   "vw": 1280,
+   "cards": [
+    {
+     "pill": "Paid",
+     "title": "USB-C wall charger, 30 W",
+     "store": "VoltHub",
+     "amount": "$19.00",
+     "box": {
+      "x": 856,
+      "y": 160,
+      "w": 400,
+      "h": 192
+     },
+     "amountBox": {
+      "x": 1173,
+      "y": 215,
+      "w": 65,
+      "h": 27
+     },
+     "sentence": "Within your rules.",
+     "sentenceBox": {
+      "x": 875,
+      "y": 277,
+      "w": 363,
+      "h": 23
+     },
+     "extraBox": null
+    },
+    {
+     "pill": "Paid",
+     "title": "4 grocery items",
+     "store": "FreshCart",
+     "amount": "$28.35",
+     "box": {
+      "x": 856,
+      "y": 363,
+      "w": 400,
+      "h": 192
+     },
+     "amountBox": {
+      "x": 1173,
+      "y": 419,
+      "w": 65,
+      "h": 27
+     },
+     "sentence": "Within your rules.",
+     "sentenceBox": {
+      "x": 875,
+      "y": 480,
+      "w": 363,
+      "h": 23
+     },
+     "extraBox": null
+    }
+   ],
+   "cam": {
+    "x": 412,
+    "y": 287,
+    "w": 416,
+    "h": 234
+   },
+   "camFrame": {
+    "x": 404,
+    "y": 242,
+    "w": 432,
+    "h": 287
+   },
+   "camWhere": "Paid at VoltHub",
+   "feed": {
+    "x": 856,
+    "y": 92,
+    "w": 400,
+    "h": 534
+   },
+   "spent": {
+    "x": 1024,
+    "y": 17,
+    "w": 228,
+    "h": 38
+   },
+   "spentText": "$47.35 of $250 this week$47.35 of $250 spent this week"
+  }
+ ]
+}

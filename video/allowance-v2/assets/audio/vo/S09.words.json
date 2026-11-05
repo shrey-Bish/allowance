@@ -1,0 +1,296 @@
+[
+  {
+    "id": "w0",
+    "text": "So",
+    "start": 0,
+    "end": 0.24
+  },
+  {
+    "id": "w1",
+    "text": "how",
+    "start": 0.24,
+    "end": 0.48
+  },
+  {
+    "id": "w2",
+    "text": "does",
+    "start": 0.48,
+    "end": 0.72
+  },
+  {
+    "id": "w3",
+    "text": "it",
+    "start": 0.72,
+    "end": 0.88
+  },
+  {
+    "id": "w4",
+    "text": "decide?",
+    "start": 0.88,
+    "end": 1.68
+  },
+  {
+    "id": "w5",
+    "text": "Every",
+    "start": 1.68,
+    "end": 2.08
+  },
+  {
+    "id": "w6",
+    "text": "purchase",
+    "start": 2.08,
+    "end": 2.56
+  },
+  {
+    "id": "w7",
+    "text": "goes",
+    "start": 2.56,
+    "end": 2.8
+  },
+  {
+    "id": "w8",
+    "text": "through",
+    "start": 2.8,
+    "end": 3.12
+  },
+  {
+    "id": "w9",
+    "text": "two",
+    "start": 3.12,
+    "end": 3.36
+  },
+  {
+    "id": "w10",
+    "text": "checks.",
+    "start": 3.36,
+    "end": 4.16
+  },
+  {
+    "id": "w11",
+    "text": "First,",
+    "start": 4.16,
+    "end": 4.72
+  },
+  {
+    "id": "w12",
+    "text": "my",
+    "start": 4.72,
+    "end": 4.88
+  },
+  {
+    "id": "w13",
+    "text": "rules,",
+    "start": 5.04,
+    "end": 5.68
+  },
+  {
+    "id": "w14",
+    "text": "in",
+    "start": 5.68,
+    "end": 5.84
+  },
+  {
+    "id": "w15",
+    "text": "plain",
+    "start": 5.84,
+    "end": 6.16
+  },
+  {
+    "id": "w16",
+    "text": "code",
+    "start": 6.16,
+    "end": 6.48
+  },
+  {
+    "id": "w17",
+    "text": "that",
+    "start": 6.48,
+    "end": 6.64
+  },
+  {
+    "id": "w18",
+    "text": "can't",
+    "start": 6.64,
+    "end": 6.88
+  },
+  {
+    "id": "w19",
+    "text": "be",
+    "start": 6.88,
+    "end": 6.96
+  },
+  {
+    "id": "w20",
+    "text": "sweet",
+    "start": 6.96,
+    "end": 7.36
+  },
+  {
+    "id": "w21",
+    "text": "talked,",
+    "start": 7.44,
+    "end": 8.08
+  },
+  {
+    "id": "w22",
+    "text": "then",
+    "start": 8.08,
+    "end": 8.24
+  },
+  {
+    "id": "w23",
+    "text": "a",
+    "start": 8.32,
+    "end": 8.48
+  },
+  {
+    "id": "w24",
+    "text": "second",
+    "start": 8.48,
+    "end": 8.8
+  },
+  {
+    "id": "w25",
+    "text": "AI",
+    "start": 8.8,
+    "end": 9.28
+  },
+  {
+    "id": "w26",
+    "text": "that",
+    "start": 9.28,
+    "end": 9.44
+  },
+  {
+    "id": "w27",
+    "text": "treats",
+    "start": 9.44,
+    "end": 9.76
+  },
+  {
+    "id": "w28",
+    "text": "the",
+    "start": 9.76,
+    "end": 9.92
+  },
+  {
+    "id": "w29",
+    "text": "store",
+    "start": 9.92,
+    "end": 10.24
+  },
+  {
+    "id": "w30",
+    "text": "page",
+    "start": 10.32,
+    "end": 10.72
+  },
+  {
+    "id": "w31",
+    "text": "as",
+    "start": 10.72,
+    "end": 10.96
+  },
+  {
+    "id": "w32",
+    "text": "untrusted,",
+    "start": 10.96,
+    "end": 11.92
+  },
+  {
+    "id": "w33",
+    "text": "and",
+    "start": 11.92,
+    "end": 12.16
+  },
+  {
+    "id": "w34",
+    "text": "can",
+    "start": 12.16,
+    "end": 12.4
+  },
+  {
+    "id": "w35",
+    "text": "only",
+    "start": 12.4,
+    "end": 12.64
+  },
+  {
+    "id": "w36",
+    "text": "make",
+    "start": 12.64,
+    "end": 12.8
+  },
+  {
+    "id": "w37",
+    "text": "the",
+    "start": 12.8,
+    "end": 12.96
+  },
+  {
+    "id": "w38",
+    "text": "answer",
+    "start": 12.96,
+    "end": 13.36
+  },
+  {
+    "id": "w39",
+    "text": "stricter,",
+    "start": 13.36,
+    "end": 14.32
+  },
+  {
+    "id": "w40",
+    "text": "never",
+    "start": 14.32,
+    "end": 14.8
+  },
+  {
+    "id": "w41",
+    "text": "looser,",
+    "start": 14.8,
+    "end": 15.6
+  },
+  {
+    "id": "w42",
+    "text": "and",
+    "start": 15.6,
+    "end": 15.84
+  },
+  {
+    "id": "w43",
+    "text": "Scout",
+    "start": 15.84,
+    "end": 16.48
+  },
+  {
+    "id": "w44",
+    "text": "never",
+    "start": 16.48,
+    "end": 16.72
+  },
+  {
+    "id": "w45",
+    "text": "touches",
+    "start": 16.72,
+    "end": 17.04
+  },
+  {
+    "id": "w46",
+    "text": "PayPal",
+    "start": 17.04,
+    "end": 17.76
+  },
+  {
+    "id": "w47",
+    "text": "at",
+    "start": 17.76,
+    "end": 17.92
+  },
+  {
+    "id": "w48",
+    "text": "all.",
+    "start": 17.92,
+    "end": 18.24
+  }
+]

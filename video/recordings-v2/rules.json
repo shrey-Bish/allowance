@@ -1,0 +1,59 @@
+{
+ "name": "rules",
+ "viewport": {
+  "width": 1280,
+  "height": 650
+ },
+ "events": [
+  {
+   "t": 2.49,
+   "name": "loaded"
+  },
+  {
+   "t": 4.02,
+   "name": "boxes",
+   "Weekly budget": {
+    "label": {
+     "x": 145,
+     "y": 282,
+     "w": 116,
+     "h": 24
+    },
+    "row": {
+     "x": 145,
+     "y": 280,
+     "w": 591,
+     "h": 27
+    },
+    "group": {
+     "x": 145,
+     "y": 280,
+     "w": 591,
+     "h": 80
+    },
+    "rowText": "Weekly budget$250"
+   },
+   "Ask me before anything over": {
+    "label": {
+     "x": 145,
+     "y": 390,
+     "w": 222,
+     "h": 24
+    },
+    "row": {
+     "x": 145,
+     "y": 388,
+     "w": 591,
+     "h": 27
+    },
+    "group": {
+     "x": 145,
+     "y": 388,
+     "w": 591,
+     "h": 80
+    },
+    "rowText": "Ask me before anything over$50"
+   }
+  }
+ ]
+}

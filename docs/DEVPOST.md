@@ -42,6 +42,9 @@ An MCP server so Claude Desktop or any agent can shop through Allowance; "Penny 
 ## Built with (tags)
 nextjs, react, typescript, prisma, postgresql, neon, paypal, paypal-rest-api, ag-grid, elevenlabs, tailwindcss, render, zod, canvas, openai-api
 
+## Video demo link
+https://youtu.be/G9VkxEoQeQU (2:47)
+
 ## Try it out links
 - https://allowance-kdvo.onrender.com
 - https://github.com/shrey-Bish/allowance
