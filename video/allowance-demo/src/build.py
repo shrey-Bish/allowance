@@ -103,7 +103,7 @@ body = "\n".join([
     video("st-link", "01-connect-link.mp4", 0, 5.8, 0.4, 1),
     head("st-h1", "Link PayPal <b>once</b>", 0.2, 5.6),
     chip("st-chip", "PayPal Sandbox · test money", 0.3, 5.5),
-    video("st-rules", "03-rules.mp4", 5.8, 12.2, 0.05, 2, 'data-playback-rate="0.93"'),
+    video("st-rules", "03-rules.mp4", 5.8, 12.2, 1.4, 2, 'data-playback-rate="0.82"'),
     head("st-h2", "Then set <b>your rules</b>", 6.0, 12.0),
 ])
 js = "\n".join([fade_in("#st-h1", 0.2), fade_in("#st-chip", 0.3), fade_out("#st-h1", 5.5), fade_out("#st-chip", 5.5),
@@ -114,7 +114,7 @@ js = "\n".join([fade_in("#st-h1", 0.2), fade_in("#st-chip", 0.3), fade_out("#st-
 # ---- 4. paid 36–52: 04 from 24.5
 S = 16
 body = "\n".join([
-    f'    <div id="pd-wrap" class="wrap" style="z-index:1">{video("pd-v", "04-shop-paid.mp4", 0, S, 26.0, 1)}</div>',
+    f'    <div id="pd-wrap" class="wrap" style="z-index:1">{video("pd-v", "04-shop-paid.mp4", 0, S, 27.0, 1)}</div>',
     chip("pd-chip", "PayPal Sandbox · test money", 0.3, S - 0.3),
     head("pd-h", "Within your rules → <b>paid</b>", 3.0, 12.5),
 ])
@@ -187,8 +187,8 @@ body = "\n".join([
 ])
 js = "\n".join([fade_in("#po-h1", 0.4), fade_out("#po-h1", 5.5),
                 '    tl.fromTo("#po-act", {opacity: 0}, {opacity: 1, duration: 0.25}, 6);', fade_in("#po-h2", 6.3), fade_out("#po-h2", 12.5),
-                '    tl.fromTo("#po-ppwrap", {opacity: 0, scale: 1.3, y: -20}, {opacity: 1, scale: 1.3, y: -20, duration: 0.3}, 13);',
-                '    tl.to("#po-ppwrap", {y: -70, duration: 4.5, ease: "power1.inOut"}, 13.3);',
+                '    tl.fromTo("#po-ppwrap", {opacity: 0, scale: 1.3, y: -70}, {opacity: 1, scale: 1.3, y: -70, duration: 0.3}, 13);',
+                '    tl.to("#po-ppwrap", {y: -120, duration: 4.5, ease: "power1.inOut"}, 13.3);',
                 fade_in("#po-h3", 13.3), fade_in("#po-chip", 13.2), fade_out("#po-h3", 17.5)])
 (C / "payoff.html").write_text(scene("payoff", S, body, js=js, extra_root_attrs="data-layout-allow-overflow")); scenes.append(("payoff", 118, S))
 
@@ -218,7 +218,7 @@ js = "\n".join([
 SFX = [("sfx-glitch", 5.0, 0.7), ("sfx-door-slam", 6.7, 0.7), ("sfx-stamp", 7.1, 0.8), ("penny-block", 7.9, 0.9),
        ("sfx-coin", 11.7, 0.7),
        ("scout-not-looking", 21.6, 0.8),
-       ("sfx-coin", 38.6, 0.7), ("penny-paying", 39.4, 0.9), ("sfx-receipt", 40.4, 0.5), ("sfx-coin", 44.4, 0.6), ("sfx-receipt", 47.2, 0.5),
+       ("sfx-coin", 37.8, 0.7), ("penny-paying", 38.6, 0.9), ("sfx-receipt", 39.6, 0.5), ("sfx-coin", 43.4, 0.6), ("sfx-receipt", 46.2, 0.5),
        ("sfx-jar", 54.6, 0.7), ("penny-hold", 62.0, 0.9),
        ("sfx-coin-rain", 66.6, 0.7),
        ("sfx-glitch", 79.5, 0.8), ("sfx-door-slam", 81.3, 0.7), ("sfx-stamp", 81.7, 0.9), ("penny-xray", 84.0, 0.9),
